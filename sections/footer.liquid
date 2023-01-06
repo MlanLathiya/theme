@@ -1,48 +1,83 @@
 <div class="where_sec">
-    <div class="container">WHEREVER I GO.   WHATEVER I DO.   HOWEVER I FEEL.</div>
+  <div class="container">WHEREVER I GO. WHATEVER I DO. HOWEVER I FEEL.</div>
 </div>
 
 <div class="footer_detail">
-    <div class="container">
-        <h3>Get social with us</h3>
-        <ul class="social_info">
-            <li><a href="{{ settings.facebook_url }}"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="{{ settings.twitter_url }}"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="{{ settings.instagram_url }}"><i class="fa fa-instagram"></i></a></li>
-            <li><a href="{{ settings.pinterest_url }}"><i class="fa fa-pinterest"></i></a></li>
-        </ul>
-        <figure class="footer_logo"><img src="{{ 'logo.svg' | asset_url }}" alt=""></figure>
-        <div class="phone_info">Call {{ settings.telephone_number }}</div>
-        <p>Monday - Friday: {{ settings.mon_fri_opening_time }}  Please note, our distribution centre is not open to the general public</p>
-        <ul class="footer_link">
-            {% for link in linklists.footer.links %}
-                <li>
-                    <a href="{{ link.url }}">{{ link.title }}</a>
-                </li>
-            {% endfor %}
-        </ul>
-        <div class="other_logo">
-            <figure><img src="{{ 'other_logo_1.png' | asset_url }}" alt=""></figure>
-            <figure><img src="{{ 'other_logo_2.png' | asset_url }}" alt=""></figure>
-        </div>
+  <div class="container">
+    <h3>Get social with us</h3>
+    <ul class="social_info">
+      <li>
+        <a href="{{ settings.facebook_url }}"><i class="fa fa-facebook"></i></a>
+      </li>
+      <li>
+        <a href="{{ settings.twitter_url }}"><i class="fa fa-twitter"></i></a>
+      </li>
+      <li>
+        <a href="{{ settings.instagram_url }}"><i class="fa fa-instagram"></i></a>
+      </li>
+      <li>
+        <a href="{{ settings.pinterest_url }}"><i class="fa fa-pinterest"></i></a>
+      </li>
+    </ul>
+    <figure class="footer_logo"><img src="{{ 'logo.svg' | asset_url }}" alt=""></figure>
+    <div class="phone_info">Call {{ settings.telephone_number }}</div>
+    <p>
+      Monday - Friday: {{ settings.mon_fri_opening_time }} Please note, our distribution centre is not open to the
+      general public
+    </p>
+    <ul class="footer_link">
+      {% for link in linklists.footer.links %}
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+    <div class="other_logo">
+      <figure><img src="{{ 'other_logo_1.png' | asset_url }}" alt=""></figure>
+      <figure><img src="{{ 'other_logo_2.png' | asset_url }}" alt=""></figure>
     </div>
+  </div>
 </div>
 <div class="pay_detail">
-    <div class="container">
-        <ul>
-            <li><img src="{{ 'payment_logo_1.png' | asset_url }}" alt=""></li>
-            <li><img src="{{ 'payment_logo_2.png' | asset_url }}" alt=""></li>
-            <li><img src="{{ 'payment_logo_3.png' | asset_url }}" alt=""></li>
-            <li><img src="{{ 'payment_logo_4.png' | asset_url }}" alt=""></li>
-            <li><img src="{{ 'payment_logo_5.png' | asset_url }}" alt=""></li>
-            <li><img src="{{ 'payment_logo_6.png' | asset_url }}" alt=""></li>
-        </ul>
-    </div>
+  <div class="container">
+    <ul>
+      <li><img src="{{ 'payment_logo_1.png' | asset_url }}" alt=""></li>
+      <li><img src="{{ 'payment_logo_2.png' | asset_url }}" alt=""></li>
+      <li><img src="{{ 'payment_logo_3.png' | asset_url }}" alt=""></li>
+      <li><img src="{{ 'payment_logo_4.png' | asset_url }}" alt=""></li>
+      <li><img src="{{ 'payment_logo_5.png' | asset_url }}" alt=""></li>
+      <li><img src="{{ 'payment_logo_6.png' | asset_url }}" alt=""></li>
+    </ul>
+  </div>
 </div>
 
 {% schema %}
 {
-"name": "footer",
-"tag": "footer"
+  "name": "footer",
+  "tag": "footer",
+  "blocks": [
+    {
+      "type": "image_picker",
+      "name": "Image",
+      "settings": [
+        {
+          "label": "Image",
+          "id": "slide_image",
+          "type": "image_picker"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Slider",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "image_picker"
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}
