@@ -846,36 +846,7 @@
       "customer-sec": {
         "type": "customer-sec",
         "blocks": {
-          "customer_1": {
-            "type": "text",
-            "settings": {
-              "heading": "What our customers think...",
-              "comment": "Josef Seibel make excellent shoes, extremely comfortable and long lasting. I'm on my 4th pair now, having bought my first pair ten years ago.",
-              "rate": 3,
-              "star_image": "star_white.png",
-              "customer_logo": "customer_logo.png"
-            }
-          },
-          "customer_2": {
-            "type": "text",
-            "settings": {
-              "heading": "",
-              "comment": "Love my Josef Seibel shoes. Bought them to replace my last ones which only needed replacing because I had worn down the heels.",
-              "rate": 5,
-              "star_image": "star_white.png",
-              "customer_logo": "customer_logo.png"
-            }
-          },
-          "customer_3": {
-            "type": "text",
-            "settings": {
-              "heading": "",
-              "comment": "These shoes fit perfectly. They are some of the most comfortable shoes I have owned. I have received several compliments from friends and strangers about them.",
-              "rate": 5,
-              "star_image": "star_white.png",
-              "customer_logo": "customer_logo.png"
-            }
-          }
+          
         },
         "block_order": [
           "customer_1",
