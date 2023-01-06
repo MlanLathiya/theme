@@ -352,27 +352,6 @@
         "type": "relative-header",
         "settings": {
         }
-      },
-      "footer": {
-        "type": "footer",
-        "blocks": {
-          "db371562-8ae0-4f8a-acc7-aa36d213db49": {
-            "type": "image_picker",
-            "settings": {
-              "footer_title": "WHEREVER I GO. WHATEVER I DO. HOWEVER I FEEL."
-            }
-          }
-        },
-        "block_order": [
-          "db371562-8ae0-4f8a-acc7-aa36d213db49"
-        ],
-        "settings": {
-        }
-      },
-      "search-modal": {
-        "type": "search-modal",
-        "settings": {
-        }
       }
     },
     "content_for_index": [
