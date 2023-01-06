@@ -40,6 +40,16 @@
     "shipping_handling": "Large orders or heavier items will be sent via TNT and therefore a signature will be required.\n\nOrders received before 15:00 will be dispatched the same day if a working day or the next working day if not. Weekends and Bank Holidays are not working days. All orders received after 15:00 will be dispatched the following working day.\n\nAll suspected missing deliveries must be reported in writing to us once 7 days has passed from your order being placed.\n\nEmail service@josefseibelandfriends.co.uk quoting your order reference. A refund or replacement order will only be offered once 28 days has elapsed from your order date.\n\nPlease note that we endeavour to check that the quality of all orders shipped meets the high standards that our customers expect. However we are unable to guarantee that shoes despatched will be 'box fresh' i.e. they may have been tried on by customers in one of our stores.\n\nIt is very rare for parcels to go missing, but please take note of the following terms:\n\nWe will not be able to enter a claim for lost products with Royal Mail until:\n\n1. 15 working days have passed (for UK orders)\n\n2. 20 working days have passed (for EU orders, excluding UK)\n\n3. 25 working days have passed (for orders outside the EU)",
     "returns_exchanges": "If you are not completely satisfied with your purchase, you can return it in its original unworn condition and packaging and we will refund the price paid for the product. This will not include postage costs.\n\nAddress: -\n\nReturns Department,\n\nJosef Seibel\n\nUnit 2\n\nWylam Court, Off Telford Way\n\nStephenson Industrial Estate\n\nCoalville\n\nLeicestershire\n\nLE67 3HP\n\nPlease ensure your name and address are clearly visible on the return.\n\nIf you require an exchange, please give us full details of your requirements.\n\nWe recommend that you obtain proof of delivery for your return as we are not liable for goods lost in transit.\n\nShould you have a complaint or any comments, please do not hesitate to Contact Us.",
     "sections": {
+      "1544775757134": {
+        "type": "mens-header-image-with-text",
+        "disabled": true,
+        "blocks": {},
+        "block_order": [
+          "709e5edc-5aeb-4def-b735-4c5ac2141388"
+        ],
+        "settings": {
+        }
+      },
       "1517929927858": {
         "type": "featured-collection",
         "disabled": true,
@@ -929,7 +939,7 @@
       "my-sec",
       "customer-sec",
       "stay-sec",
-      "1517929927858"
+      1544775757134
     ]
   }
 }
