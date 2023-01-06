@@ -9,12 +9,12 @@
                 <div class="cus_block">
                     <div class="star_detail">
                         {% for i in (1..block.settings.rate) %}
-                            <i><img src="{{ block.settings.star_image | asset_url }}" alt=""></i>
+                            <i><img src="{{ block.settings.star_image | img_url:'4472x4472' }}" alt=""></i>
                         {% endfor %}
                     </div>
                     <p>{{ block.settings.comment }}</p>
                     {% if forloop.index == 2 %}
-                        <figure><img src="{{ block.settings.customer_logo | asset_url }}" alt=""></figure>
+                        <figure><img src="{{ block.settings.customer_logo | img_url:'4472x4472' }}" alt=""></figure>
                     {% endif %}
                 </div>
             </div>
