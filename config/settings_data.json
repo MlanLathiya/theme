@@ -846,12 +846,19 @@
       "customer-sec": {
         "type": "customer-sec",
         "blocks": {
-          
+          "6cf4f42e-a28d-4f00-87ae-54f49b9e7f86": {
+            "type": "collection",
+            "settings": {
+              "heading": "What our customers think...",
+              "comment": "Josef Seibel make excellent shoes, extremely comfortable and long lasting. I'm on my 4th pair now, having bought my first pair ten years ago.",
+              "rate": 5,
+              "star_image": "shopify:\/\/shop_images\/star_white.png",
+              "customer_logo": "shopify:\/\/shop_images\/customer_logo.png"
+            }
+          }
         },
         "block_order": [
-          "customer_1",
-          "customer_2",
-          "customer_3"
+          "6cf4f42e-a28d-4f00-87ae-54f49b9e7f86"
         ],
         "settings": {
         }
