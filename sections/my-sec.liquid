@@ -4,12 +4,12 @@
     </div>
     <div class="row g-0 bg_gray">
         <div class="col-lg-6">
-            <figure class="left_image"><img src="{{ block.settings.background_image | asset_url }}" alt=""></figure>
+            <figure class="left_image"><img src="{{ block.settings.background_image | img_url:'4472x4472'}}" alt=""></figure>
         </div>
         <div class="col-lg-6 align-self-center">
-            <figure class="user_image"><img src="{{ block.settings.person_image | asset_url }}" alt=""></figure>
+            <figure class="user_image"><img src="{{ block.settings.person_image | img_url:'4472x4472'}}" alt=""></figure>
             <div class="details">
-                <figure class="prod_image"><img src="{{ block.settings.product_image | asset_url }}" alt=""></figure>
+                <figure class="prod_image"><img src="{{ block.settings.product_image | img_url:'4472x4472' }}" alt=""></figure>
                 <h3>{{ block.settings.side_heading }}</h3>
                 <p>{{ block.settings.side_text }}</p>
                 <a href="#" class="btns">READ</a>
