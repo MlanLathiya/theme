@@ -1,0 +1,167 @@
+<section class="continue-shopping-banner">
+    <div class="container">
+        <a href="/"><i class="fas fa-arrow-left" style="margin-right: 15px"></i>Continue Shopping</a>
+    </div>
+</section>
+
+<section class="cart-section">
+    <div class="container">
+        <h1>My Basket</h1>
+        <p class="cart-quantity">
+            <span class="count">{{ cart.item_count }}</span>
+            {{ cart.item_count | pluralize: 'Item', 'Items' }} 
+            (<span class="total">{{ cart.total_price | money }}</span>)
+        </p>
+        <div class="flex-grid row labels">
+            <div class="col col-6 item">
+                Item
+            </div>
+            <div class="col col-2 quantity">
+                Quantity
+            </div>
+            <div class="col col-2 remove">
+                Remove
+            </div>
+            <div class="col col-2 price">
+                Price
+            </div>
+        </div>
+        <div id="bold-cart-msg"></div>
+        <form action="/cart" method="post" class="product-form">
+            {% for item in cart.items %}
+                {% assign today =  "today" | date: "%Y-%m-%d" %}
+                {% assign hmac = today | append: ":" | append: shop.permanent_domain | hmac_sha256: "b6916832e1c9e32a920ef9372ec482d5" %}
+                <input type="hidden" id="jstools-hmac" name="hmac" value="{{ hmac }}" />
+                <div class="flex-grid row item-row">
+                    <div class="col col-6 item">
+                        <div class="flex-grid">
+                            <div class="col col-4 image">
+                              {% include 'cart-item-image' %}
+                            </div>
+                            <div class="col col-8 title">
+                                <p>{{ item.title }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-2 quantity">
+                        <div class="quantity-selector">
+                            <div class="action decrement">
+                                <span>-</span>
+                            </div>
+                            <div class="value">
+                                <span data-max-qty="{{ item.variant.inventory_quantity }}" data-item-id="{{ item.id }}">
+                                {{ item.quantity }}
+                                </span>
+                            </div>
+                            <div class="action increment">
+                                <span>+</span>
+                            </div>
+                            <input type="hidden" name="updates[]" class="qty_value" value="{{ item.quantity }}" />
+                        </div>
+                    </div>
+                    <div class="col col-4 flex-grid price-and-remove-cols-container">
+                        <div class="col col-6 remove">
+                            <a href="/cart/change?line={{ forloop.index }}&quantity=0"><i class="fas fa-times"></i></a>
+                        </div>
+                        <div class="col col-6 price">
+                            <span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_item_price" style="display:none !important;"></span>{{ item.price | money }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="flex-grid wrap">
+                <div class="col col-6 payment-methods">
+                    <ul class="unstyled inline">
+                        <li>
+                            <img src="{{ 'mastercard-logo.png' | asset_url }}" />
+                        </li>
+                        <li>
+                            <img src="{{ 'paypal-logo.png' | asset_url }}" />
+                        </li>
+                        <li>
+                            <img src="{{ 'maestro-logo.png' | asset_url }}" />
+                        </li>
+                        <li>
+                            <img src="{{ 'american-express-logo.png' | asset_url }}" />
+                        </li>
+                        <li>
+                            <img src="{{ 'visa-logo.png' | asset_url }}" />
+                        </li>
+                        <li>
+                            <img src="{{ 'visa-debit-logo.png' | asset_url }}" />
+                        </li>
+                    </ul>
+                </div>
+                <div class="cart-total-container col col-6">
+                    <p class="total"><span class="grey">Total</span> <span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_total" style="display:none !important;"></span>{{ cart.total_price | money }}</p>
+            </div>
+            <div class="flex-grid wrap">
+              <div class="terms-and-conditions-checkbox-container">
+                                <p>
+                   
+                    <br>INTERNATIONAL ORDERS: <br>Please note; if you are ordering from outside the UK your order may be subject to import duties and taxes which are applied when the delivery reaches the destination country.  As the buyer you will be responsible for payment of any such import duties and taxes.
+                    <p>
+                                          <p>
+                      <span>I agree with the <a href="/pages/terms-conditions" target="_blank">Terms and Conditions</a></span>
+                    <input type="checkbox" name="terms-and-conditions-agree" id="terms-and-conditions-agree">
+                </div>
+                <br>
+                <div class="agree-to-be-contacted-container">
+                    <p>
+                        Please tell us if you would like to be contacted by email with information about goods and services 
+                        we feel may be of interest to you. We will process your data in accordance with our 
+                        <a class="underlined" href="/pages/privacy-policy">Privacy Policy</a>.
+                    </p>
+                    <div id="optin-email-input">
+                        <label for="enter-email">Please enter your email address:</label>
+                        <input type="email" name="checkout[email]" id="ContactFormEmail">
+                    </div>
+                    <div id="contact-agree">
+                        <label>
+                            <input type="radio" name="agree-to-be-contacted" value="1" class="agree-to-be-contacted"><span>Yes please!</span>
+                        </label>
+                    </div>
+                    <div id="contact-decline">
+                        <label>
+                            <input type="radio" name="agree-to-be-contacted" value="0" class="agree-to-be-contacted"><span>No thanks</span>
+                    </div>
+                <div class="buttons">
+                    <input type="submit" name="checkout" value="Checkout" class="btn btn-primary">
+                </div>
+            </div>
+          
+        </form>
+    </div>
+</section>
+
+<section class="related-products-container">
+	<div class="container">
+		<h3 class="title">Did You Forget?</h3>
+		<div class="row flex-grid">
+            {% for product in collections['shoecare'].products %}
+                {% unless forloop.index > 3 %}
+                    <div class="col col-4">
+                        <div class="image">
+                            <a href="{{ product.url }}">
+                                <img src="{{ product.featured_image | product_img_url: 'x1024' }}">
+                            </a>
+                        </div>
+                        <div class="info">
+                            <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
+                            <p><span class="Bold-theme-hook-DO-NOT-DELETE bold_product_price" data-override-value-set="1" data-override-value="{{ product.price }}" style="display:none !important;"></span>{{ product.price | money }}</p>
+                            {% for product_option in product.options_with_values %}
+                                {% if product_option.name == 'Color' %}
+                                    <ul class="colors unstyled inline">
+                                        {% for value in product_option.values %}
+                                            <li id="{{ value | downcase }}"></li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endunless %}
+            {% endfor %} 
+		</div>
+	</div>
+</section>

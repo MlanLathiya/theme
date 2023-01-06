@@ -1,0 +1,350 @@
+@media (max-width:1700px) {
+.collection .cap h3{ font-size:30px;}
+
+/**/
+.scop_sec .gx-5{ --bs-gutter-x: 30px}
+}
+
+@media (max-width: 1580px) {
+header .top_part{ font-size:20px;}
+header .navbar .navbar-brand{ width:250px;}
+header .navbar-light .navbar-nav .nav-item { margin: 0 10px;}
+header .navbar-light .navbar-nav .nav-link { font-size: 14px; letter-spacing: 0.6px;}
+header .navbar .navright ul li a{ display:flex; width:20px;}
+header .navbar .navright ul li::after { margin:0 15px;}
+
+.welcome .cap h3{ font-size:45px;}
+.collection_sec .container{ padding:0 30px;}
+.collection_sec .owl-carousel .owl-nav button.owl-prev { left: -25px; width: 50px; height: 50px;}
+.collection_sec .owl-carousel .owl-nav button.owl-next { right: -25px; width: 50px; height: 50px;}
+.my_sec .details{ padding:40px 30px 40px 140px;}
+
+.win_sec .user_image{ width:180px; top:-32%;}
+.win_sec .details{ max-width:440px;}
+.win_sec h3{ font-size:24px;}
+.win_sec h2{ font-size:34px;}
+
+/**/
+.scop_sec{ padding:100px 0 95px 0;}
+.scop_sec.sec2{ padding:100px 0 100px 0;}
+.scop_sec .scop_block h3{ font-size:16px; margin-bottom:10px;}
+.scop_sec .scop_block p{ font-size:16px; line-height:22px;}
+.style_sec{ padding-bottom:100px;}
+.abt_top{ padding:90px 0 65px 0;}
+.brand_sec .brand_block{ padding:70px 0 0 0;}
+.brand_sec{ padding:90px 0 130px 0;}
+.aim_sec{ padding:100px 0 110px 0;}
+.season_sec.vegan{ padding:0 0 150px 0;}
+
+.aside{ padding:30px 20px;}
+.aside .form-check{ font-size:16px; min-height:26px;}
+.aside .price_range input[type="text"]{ margin: 16px 0 0 0; font-size: 18px;}
+.aside .features_list .fi_more{ font-size:16px;}
+.aside .features_list .fi_inn{ gap: 23px 25px;}
+}
+
+
+@media (max-width:1279px) {
+p { font-size: 16px; line-height: 26px; letter-spacing: .8px;}
+.welcome_sec{ padding-bottom:100px;}
+.policy_sec .policy p br{ display:none;}
+.policy_sec .policy h3{ font-size:24px;}
+.season_sec > img { margin-bottom: -100px;}
+.curve1{ width:240px; left:-35px; top:15px;}
+.curve2{ width:180px; right:-35px;}
+.curve3{ width:180px; right:30px; bottom:-30px;}
+.prod_block h3{ font-size:16px;}
+.prod_block .price{ font-size:16px;}
+.star_detail span { margin: 1px 0 0 5px; font-size: 14px;}
+.season_sec{ padding-bottom:100px;}
+.conny_sec{ margin-bottom:100px;}
+.seller_sec{ padding-bottom:100px;}
+.my_sec h3{ font-size:24px;}
+.customer_sec h2{ margin-bottom:60px;}
+.where_sec{ padding:20px 0; font-size:20px;}
+ul.footer_link li{ font-size:14px;}
+.pay_detail{ padding:20px 0;}
+
+.privacy_sec{ padding:70px 0 90px 0;}
+.inner_banner img{ height:320px;}
+.great_sec .info{ font-size:22px; line-height:32px; margin-bottom:40px;}
+.great_sec .receive_email{ padding-bottom:30px;}
+.great_sec{ padding-bottom:50px;}
+.terms_sec{ padding-bottom:90px;}
+.terms_sec .btns{ margin-top:30px;}
+.compi_sec{ padding:70px 0 30px 0;}
+.win_sec{ padding:225px 0 80px 0;}
+.win_sec .details{ max-width:320px;}
+.win_sec h2{ font-size:28px;}
+.win_sec h3{ font-size:22px; margin-bottom:15px;}
+.win_sec p{ margin-bottom:20px;}
+.win_sec .user_image{ top:-8%;}
+.win_sec.block2 .details{ padding:40px 15px;}
+
+.watch_sec iframe{ height:500px;}
+.watch_sec .clction_title{ margin-bottom:30px;}
+.product_sec .inner .info{ margin-bottom:30px;}
+
+.product_details{ padding:70px 0 0 0;}
+.p_detail_right h2{ font-size:24px;}
+
+}
+
+@media (max-width:1199px) {
+header .top_part{ font-size:16px;}
+header .navbar{ padding:15px 0;}
+.navbar-toggler{ background:none; border:none; position:relative; right:0; top:0; height: 33px; box-shadow:none !important; margin-left:15px;}
+.navbar-toggler:focus,.navbar-toggler:active { outline: 0;}
+.navbar-toggler span {display: block; background-color:#3a373a; height:3px; width:25px; margin-top:4px; margin-bottom:4px; -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg);-o-transform: rotate(0deg);  transform: rotate(0deg); position: relative; left: 0;opacity: 1;}
+.navbar-toggler span:nth-child(1),.navbar-toggler span:nth-child(3) { -webkit-transition: transform .35s ease-in-out; -moz-transition: transform .35s ease-in-out; -o-transition: transform .35s ease-in-out; transition: transform .35s ease-in-out;}
+.navbar-toggler:not(.collapsed) span:nth-child(1) { position: absolute; left: 12px; top: 10px; -webkit-transform: rotate(135deg);  -moz-transform: rotate(135deg); -o-transform: rotate(135deg);transform: rotate(135deg); opacity: 0.9;}
+.navbar-toggler:not(.collapsed) span:nth-child(2) {height: 12px; visibility: hidden; background-color: transparent;}
+.navbar-toggler:not(.collapsed) span:nth-child(3) {position: absolute;left: 12px;top: 10px;-webkit-transform: rotate(-135deg);-moz-transform: rotate(-135deg); -o-transform: rotate(-135deg);transform: rotate(-135deg);opacity: 0.9;}  
+header .navbar-light .navbar-nav:not(.accessories_nav){ padding-top:15px;}
+header .navbar-light .navbar-nav .nav-item{ margin:0;}
+header .navbar-light .navbar-nav .nav-link{ padding:10px 0;}
+header .divider{ display:none;}
+.dropdown-item{ padding:10px 20px;}
+
+/**/
+.abt_top.edito{ padding:70px 0 25px 0;}
+.trend_sec #filters li{ font-size:18px;}
+.trend_sec #filters{ padding-bottom:30px;}
+.scop_sec{ padding:80px 0 50px 0;}
+.scop_sec.sec2{ padding:80px 0 50px 0;}
+.style_sec{ padding-bottom:70px;}
+.style_block .cap{ bottom:17%;}
+.abt_top{ padding:70px 0 50px 0;}
+.brand_sec{ padding:70px 0 90px 0;}
+.brand_sec .brand_block{ padding:40px 0 0 0;}
+.brand_sec .brand_block figure{ margin-bottom:40px;}
+.stand_sec .clction_title{ margin-bottom:40px;}
+.stand_block p{ margin-bottom:40px;}
+.aim_sec{ padding:80px 0;}
+.aim_sec figure{ margin-bottom:40px;}
+.aim_sec p{ margin-bottom:40px;}
+.season_sec .inner{ padding:60px 30px 55px;}
+.season_sec.vegan{ padding:0 0 110px 0;}
+.explore_sec .top_img{ margin:-45px 0 45px 0;}
+.explore_sec .detail h3{ margin-bottom:30px;}
+.explore_sec .detail p{ margin-bottom:20px;}
+.explore_sec .detail figure{ margin:40px 0;}
+.explore_sec .detail{ padding:0 0 50px 0;}
+.explore_sec .detail.detail2{ padding:50px 0 0 0;}
+.scop_sec.story{ padding-top:70px;}
+
+.product_sec .conny_sec .big_image img {height: 260px;}
+}
+
+/************ Main **************/
+@media (max-width: 991px) {
+p { font-size: 15px; line-height: 23px; letter-spacing: .6px;}
+.btns { max-width: 180px; padding: 11px 20px 12px; font-size: 16px;}
+
+header .navbar .navbar-brand { width: 200px;}
+.welcome_sec{ padding:40px 0;}
+.welcome_sec p{ margin-bottom:35px;}
+.welcome .cap h3 { font-size: 34px;}
+.collection .cap{ padding:15px;}
+.collection .cap h3 { font-size: 24px;}
+.conny_sec .details{ max-width:100%;}
+.policy_sec{ padding:40px 0;}
+.policy_sec .inner{ padding:40px 20px 10px;}
+.policy_sec .policy h3 { font-size: 19px;}
+.curve1,.curve2,.curve3{ display:none;}
+.season_sec{ padding-bottom:50px;}
+.season_sec .inner{ padding:40px 30px;}
+.season_sec .inner::before { width: 100%; height: 30px; background: radial-gradient(ellipse at 50% -40%, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 60%);}
+.season_sec .inner figure{ margin-bottom:30px;}
+.conny_sec { margin-bottom: 50px;}
+.seller_sec{ padding-bottom:50px;}
+.season_sec .inner h2{ font-size:30px;}
+.sale { padding:4px 10px 4px 15px; font-size: 14px; left: -8px; top: 10px;}
+.sale::after { width: 8px; height: 5px;}
+.seller_sec .btns { margin-top: 10px;}
+.my_sec .user_image { width: 150px; left: 50%; top: 0;}
+.my_sec .details{ padding:120px 30px 50px; max-width:100%;}
+.customer_sec{ padding:50px 0 30px;}
+.customer_sec h2{ font-size:30px; margin-bottom:30px;}
+.cus_block figure{ margin-top:60px;}
+.stay_sec{ padding:40px 0; background-position:left center;}
+.stay_sec h2{ font-size:30px; margin-bottom:30px;}
+.stay_sec p{ margin-bottom:28px;}
+.stay_form .form-control { padding: 0 24px; height: 52px; font-size: 16px;}
+.stay_form .btn { min-width: 180px; padding: 0 20px; margin: 0 0 0 10px !important; font-size: 16px;}
+.form-check{ font-size:16px;}
+.where_sec { padding: 10px 0; font-size: 16px;}
+.footer_detail{ padding:40px 0;}
+.social_info{ margin-bottom:30px;}
+.phone_info{ font-size:24px;}
+footer p{ margin-bottom:30px;}
+ul.footer_link{ margin-bottom:30px;}
+.pay_detail{ padding:15px 0;}
+
+.privacy_sec{ padding:40px 0 20px 0;}
+.privacy_sec h2{ margin-bottom:20px;}
+.privacy_sec p{ margin-bottom:20px}
+.inner_banner img{ height:250px;}
+.great_sec{ padding:40px 0;}
+.great_sec h2{ font-size:30px; margin-bottom:15px;}
+.great_sec .info{ font-size:18px; line-height:28px; margin-bottom:20px;}
+.great_sec .receive_email{ padding:10px 0 20px 0;}
+.terms_sec{ padding-bottom:40px;}
+.terms_sec .btns{ margin-top:10px;}
+.compi_sec{ padding:40px 0 20px 0;}
+.win_sec .user_image{ width:120px;}
+.win_sec .details{ max-width:270px;}
+.win_sec{ padding:150px 0 40px 0;}
+.win_sec .user_image{ top:4%;}
+.win_sec h2{ font-size:24px;}
+.win_sec h3{ font-size:20px;}
+.wel_title{ font-size:26px;}
+.privacy_sec h2{ font-size:26px;}
+.privacy_sec h3{ font-size:17px;}
+.terms_sec p{ line-height:23px;}
+
+/**/
+.abt_top.edito{ padding:40px 0 15px 0;}
+.scop_sec{ padding:30px 0 10px 0;}
+.perfect_sec .left_image{ margin:0;}
+.perfect_sec .details{ max-width:100%;}
+.perfect_sec{ margin:0;}
+.scop_sec.sec2{ padding:40px 0 20px 0;}
+.style_sec{ padding-bottom:30px;}
+.abt_top{ padding:40px 0 20px 0;}
+.brand_sec{ padding:40px 0;}
+.brand_sec .brand_block{ padding:0;}
+.brand_sec .brand_block figure{ margin-bottom:20px;}
+.brand_sec .brand_block h3{ margin-bottom:10px;}
+.stand_sec .clction_title{ margin-bottom:30px;}
+.stand_block .detail{ padding:30px;}
+.stand_block h3{ font-size:24px; margin-bottom:10px;}
+.stand_block p{ margin-bottom:20px;}
+.aim_sec{ padding:40px 0;}
+.aim_sec figure{ margin-bottom:20px;}
+.aim_sec h3{ font-size:24px;}
+.aim_sec p{ margin-bottom:25px;}
+.season_sec .inner{ padding:30px;}
+.season_sec.vegan .inner h2{ margin-bottom:20px;}
+.season_sec.vegan .inner p{ margin-bottom:20px;}
+.season_sec.vegan .inner figure{ margin-bottom:20px;}
+.season_sec.vegan .btns{ max-width:200px;}
+.season_sec.vegan{ padding-bottom:50px;}
+.abt_top h2{ font-size: 24px;}
+.perfect_sec h3{ font-size:24px;}
+.explore_sec .top_img{ width:150px; margin:-35px auto 25px auto;}
+.explore_sec .detail h3{ font-size:24px; line-height:30px; margin-bottom:15px;}
+.explore_sec .detail p{ margin-bottom:15px;}
+.explore_sec .detail figure{ margin:20px 0 10px 0;}
+.explore_sec .detail{ padding:0 0 15px 0;}
+.explore_sec .detail.detail2{ padding:15px 0 0 0;}
+.scop_sec.story{ padding-top:20px;}
+
+.product_sec{ padding:40px 0 10px;}
+.product_sec .inner{ padding-bottom:0; margin-bottom:30px;}
+
+.aside .features_list .fi_inn a{ width:auto;}
+.aside .check_list { margin: 0 0 20px; padding: 0 0 23px;}
+.aside h3{ margin-bottom:20px;}
+.aside .price_range{ margin: 0 0 20px; padding: 0 0 23px;}
+.aside .features_list{ padding-bottom:30px; margin-bottom:30px;}
+.aside .features_list .fi_inn{ margin-bottom:30px;}
+.pb-60px { padding-bottom:40px !important;}
+
+.aside{ width:100%; height:48px; min-height:auto; padding:0; background:#fff; position:fixed; bottom:0; left:0; display:flex; z-index:99999; box-shadow:0 0 21px rgba(0,0,0,0.2);}
+.sortby_select{ width:50%; margin:0; padding:0 20px; height:48px; font-size:14px; color:#000000; font-weight:700; letter-spacing:2px; border:none; -webkit-appearance: none; -moz-appearance: none; appearance: none; background:#fff; border-right:1px solid #999; text-transform:uppercase; text-align:center;}
+.filter_collapse{ width:50%; position:relative;}
+.filter_collapse .collapse_txt{ width:100%; padding:0 20px; line-height:48px; font-size:14px; color:#000000; font-weight:700; letter-spacing:2px; border:none; margin:0; text-align:center; background:#fff;}
+.filter_collapse .collapse_btn{ width:100%; padding:0; height:100%; border:none; margin:0; background:none; position:absolute; left:0; top:0; opacity:0; cursor:pointer;}
+.filter_collapse .collapse_drop{ display:none; background: #f2f2f1; position: fixed; width:100%; height:100vh; left:0; bottom:0; overflow:hidden; z-index:-1;}
+.filter_collapse .collapse_btn:checked ~ .collapse_drop{ display:block; overflow:auto; padding:20px 5% 50px;}
+.aside h3 { font-size: 20px;}
+.product_sec .inner h2{ font-size:24px;}
+.wrap_detail{ padding-bottom:48px;}
+
+.product_details{ padding:40px 0 0 0;}
+.p_detail_right .btns{ max-width:260px;}
+.prod_left .other_image{ margin-top:30px;}
+.prod_left .thum_slider{ margin-top:30px;}
+.p_detail_right .color_info{ margin-bottom:20px;}
+
+.size_info .form-select{ height:42px; font-size:15px; letter-spacing:1px;}
+.size_info .form-control{ height:42px; font-size:15px; letter-spacing:1px;}
+.p_detail_right .btns{ margin-top:10px;}
+.p_feature_list{ margin:20px 0;}
+.related_sec{ padding-bottom:20px;}
+.p_detail_right h2{ font-size:22px;}
+.p_detail_right p{ line-height:23px;}
+.read_write_review{ font-size:15px; margin-top:10px;}
+
+}
+
+@media (max-width: 767px) {
+html { -webkit-text-size-adjust:none;}
+.container{ width:90%; margin:0 auto; padding:0; max-width: inherit;}
+
+header .navbar { padding: 10px 0;}
+header .top_part { font-size: 14px; letter-spacing: .5px;}
+header .navbar .navright ul li::after { margin: 0 10px; font-size: 16px;}
+header .navbar .navright ul li a{ width:16px;}
+.navbar-toggler{ margin-left:5px;}
+header .navbar .navbar-brand { width: 150px;}
+.policy_sec .inner{ background:none; padding:0;}
+.policy_sec .policy{ background: #f2f2f1; padding:30px;}
+.policy_sec{ padding-bottom:10px;}
+.season_sec > img{ margin-bottom:-40px;}
+
+.carousel-item>img{ min-height:200px; object-fit:cover;}
+.carousel-control-prev{ left: 15px;}
+.carousel-control-next{ right: 15px;}
+
+.great_sec h2{ font-size:24px; margin-bottom:10px;}
+.great_sec .info{ font-size:16px; line-height:26px;}
+.great_sec .receive_email{ max-width:100%; text-align:left;}
+.win_sec{ background:#f2f2f1; text-align:center;}
+.win_sec .user_image{ position:relative; left:0; top:0; transform:inherit; width:150px; margin:-75px auto 20px auto;}
+.win_sec .details{ max-width:100%; padding:0 15px;}
+.win_sec .left_image{ display:block;}
+.win_sec{ padding-top:0;}
+.win_sec.block2 .details{ max-width:100%;}
+.great_sec .form_info .input-group .form-control{ height:48px;}
+.cus_block figure { margin-top: 20px; margin-bottom: 40px;}
+
+/**/
+.trend_sec #filters li{ font-size:16px; margin:0 10px;}
+.trend_sec #filters{ padding-bottom:15px;}
+.style_block .cap{ bottom:10%;}
+.brand_sec .brand_block{ max-width:100%; margin-bottom:40px;}
+.brand_sec .brand_block p{ padding:0;}
+.brand_sec{ padding-bottom:0;}
+
+.pb-60px { padding-bottom:10px !important;}
+}
+
+/************ iphone **************/
+@media (max-width:600px) {
+html { -webkit-text-size-adjust:none;}
+.collection_sec .owl-carousel .owl-dots{ margin-top:15px;}
+.collection_sec .container{ padding-left:5%; padding-right:5%;}
+.season_sec .inner{ padding-left:5%; padding-right:5%;}
+.conny_sec .details{ padding-left:5%; padding-right:5%;}
+.my_sec .details{ padding-left:5%; padding-right:5%;}
+.stay_form .form-control{ width:100%; margin-bottom:10px;}
+.stay_form .btn{ margin:0 !important; width:100%; height:52px;}
+.where_sec { padding: 10px 0; font-size: 14px; letter-spacing: 0; font-weight: 700;}
+ul.footer_link { flex-direction: column; gap:15px;}
+.other_logo{ gap: 15px 30px;}
+.other_logo figure{ width: 40%;}
+.pay_detail ul { flex-wrap: nowrap; gap: 15px;}
+.inner_banner img{ height:170px;}
+.win_sec p br{ display:none;}
+
+/**/
+.perfect_sec h3 br{ display:none;}
+.abt_top.edito h2{ margin-bottom:15px;}
+.season_sec.vegan .inner h2{ margin-bottom:15px;}
+.explore_sec .detail h3{ font-size:20px; line-height:26px;}
+.explore_sec .detail h3 br{ display:none;}
+
+.pagination_info span{ width:100%; text-align:center; padding:0;}
+}

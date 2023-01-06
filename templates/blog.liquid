@@ -1,0 +1,23 @@
+<section class="blog-container">
+	<div class="container">
+        {% section 'image-slider' %}
+		<h1>{{ blog.title }}</h1>
+        {% section 'blog-email-sign-up-form' %}
+		{% paginate blog.articles by 12 %}
+			<div class="row flex-grid articles">
+				{% for article in blog.articles %}
+					{% include 'article-block' %}
+				{% endfor %}
+			</div>
+
+			{% if paginate.pages > 1 %}
+				<div class="inline-row cf">
+					<span class="inline-item left">{{ blog.articles_count }} results</span>
+					<div class="inline-item right">{% include 'pagination' %}</div>
+				</div>
+			{% endif %}
+		{% endpaginate %}
+	</div>
+</section>
+
+

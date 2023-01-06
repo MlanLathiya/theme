@@ -1,0 +1,310 @@
+<div class="filter_collapse">
+  <label class="collapse_txt d-block d-lg-none">FILTER</label>
+  <input type="checkbox" class="collapse_btn d-block d-lg-none">
+  <div class="collapse_drop">
+    <h3>Category</h3>
+    <div class="check_list">
+      {% assign full_url = request.path %}
+      <div class="form-check form-check-inline mb-0">
+        {% if full_url contains '?' %}
+          {% assign full_url = full_url | append: '&' %}
+        {% else %}
+          {% assign full_url = full_url | append: '?' %}
+        {% endif %}
+
+        <a href="{{ full_url | append: 'pf_pt_category=Boot' }}">
+          <input class="form-check-input" type="checkbox" value="" id="categ1">
+          <label class="form-check-label" for="categ1">Shoe ({{ collection.all_products_count }})</label>
+        </a>
+      </div>
+    </div>
+
+    {% paginate collection.products by collection.all_products_count %}
+      {% assign products_size = '' %}
+      {% for product in collection.products limit: collection.products.size %}
+        {% if product.available == true %}
+          {% assign vendor = vendor | append: product.vendor | append: '<|>' %}
+          {% assign variant_size_list = '' %}
+          {% for variant in product.variants %}
+            {% if variant.available == true %}
+              {% assign variant_size_list = variant_size_list | append: variant.option2 | append: '<|>' %}
+            {% endif %}
+          {% endfor %}
+          {% assign variant_size_list = variant_size_list | split: '<|>' | uniq %}
+          {% for vs in variant_size_list limit: variant_size_list.size %}
+            {% assign list = list | append: vs | append: '<|>' %}
+          {% endfor %}
+          {% assign variant_size_list = list %}
+          {% assign products_size = products_size | append: variant_size_list %}
+        {% endif %}
+      {% endfor %}
+      {% assign products_size = products_size | split: '<|>' | uniq %}
+    {% endpaginate %}
+
+    {% for product_size in products_size limit: products_size.size %}
+      {% assign product_kv = '' %}
+
+      {% paginate collection.products by collection.all_products_count %}
+        {% assign c = 0 %}
+        {% for product in collection.products limit: collection.products.size %}
+          {% if product.available == true %}
+            {% assign product_count = 0 %}
+            {% for variant in product.variants %}
+              {% if variant.available == true %}
+                {% if product_count == 0 %}
+                  {% if variant.option2 contains product_size %}
+                    {% assign c = c | plus: 1 %}
+                    {% assign product_count = product_count | plus: 1 %}
+                    {% assign product_kv = product_size | append: ':' | append: 1 | append: '<|>' %}
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+        {% assign product_kv = product_size | append: ' (' | append: c | append: ')<|>' %}
+      {% endpaginate %}
+      {% assign count = count | append: product_kv %}
+    {% endfor %}
+    {% assign products_kv = count | split: '<|>' %}
+
+    <h3>Size</h3>
+    <div class="check_list">
+      {% for uniq_size in products_kv limit: products_kv.size %}
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" value="" id="size{{forloop.index}}">
+          <label class="form-check-label" for="size{{forloop.index}}">{{ uniq_size }}</label>
+        </div>
+      {% endfor %}
+    </div>
+
+    <h3>Colour</h3>
+    <div class="color_info">
+      {% paginate collection.products by collection.all_products_count %}
+        {% for product in collection.products limit: collection.products.size %}
+          {% if product.available == true %}
+            {% assign all_colours = '' %}
+            {% assign available_colours = '' %}
+            {% for product_option in product.options_with_values %}
+              {% if product_option.name == 'Colour' %}
+                {% assign colours = '' %}
+                {% assign opt_vals = product_option.values %}
+                {% for value in opt_vals %}
+                  {% assign all_colours = all_colours | append: value | append: '<|>' %}
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+
+            {% assign all_colours = all_colours | split: '<|>' %}
+            {% for colour in all_colours %}
+              {% assign temp_colour = colour | strip | downcase %}
+              {% for variant in product.variants %}
+                {% if variant.available == true %}
+                  {% assign variant_colour_value = variant.title | split: ' / ' | first | strip | downcase %}
+
+                  {% if variant_colour_value == temp_colour %}
+                    {% assign juno_stock = variant.metafields.juno.stock | strip %}
+                    {% if variant.available == false %}
+                      {% if juno_stock contains 'hidden' %}
+                        {% continue %}
+                      {% endif %}
+                    {% endif %}
+                    {% assign available_colours = available_colours | append: colour | downcase | append: '<|>' %}
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+            {% assign available_colours = available_colours | split: '<|>' | uniq %}
+
+            {% for ac in available_colours %}
+              {% assign colours = colours | append: ac | append: '<|>' %}
+            {% endfor %}
+
+            {% assign available_product_colours = available_product_colours | append: colours | append: '<|>' %}
+          {% endif %}
+        {% endfor %}
+      {% endpaginate %}
+
+      {% assign available_product_colours = available_product_colours | split: '<|>' | uniq %}
+
+      {% for value in available_product_colours %}
+        {% assign found = false %}
+        {% paginate collection.products by collection.all_products_count %}
+          {% for product in collection.products limit: collection.products.size %}
+            {% if found == false %}
+              {% if product.available == true %}
+                {% for variant in product.variants %}
+                  {% if variant.available == true %}
+                    {% assign variant_colour_value = variant.title | split: ' / ' | first | strip | downcase %}
+
+                    {% if variant_colour_value == value %}
+                      {% for image in product.images %}
+                        {% assign alt = image.alt %}
+                        {% if alt contains 'swatch_' %}
+                          {% assign alt = alt | replace: 'swatch_', '' | strip | downcase %}
+                          {% if alt == variant_colour_value %}
+                            {% assign found = true %}
+                            <div
+                              class="form-check form-check-inline"
+                              data-toggle="tooltip"
+                              title="{{ variant_colour_value }}"
+                            >
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="ConnyRadio{{ variant.id }}"
+                                value="option1"
+                              >
+                              <label class="form-check-label" for="ConnyRadio{{ variant.id }}">
+                                <img
+                                  src="{{ image | img_url: '22x22', crop: 'center' }}"
+                                  alt="{{ variant_colour_value }}"
+                              ></label>
+                            </div>
+                            {% break %}
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                      {% break %}
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endpaginate %}
+      {% endfor %}
+    </div>
+
+    {% assign available_vendors = vendor | split: '<|>' | uniq %}
+    {% for vendor_name in available_vendors limit: available_vendors.size %}
+      {% paginate collection.products by collection.all_products_count %}
+        {% assign vendor_count = 0 %}
+        {% for product in collection.products limit: collection.products.size %}
+          {% if product.available == true %}
+            {% if vendor_name == product.vendor %}
+              {% assign vendor_count = vendor_count | plus: 1 %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      {% endpaginate %}
+      {% assign all_vendor_name = all_vendor_name
+        | append: vendor_name
+        | append: ' ('
+        | append: vendor_count
+        | append: ')<|>'
+      %}
+    {% endfor %}
+
+    {% assign all_vendor_name = all_vendor_name | split: '<|>' | uniq %}
+
+    <h3>Brand</h3>
+    <div class="check_list">
+      {% for vendor_name in all_vendor_name limit: all_vendor_name.size %}
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" value="" id="brand{{forloop.index}}">
+          <label class="form-check-label" for="brand{{forloop.index}}">{{ vendor_name }}</label>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% paginate collection.products by collection.all_products_count %}
+      {% assign collection_min_price = collection.products[0].price %}
+      {% assign collection_max_price = collection.products[0].price %}
+      {% for product in collection.products limit: collection.products.size %}
+        {% if product.available == true %}
+          {% for variant in product.variants %}
+            {% if variant.available == true %}
+              {% if variant.price < collection_min_price %}
+                {% assign collection_min_price = variant.price %}
+              {% endif %}
+              {% if variant.price > collection_max_price %}
+                {% assign collection_max_price = variant.price %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    {% endpaginate %}
+
+    {% paginate collection.products by 12 %}
+      {% assign current_page_min_price = collection.products[0].price %}
+      {% assign current_page_max_price = collection.products[0].price %}
+      {% for product in collection.products limit: collection.products.size %}
+        {% if product.available == true %}
+          {% for variant in product.variants %}
+            {% if variant.available == true %}
+              {% if variant.price < current_page_min_price %}
+                {% assign current_page_min_price = variant.price %}
+              {% endif %}
+              {% if variant.price > current_page_max_price %}
+                {% assign current_page_max_price = variant.price %}
+              {% endif %}
+            {% endif %}
+          {% endfor -%}
+        {%- endif %}
+      {% endfor %}
+    {% endpaginate %}
+
+    <input type="hidden" value="{{collection_min_price | money_without_currency | floor}}" id="collection_min_price">
+    <input type="hidden" value="{{collection_max_price | money_without_currency | round}}" id="collection_max_price">
+    <input type="hidden" value='{{ shop.money_format }}' id="currenrcy_symbol">
+    <input
+      type="hidden"
+      value="{{current_page_min_price | money_without_currency }}"
+      id="current_page_min_price"
+    >
+    <input
+      type="hidden"
+      value="{{current_page_max_price | money_without_currency }}"
+      id="current_page_max_price"
+    >
+
+    <h3>Price</h3>
+    <div class="price_range">
+      <div id="slider-range"></div>
+      <input type="text" id="amount" class="">
+    </div>
+
+    {% assign features = 'sale<|>waterproof_yes<|>removable insole<|>vegan<|>fastening-type_lace<|>zip<|>wide-fit_yes<|>leather' %}
+    {% assign feature_list = features | split: '<|>' %}
+
+    {% for feature in feature_list limit: feature_list.size %}
+      {% paginate collection.products by collection.all_products_count %}
+        {% for product in collection.products limit: collection.products.size %}
+          {% if product.available == true %}
+            {% for tag in product.tags limit: product.tags.size %}
+              {% capture product_tag %}
+                {{ tag | downcase }}
+              {% endcapture %}
+              {% if feature contains product_tag %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      {% endpaginate %}
+    {% endfor %}
+
+    <h3>FEATURE</h3>
+    <div class="features_list">
+      <div class="fi_inn">
+        <a href="#"><img src="{{ 'aside_feature_icon1.png' | asset_url }}" alt=""></a>
+        <a href="#"><img src="{{ 'aside_feature_icon2.png' | asset_url }}" alt=""></a>
+        <a href="#"><img src="{{ 'aside_feature_icon3.png' | asset_url }}" alt=""></a>
+        <a href="#" class="justify-content-center"><img src="{{ 'aside_feature_icon4.png' | asset_url }}" alt=""></a>
+        <a href="#"><img src="{{ 'aside_feature_icon5.png' | asset_url }}" alt=""></a>
+        <a href="#"><img src="{{ 'aside_feature_icon6.png' | asset_url }}" alt=""></a>
+        <a href="#"><img src="{{ 'aside_feature_icon7.png' | asset_url }}" alt=""></a>
+        <a href="#" class="justify-content-center"><img src="{{ 'aside_feature_icon8.png' | asset_url }}" alt=""></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "aside_sec",
+  "class": "aside"
+}
+{% endschema %}

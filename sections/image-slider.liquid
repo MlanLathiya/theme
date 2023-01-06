@@ -1,0 +1,53 @@
+<section class="home-slider-container">
+	<div class="container">
+		<div class="owl-carousel owl-theme slider-container" id="home-slider">
+			{% for block in section.blocks limit: section.blocks.size %}
+				{% if block.settings.slide_image %}
+                    {% unless block.settings.link_url %}
+                        <div class="item" style="background-image: url('{{ block.settings.slide_image | img_url: '1300x' }}')">
+                        </div>
+                    {% else %}
+                        <a class="item" href="{{ block.settings.link_url }}" style="background-image: url('{{ block.settings.slide_image | img_url: '1300x' }}')">
+                        </a>
+                    {% endunless %}
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+</section>
+
+{% schema %}
+{
+    "name": "Image Slider",
+    "max_blocks": 8,
+    "blocks": [
+        {
+            "type": "image_picker",
+            "name": "Image",
+            "settings": [
+                {
+                    "label": "Image",
+                    "id": "slide_image",
+                    "type": "image_picker"
+                },
+                {
+                    "label": "Link URL",
+                    "id": "link_url",
+                    "type": "text"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Image Slider",
+            "category": "Image",
+            "blocks": [
+                {
+                    "type": "image_picker"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

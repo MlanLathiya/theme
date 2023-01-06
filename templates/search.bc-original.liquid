@@ -1,0 +1,73 @@
+<section class="search-results">
+	<div class="container">
+		<h1>Search Results For: {{ search.terms | escape }}</h1>
+		<div class="flex-grid">
+        {% paginate search.results by 60 %}
+			{% for item in search.results %}
+				{% if item.object_type == 'page' %}
+					<div class="col col-4 page">
+						<div class="inner">
+							<a href="{{ item.url }}">
+								<h2>{{ item.title }}</h2>
+							</a>
+						</div>
+					</div>
+				{% elsif item.object_type == 'article' %}
+					<div class="article col col-12 flex-grid">
+						<div class="col col-3">
+							<div class="image">
+								<a href="{{ item.url }}">
+									<img src="{{ item | img_url: 'x1024' }}" class="img-center"/>
+								</a>
+							</div>
+						</div>
+						<div class="col col-9">
+							<div class="inner">
+								<div class="content">
+									<h2><a href="{{ item.url }}">{{ item.title }}</a></h2>
+									<p>{{ item.content | truncate: 250 }}}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% else %}
+        {% assign pImages = "" %}
+        
+        {% for image in item.images %}
+            {% assign imgUrl = image.src | product_img_url: 'x1024' %}
+            {% assign pImages = pImages | append: imgUrl %}
+            {% unless forloop.last %}
+                {% assign pImages = pImages | append: "<||>"  %}
+            {% endunless %}
+        {% endfor %}
+
+        {% assign pImages = pImages | split: "<||>" %}
+        {% assign pImages = pImages | sort %}
+
+					<div class="col col-4 product">
+						<div class="inner">
+							<div class="image">
+                                {% assign imgSrc = pImages[0] %}
+                                {% if pImages.size < 1 %}
+                                    {% assign imgSrc =  product.featured_image | img_url: '1024x' %}
+                                {% endif %}
+								<a href="{{ item.url }}">
+									<img src="{{ imgSrc }}" class="img-center"/>
+								</a>
+							</div>
+							<div class="info">
+								<h2><a href="{{ item.url }}">{{ item.title }}</a></h2>
+										<p class="price">{% if item.compare_at_price_max > item.price %}<span class="from-text">From </span>{% endif %}<span class="the-price {% if item.compare_at_price_max > item.price %}sale{% endif %}"><span class="Bold-theme-hook-DO-NOT-DELETE bold_product_page_price" style="display:none !important;"></span><span class="Bold-theme-hook-DO-NOT-DELETE bold_product_price" data-override-value-set="1" data-override-value="{{ item.price }}" style="display:none !important;"></span>{{ item.price | money }}</span></p>
+								<p>{% if item.metafields.op_suite.short_desc %}{{ item.metafields.op_suite.short_desc }}{% else %}{{ item.metafields.opsuite.short_desc }}{% endif %}</p>
+							</div>
+						</div>
+					</div>
+				{% endif %}
+			{% endfor %}
+            {% if paginate.pages > 1 %}
+				{% include 'pagination' %}
+			{% endif %}
+        {% endpaginate %}
+		</div>
+	</div>
+</section>

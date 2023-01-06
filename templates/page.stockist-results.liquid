@@ -1,0 +1,203 @@
+<section>
+    <div class="container">
+        <h1>{{ page.title }}</h1>
+        <p>{{ page.content }}</p>
+
+        <form id="stockist-search-form">
+            <input type="text" id="stockist-search-addr" placeholder="Postcode, Town or City" />
+            <div class="select-style">
+                <select id="country">
+                    <option value="UK">United Kingdom</option>
+                    <option value="ROI">Republic of Ireland</option>
+                </select>
+            </div>         
+            <input type="submit" id="stockist-search-submit" class="btn btn-primary" value="Go">
+        </form>
+
+        <div id="map_wrapper">
+            <p class="found-text"></p>
+            <div id="map_canvas" class="mapping"></div>
+        </div>
+
+        <div id="stockist-results">
+            <div class="container"></div>
+        </div>
+    </div>
+</section>
+
+{% assign today =  "today" | date: "%Y-%m-%d" %}
+{% assign hmac = today | append: ":" | append: shop.permanent_domain | hmac_sha256: "b6916832e1c9e32a920ef9372ec482d5" %}
+
+<script>
+    // Asynchronously Load the map API 
+    var script = document.createElement('script');
+    script.src = "//maps.googleapis.com/maps/api/js?sensor=false&callback=initialize&key=AIzaSyCisdaSViWmRUqcklfxHyX65IuBej0grN4";
+    document.body.appendChild(script);
+
+    var map;
+    var bounds;
+    var mapOptions;
+
+    var renderedMarkers = [];
+
+    function initialize() {
+        bounds = new google.maps.LatLngBounds();
+        mapOptions = {
+            mapTypeId: 'roadmap'
+        };
+                        
+        // Display a map on the page
+        map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+        map.setTilt(45);
+
+        map.setCenter(new google.maps.LatLng( 51.5285578, -0.2420223 ) );
+        map.setZoom(14);
+    }
+
+    function clearRenderedMarkers() {
+        for (var i = 0; i < renderedMarkers.length; i++) {
+            renderedMarkers[i].setMap(null);
+        }
+        renderedMarkers = [];
+        bounds = new google.maps.LatLngBounds();
+    } 
+
+    function placeMarkers(markers, infoWindowContent) {
+       // Display multiple markers on a map
+       var infoWindow = new google.maps.InfoWindow(), marker, i;
+        
+        // Loop through our array of markers & place each one on the map  
+        for( i = 0; i < markers.length; i++ ) {
+            var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+            bounds.extend(position);
+            marker = new google.maps.Marker({
+                position: position,
+                map: map,
+                title: markers[i][0]
+            });
+            
+         
+            renderedMarkers.push(marker);
+
+            // Allow each marker to have an info window    
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
+                    infoWindow.setContent(infoWindowContent[i]);
+                    infoWindow.open(map, marker);
+                }
+            })(marker, i));
+
+            // Automatically center the map fitting all markers on the screen
+            map.fitBounds(bounds);
+        } 
+    }
+
+    function displayStockists(stockists, postcode) {
+        var markers = [];
+        // Info Window Content
+        var infoWindowContent = [];
+
+        for (var i = 0; i < stockists.length; i++) {
+            markers.push([stockists[i].retailer, stockists[i].latitude, stockists[i].longitude]);
+            var iwHtml = '<div class="info_content">';
+
+            iwHtml += '<h3>' + stockists[i].retailer + '</h3>';
+            iwHtml += "<ul class=\"unstyled\">";
+            for (var j = 1; j <= 4; j++) {
+                if (stockists[i]['address_' + j].trim() !== "") {
+                    iwHtml += "<li>" + stockists[i]['address_' + j] + "</li>";
+                }
+            }
+            iwHtml += "</ul>";
+
+            iwHtml += "<ul class=\"other-info unstyled\">";
+
+            if (stockists[i].website == null || stockists[i].website.trim() !== '') {
+                iwHtml += "<li><a href=\"http://" + stockists[i].website + "\"target=\"_blank\">Visit Website</a></li>";
+            }
+
+            var distance = parseFloat(stockists[i].distance).toFixed(2);
+            iwHtml += "<li>" + distance + " miles away</li>";
+            iwHtml += "</ul>";
+            iwHtml += '</div>';
+
+            infoWindowContent.push(iwHtml);
+        }   
+
+        clearRenderedMarkers();
+        
+        placeMarkers(markers, infoWindowContent);  
+
+        displayStockistsList(stockists, postcode);
+    }
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+        $('#stockist-search-form').submit(function(e) {
+            e.preventDefault();
+            var address = $('#stockist-search-addr').val();
+
+            /* Check if the postcode is empty */
+            if (address.trim() === '') {
+                /* redirect back to homepage */
+                console.log('No Address');
+                return;
+            }
+
+            address += " " + $('#country').val()
+
+            var cachedResults = false;
+
+        /* Check if results for the current address is cached */
+            if (typeof window.sessionStorage.stockistSearch != 'undefined') {
+                try { 
+                    cachedResults = JSON.parse(window.sessionStorage.stockistSearch);
+                    if (typeof cachedResults.address == "undefined" || typeof cachedResults.results == "undefined") {
+                        window.sessionStorage.removeItem("stockistSearch");
+                        cachedResults = false;
+                    } else if (cachedResults.address != address) {
+                        window.sessionStorage.removeItem("stockistSearch");
+                        cachedResults = false;
+                    } 
+                } catch(e) {
+                    /* Remove as stockist search is invalid */
+                    window.sessionStorage.removeItem("stockistSearch");
+                }
+            }
+
+            if (!cachedResults) {
+                /* Make GET request to stockist search api with postcode */
+                $.ajax({
+                    method: 'GET',
+                    url: 'https://josefseibeltools.apex-dev.co.uk/stockist-search',
+                    headers: {
+                        'Content-Type' : 'application/json',
+                        'X-Authorization-HMAC' : "{{ hmac }}"
+                    },
+                    dataType: 'json',
+                    data: {
+                        postcode: address
+                    },
+                    success: function(response) {
+                        console.log(response);
+
+                        /* Cache results to stop unneccessary requests */
+                        window.sessionStorage.stockistSearch = JSON.stringify({
+                            address: address,
+                            results: response
+                        });
+
+                        displayStockists(response, address);
+                    },
+                    error: function(error) {
+                        console.error(error);
+                    }
+                });
+            } else {
+                console.log('Cached');
+                console.log(window.sessionStorage.stockistSearch);
+                displayStockists(cachedResults.results, address);
+            }
+        });
+    });
+    console.log();
+</script>

@@ -1,0 +1,40 @@
+{% for block in section.blocks limit: section.blocks.size %}
+    <div class="col col-4 gallery magnific-all">
+        <a class="inner magnific item" href="{{ block.settings.gallery_page_image | img_url: '2000x' }}" style="background-image: url('{{ block.settings.gallery_page_image | img_url: '400x' }}')" data-title="Josef Seibel">
+            <div class="overlay">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </div>
+        </a>
+    </div>
+{% endfor %}
+
+{% schema %}
+{
+    "name": "Gallery Page Images",
+    "max_blocks": 30,
+    "blocks": [
+        {
+            "type": "image_picker",
+            "name": "Image",
+            "settings": [
+                {
+                    "label": "Image",
+                    "id": "gallery_page_image",
+                    "type": "image_picker"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Gallery Page Images",
+            "category": "Image",
+            "blocks": [
+                {
+                    "type": "image_picker"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,78 @@
+{% for block in section.blocks limit: section.blocks.size %}
+    <div class="container">
+        <h2 class="clction_title"><span>{{ block.settings.heading }}</span></h2>
+    </div>
+    <div class="row g-0 bg_gray">
+        <div class="col-lg-6">
+            <figure class="left_image"><img src="{{ block.settings.background_image | asset_url }}" alt=""></figure>
+        </div>
+        <div class="col-lg-6 align-self-center">
+            <figure class="user_image"><img src="{{ block.settings.person_image | asset_url }}" alt=""></figure>
+            <div class="details">
+                <figure class="prod_image"><img src="{{ block.settings.product_image | asset_url }}" alt=""></figure>
+                <h3>{{ block.settings.side_heading }}</h3>
+                <p>{{ block.settings.side_text }}</p>
+                <a href="#" class="btns">READ</a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+
+{% schema %}
+{
+    "name": "my_sec",
+    "tag": "section",
+    "class": "my_sec",
+    "max_blocks": 1,
+    "blocks": [
+        {
+            "name": "my_sec",
+            "type": "text",
+            "settings": [
+                {
+                    "label": "heading",
+                    "id": "heading",
+                    "type": "text"
+                },
+                {
+                    "label": "Side Heading",
+                    "id": "side_heading",
+                    "type": "text"
+                },
+                {
+                    "label": "Side Text",
+                    "id": "side_text",
+                    "type": "text"
+                },
+                {
+                    "label": "Background Image",
+                    "id": "background_image",
+                    "type": "text"
+                },
+                {
+                    "label": "Person Image",
+                    "id": "person_image",
+                    "type": "text"
+                },
+                {
+                    "label": "Product Image",
+                    "id": "product_image",
+                    "type": "text"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "my_sec",
+            "category": "Text",
+            "blocks": [
+                {
+                    "type": "text"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

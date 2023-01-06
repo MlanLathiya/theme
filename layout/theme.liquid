@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000">
+    <meta name="google-site-verification" content="Y1BoEMt3PUX4zhk4hhayU2Fw-GGV3EjuVGWOHaHcgHU">
+    <meta name="google-site-verification" content="PicCERWi-eYqzs4VvXITj2SrA0XSVkcCoL58SYurcwQ">
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {% if product %}
+      <meta itemprop="name" content="{{ product.title }}">
+    {% endif %}
+
+    <title>Josef Seibel</title>
+
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ 'favicon.png' | asset_url }}">
+
+    {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
+    {{ 'bootstrap-icons.css' | asset_url | stylesheet_tag }}
+    {{ 'owl.carousel.min.css' | asset_url | stylesheet_tag }}
+    {{ 'style.scss.css' | asset_url | stylesheet_tag }}
+    {{ 'style-1.scss.css' | asset_url | stylesheet_tag }}
+    {{ 'style.css' | asset_url | stylesheet_tag }}
+    {{ 'responsive.css' | asset_url | stylesheet_tag }}
+    {{ 'font-awesome.css' | asset_url | stylesheet_tag }}
+
+    {{ 'jquery-3.6.1.min.js' | asset_url | script_tag }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
+
+    {{ 'jquery.zoom.js' | asset_url | script_tag }}
+    {{ 'jquery.visible.min.js' | asset_url | script_tag }}
+
+    {{ content_for_header }}
+
+    <script>
+      Shopify.queryParams = {};
+      if (location.search.length) {
+        for (var aKeyValue, i = 0, aCouples = location.search.substr(1).split('&'); i < aCouples.length; i++) {
+          aKeyValue = aCouples[i].split('=');
+          if (aKeyValue.length > 1) {
+            Shopify.queryParams[decodeURIComponent(aKeyValue[0])] = decodeURIComponent(aKeyValue[1]);
+          }
+        }
+      }
+    </script>
+    {%- include 'bold-common' -%}
+    <!-- GSSTART Coming Soon code start. Do not change -->
+    <script type="text/javascript">
+      gsProductCSID = '{{ product.id }}';
+    </script>
+    <script
+      type="text/javascript"
+      src="https://gravity-software.com/js/shopify/pac_shop4736.js?v=7038068ffd3dbf98717397b54b00969d"
+    ></script>
+    <!-- Coming Soon code end. Do not change GSEND -->
+
+    {% include 'bc-sf-filter-style' %}
+  </head>
+  <body id="{{ page_title | handle }}">
+    {% section 'relative-header' %}
+
+    {{ content_for_layout }}
+
+    {% section 'footer' %}
+    {% section 'search-modal' %}
+
+    {{ 'bootstrap.bundle.min.js' | asset_url | script_tag }}
+    {{ 'owl.carousel.js' | asset_url | script_tag }}
+    {{ 'main.js' | asset_url | script_tag }}
+    {{ 'theme.min.js' | asset_url | script_tag }}
+
+    {% include 'bc-sf-filter' %}
+  </body>
+</html>

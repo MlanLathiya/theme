@@ -1,0 +1,21 @@
+{% layout none %}
+
+
+{
+	"variants": [
+		{% for variant in product.variants %}
+          {
+              "id": "{{variant.id}}",
+              "title": "{{variant.title}}",
+              "stock": "{{variant.metafields.juno.stock}}",
+			  "available": {{variant.available}},
+              "option1": "{{variant.option1}}",
+              "option2": "{{variant.option2}}",
+              "option3": "{{variant.option3}}",
+              "short_description": "{{variant.metafields.juno.short-description}}",
+              "long_description": "{{variant.metafields.juno.long-description}}"
+          } {% unless forloop.last %} ,  {% endunless %}
+		{% endfor %}
+ 
+	]
+}

@@ -1,0 +1,47 @@
+<section  data-section-id="{{ section.id }}" data-section-type="ticker-section" class="ticker-section">
+  <div class="container">
+    <div class="ticker {{ section.settings.stroke}}">
+      <div class="ticker__inner">
+        <div class="ticks">
+          <div class="tick">{{ section.settings.ticker_text }}</div>
+        </div>
+        <div class="ticks active">
+          <div class="tick">{{ section.settings.ticker_text }}</div>
+        </div>
+        <div class="ticks">
+          <div class="tick">{{ section.settings.ticker_text }}</div>
+        </div>
+        <div class="ticks">
+          <div class="tick">{{ section.settings.ticker_text }}</div>
+        </div>
+        <div class="ticks">
+          <div class="tick">{{ section.settings.ticker_text }}</div>
+        </div>
+        <div class="ticks">
+          <div class="tick">{{ section.settings.ticker_text }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Ticker Text",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "ticker_text",
+        "label": "Text",
+        "default": "<p>where i go, what ever i do, what ever i feel.</p>"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Ticker Text",
+        "category": "Content"
+      }
+    ]
+  }
+{% endschema %}

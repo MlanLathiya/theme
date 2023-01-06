@@ -1,0 +1,45 @@
+<section class="sneak-peak">
+	{% for block in section.blocks limit: section.blocks.size %}
+		<div class="container image" style="background-image: url({{ block.settings.image | img_url: '1024x' }})">
+			<div class="text">
+				<h3>{{ block.settings.text }}</h3>
+			</div>
+		</div>
+	{% endfor %}
+</section>
+
+{% schema %}
+{
+	"name": "Image With Text Overlay",
+	"max_blocks": 1,
+	"blocks": [
+		{
+			"name": "Image With Text Overlay",
+			"type": "image_picker",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "Image"
+				},
+				{
+					"type": "textarea",
+					"id": "text",
+					"label": "Text"
+				}
+			]
+		}
+	],
+	"presets": [
+        {
+            "name": "Image With Text Overlay",
+            "category": "Image",
+            "blocks": [
+                {
+                    "type": "image_picker"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,295 @@
+{% comment %} A bunch of logic must be done to get the best values for filter options {% endcomment %}
+
+{% assign max_product_price = 0 %}
+{% assign min_product_price = 0 %}
+
+{% assign possible_sizes = "" %}
+{% assign possible_colours = "" %}
+{% assign possible_brands = "" %}
+{% assign possible_departments = "" %}
+{% assign possible_features = "" %}
+{% assign possible_heel_heights = "" %}
+{% assign possible_categories = "" %}
+
+{% comment %}Associating Titles to Feature tags{% endcomment %}
+{% assign featureFilterTitles = "Waterproof,Removeable Insole,Lace Fastening,Zip Fastening,Wide Fit" %}
+{% assign featureTags = "Waterproof,Removeable Insole,Lace,Zip,wide-fit" %}
+
+{% assign heelHeightTags = "flat-heel-height,mid-heel-height,low-heel-height,high-heel-height" %}
+
+{% paginate collection.products by 999 %}
+
+{% if paginate.current_page > 1 %}
+
+<script>
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      
+      var start_index = this.responseText.indexOf('<!--[filter-menu-begin]-->');
+      var end_index = this.responseText.indexOf('<!--[filter-menu-end]-->') - start_index;
+
+      var html = this.responseText.substr(start_index, end_index);
+
+      document.getElementById("product-filter-menu").innerHTML = html
+
+    }
+  };
+  xhttp.open("GET", window.location.href.split('?')[0], true);
+  xhttp.send();
+</script> 
+
+{% endif %}
+
+{% for product in collection.products %}
+    
+    {% comment %} Get the max and min price for the producs in collection {% endcomment %}
+    {% if product.price > max_product_price %}
+        {% assign max_product_price = product.price %}
+    {% endif %}
+    {% if product.price < min_product_price or min_product_price == 0 %}
+        {% assign min_product_price = product.price %}
+    {% endif %}
+
+    {% comment %} Find all the possible product_type (category) values {% endcomment %}
+    {% unless possible_categories contains product.type  %}
+        {% assign possible_categories = possible_categories | append: product.type %}
+        {% assign possible_categories = possible_categories | append: "||" %}
+    {% endunless %}
+
+    {% for product_option in product.options_with_values %}
+        {% if product_option.name == "Size" %}
+            {% comment %} Get the sizes available for products in collection {% endcomment %}
+            {% for value in product_option.values %}
+                {% unless possible_sizes contains value %}
+                    {% assign possible_sizes = possible_sizes | append: value %}
+                    {% assign possible_sizes = possible_sizes | append: "||" %}
+                {% endunless %}
+            {% endfor %}
+        {% elsif product_option.name == "Colour" orproduct_option.name == "Color" %}
+            {% comment %} Get the colours available for products in collection {% endcomment %}
+            {% for value in product_option.values %}
+                {% assign value_parts = value | split: " - " %}
+                {% unless possible_colours contains value_parts[0] %}
+                    {% assign possible_colours = possible_colours | append: value_parts[0] %}
+                    {% assign possible_colours = possible_colours | append: "||" %}
+                {% endunless %}
+            {% endfor %}
+        {% endif %}
+	{% endfor %}
+
+    {% for tag in product.tags %}
+        
+        {% comment %}Looking for "Feature" tags to be present in the product tags{% endcomment %}
+        {% if featureTags contains tag %}
+            {% unless possible_features contains tag %}
+                {% assign possible_features = possible_features | append: tag %}
+                {% assign possible_features = possible_features | append: "||" %}
+            {% endunless %}
+        {% endif %}
+
+        {% comment %}Looking for possible heel heights{% endcomment %}
+        {% if heelHeightTags contains tag %}
+            {% unless possible_heel_heights contains tag %}
+                {% assign possible_heel_heights = possible_heel_heights | append: tag %}
+                {% assign possible_heel_heights = possible_heel_heights | append: "||" %}
+            {% endunless %}
+        {% endif %}
+        
+        {% comment %}For checking available departments{% endcomment %}
+        {% unless possible_departments contains "Ladies" %}
+            {% if tag contains "Ladies" %}
+                {% assign possible_departments = possible_departments | append: "Ladies" %}
+                {% assign possible_departments = possible_departments | append: "||" %}
+            {% endif %}
+        {% endunless %}
+
+        {% unless possible_departments contains "Mens" %}
+           {% if tag contains "Mens" %}
+                {% assign possible_departments = possible_departments | append: "Mens" %}
+                {% assign possible_departments = possible_departments | append: "||" %}
+            {% endif %}
+        {% endunless %}
+
+    {% endfor %}
+
+    {% unless possible_brands contains product.vendor %}
+        {% assign possible_brands = possible_brands | append: product.vendor %}
+        {% assign possible_brands = possible_brands | append: "||" %}
+    {% endunless %}
+
+{% endfor %}
+
+
+{% assign min_product_price = min_product_price | money_without_currency %}
+{% assign max_product_price = max_product_price | money_without_currency %}
+{% assign possible_sizes = possible_sizes | split: "||" %}
+{% assign possible_colours = possible_colours | split: "||" %}
+{% assign possible_brands = possible_brands | split: "||" %}
+{% assign possible_departments = possible_departments | split: "||" %}
+{% assign possible_features = possible_features | split: "||" %}
+{% assign possible_heel_heights = possible_heel_heights | split: "||" %}
+{% assign possible_categories = possible_categories | split: "||" %}
+
+{% assign featureFilterTitles = featureFilterTitles | split: "," %}
+{% assign featureTags = featureTags | split: "," %}
+
+{% assign possible_size_count = possible_sizes | size %}
+{% assign possible_colour_count = possible_colours | size %}
+{% assign possible_brand_count = possible_brands | size %}
+{% assign possible_department_count = possible_departments | size  %}
+{% assign possible_feature_count = possible_features | size %}
+{% assign possible_heel_height_count = possible_heel_heights | size %}
+{% assign possible_category_count = possible_categories | size %}
+
+<!--[filter-menu-begin]-->
+<div id="product-filter-menu" class="filters">
+    {% if possible_department_count > 1 %}
+	<div class="tab is-active">
+		<div class="tab-head">
+			<span class="label">Department:</span>
+			<span class="chevron"><i class="fas fa-chevron-down"></i></span>
+		</div>
+		<div class="content">
+			<div class="options">
+                {% for department in possible_departments %}
+				<label> 
+                    <input class="filter_option" type="checkbox" name="tags" value="{{ department }}" />
+                    <span class="indicator"></span> {% if department == "Ladies" %}Womens{% else %}{{department}}{% endif %}
+                </label>
+                {% endfor %}
+			</div>
+		</div>
+	</div>
+    {% endif %}
+    {% if possible_category_count > 1 %}
+	<div class="tab is-active">
+		<div class="tab-head">
+			<span class="label">Category:</span>
+			<span class="chevron"><i class="fas fa-chevron-down"></i></span>
+		</div>
+		<div class="content">
+			<div class="options">
+                {% for category in possible_categories %}
+                    <label>
+                    <input class="filter_option" type="checkbox" name="product_type" value="{{ category }}" />
+                        <span class="indicator"></span> 
+                        {{ category }}{% unless category == "Shoe Care" or category == "Gift Card" %}s{% endunless %}
+                    </label>
+                {% endfor %}
+			</div>
+		</div>
+	</div>
+    {% endif %}
+    {% if possible_size_count > 1 %}
+	<div class="tab is-active">
+		<div class="tab-head">
+			<span class="label">Size:</span>
+			<span class="chevron"><i class="fas fa-chevron-down"></i></span>
+		</div>
+		<div class="content">
+			<div class="options">
+                {% assign possible_sizes = possible_sizes | sort %}
+                {% for size in possible_sizes %}
+                    <label><input type="checkbox" name="hasVariant" data-variant-field="option2" value="{{ size }}" /><span class="indicator"></span> {{ size }}</label>
+                {% endfor %}
+			</div>
+		</div>
+	</div>
+    {% endif %}
+    {% if possible_colour_count > 1 %}
+	<div class="tab is-active">
+		<div class="tab-head">
+			<span class="label">Colour:</span>
+			<span class="chevron"><i class="fas fa-chevron-down"></i></span>
+		</div>
+		<div class="content">
+			<div class="options colors">
+                {% for colour in possible_colours %}    
+                    <label>
+                        <input type="checkbox" name="hasVariant" data-variant-field="option1" value="{{ colour }}" />
+                        <span class="indicator" id="{{ colour | downcase }}"></span>
+                        <span class="tooltiptext">{{ colour }}</span>
+                    </label>
+                {% endfor %}
+			</div>
+		</div>
+	</div>
+    {% endif %}
+    {% if possible_brand_count > 1 %}
+	<div class="tab is-active">
+		<div class="tab-head">
+			<span class="label">Brand:</span>
+			<span class="chevron"><i class="fas fa-chevron-down"></i></span>
+		</div>
+		<div class="content">
+			<div class="options">
+                {% for brand in possible_brands %}
+                    <label><input type="checkbox" name="vendor" value="{{ brand }}" /><span class="indicator"></span> {{ brand }}</label>
+                {% endfor %}
+			</div>
+		</div>
+	</div>
+    {% endif %}
+    {% if max_product_price != "0.00"  %}
+	<div class="tab is-active">
+		<div class="tab-head">
+			<span class="label">Price:</span>
+			<span class="chevron"><i class="fas fa-chevron-down"></i></span>
+		</div>
+		<div class="content">
+			<div class="options price">
+				<div class="range-slider">
+					<span id="min">&pound;{{ min_product_price }}</span>
+					<span id="max">&pound;{{ max_product_price }}</span>
+					{% comment %} <input value="25" min="0" max="100" step="5" type="range" />
+					<input value="75" min="0" max="100" step="5" type="range" /> {% endcomment %}
+                    <input value="{{ min_product_price }}" name="priceRange-min" min="{{ min_product_price }}" max="{{ max_product_price }}" step="1" type="range" />
+					<input value="{{ max_product_price }}" name="priceRange-max" min="{{ min_product_price }}" max="{{ max_product_price }}" step="1" type="range" />
+					<span id="current-range">
+						&pound;<input type="number" step="0.01" value="{{ min_product_price }}" min="{{ min_product_price }}" max="{{ max_product_price }}"/>	
+						-
+						&pound;<input type="number" step="0.01" value="{{ max_product_price }}" min="{{ min_product_price }}" max="{{ max_product_price }}"/>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+  {% endif %}
+    {% if possible_feature_count > 1 %}
+	<div class="tab is-active">
+		<div class="tab-head">
+			<span class="label">Feature:</span>
+			<span class="chevron"><i class="fas fa-chevron-down"></i></span>
+		</div>
+		<div class="content">
+			<div class="options">
+                {% assign possible_features = possible_features | join: "," %}
+                {% for featureTag in featureTags %}
+                    {% if possible_features contains featureTag %}
+                        <label><input class="filter_option" type="checkbox" name="tags" value="{{ featureTag }}" /><span class="indicator"></span> {{ featureFilterTitles[forloop.index0]}}</label>
+                    {% endif %}
+                {% endfor %}
+			</div>
+		</div>
+	</div>
+    {% endif %}
+    {% if possible_heel_height_count > 1 %}
+	<div class="tab is-active">
+		<div class="tab-head">
+			<span class="label">Heel Height:</span>
+			<span class="chevron"><i class="fas fa-chevron-down"></i></span>
+		</div>
+		<div class="content">
+			<div class="options">
+                {% for hh in possible_heel_heights %}
+                    {% assign hhParts = hh | split: '-' %}
+                    <label><input class="filter_option" type="checkbox" name="tags" value="{{ hh }}" /><span class="indicator"></span> {{ hhParts[0] | capitalize }}</label>
+                {% endfor %}
+			</div>
+		</div>
+	</div>
+    {% endif %}
+</div>
+<!--[filter-menu-end]-->
+{% endpaginate %}

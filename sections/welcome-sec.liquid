@@ -1,0 +1,56 @@
+<div class="container">
+    <i><img src="{{ 'welcome_year.png' | asset_url }}" alt=""></i>
+    <h2 class="wel_title">Tradition at Heart.</h2>
+    <p>We have been manufacturing high-quality shoes since 1886. <br>And we continue using our knowhow to make them
+        even better.</p>
+</div>
+
+<div class="row g-12px">
+    {% for block in section.blocks limit: section.blocks.size %}
+        <div class="col-sm-6">
+            <a href="{{ collections[block.settings.feature_collection].url }}" class="welcome">
+                <img src="{{ block.settings.feature_collection_image | img_url: '405x' }}" alt="">
+                <div class="cap">
+                    <h3>{{ collections[block.settings.feature_collection].title }}</h3>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+
+{% schema %}
+{
+    "name": "welcome_sec",
+    "tag": "section",
+    "class": "welcome_sec",
+    "blocks": [
+        {
+            "name": "welcome_sec",
+            "type": "collection",
+            "settings": [
+                {
+                    "type": "collection",
+                    "id": "feature_collection",
+                    "label": "Feature collection"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "feature_collection_image",
+                    "label": "Collection Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "welcome_sec",
+            "category": "Image",
+            "blocks": [
+                {
+                    "type": "collection"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,95 @@
+<div class="video-txt img-txt twocolumn {{ block.settings.add_padding_top }} {{ block.settings.add_padding_bottom }} {{ block.settings.add_margin_top }} {{ block.settings.add_margin_bottom }} {{ block.settings.add_border_top }} {{ block.settings.add_border_bottom }} {{ block.settings.border_width }}" {% if block.settings.background_color != '' %}style="background-color: {{ block.settings.background_color }}"{% endif %}>
+    <div class="wrapper {{ block.settings.max_width }}">
+        {% case block.settings.image_width %}
+            {% when 'image-half' %}
+            {%- assign image_col_width = 'col-wide-6' -%}
+            {%- assign content_col_width = 'col-wide-6' -%}
+            {% when 'image-third' %}
+            {%- assign image_col_width = 'col-wide-4' -%}
+            {%- assign content_col_width = 'col-wide-8' -%}
+            {% when 'image-quarter' %}
+            {%- assign image_col_width = 'col-wide-3' -%}
+            {%- assign content_col_width = 'col-wide-9' -%}
+        {% endcase %}
+        {% case block.settings.column_order %}
+        {% when 'image-left' %}
+            {%- assign flex_direction = 'row-flex-row' -%}
+        {% when 'image-right' %}
+            {%- assign flex_direction = 'row-flex-reverse' -%}
+        {% endcase %}
+
+        {% case block.settings.vertical_align %}
+        {% when 'middle' %}
+        {%- assign flex_valign = 'row-flex-aligncenter' -%}
+        {% when 'top' %}
+        {%- assign flex_valign = 'row-flex-aligntop' -%}
+        {% when 'bottom' %}
+        {%- assign flex_valign = 'row-flex-alignbottom' -%}
+        {% endcase %}
+        <div class="row row-flex {{ flex_direction }} {{ flex_valign }}">
+            <div class="col-img video {{ image_col_width }}">
+                <div class="thumbnail-video">
+                    {% if block.settings.image %}
+                        <picture>
+                            <source media="(min-width: 1024px)" srcset="{{ block.settings.image | img_url: '1920x' }}">
+                            <source media="(min-width: 768px)" srcset="{{ block.settings.image | img_url: '1024x600', crop: 'center' }}">
+                            {% if block.settings.mobile_image != blank %}
+                                <source srcset="{{ block.settings.mobile_image | img_url: 'master' }}">
+                            {% else %}
+                                <source srcset="{{ block.settings.image | img_url: '640x480', crop: 'center' }}">
+                            {% endif %}
+                            <img src="{{ block.settings.image | img_url: '1920x' }}" alt="" />
+                        </picture>
+                    {% else %}
+                        <span class="placeholder-background">
+                            {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                            {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                        </span>
+                    {% endif %}
+                    <span class="btn-play"><i class="far fa-play-circle"></i></span>
+                </div>
+                {% if block.settings.video_link != blank %}
+                    <div class="video-iframe" data-url="{{ block.settings.video_link }}"></div>
+                {% endif %}
+            </div>
+            <div class="col-text {{ block.settings.text_color | escape }} {{ block.settings.content_align | escape }} {{ content_col_width }}">
+                <div class="text-content">
+                    {% if block.settings.title != blank %}
+                        <{{ block.settings.title_tag }} class="title">{{ block.settings.title }}</{{ block.settings.title_tag }}>
+                    {% endif %}
+                    {% if block.settings.content != blank %}
+                        <div class="text">{{ block.settings.content }}</div>
+                    {% endif %}
+                    {% if block.settings.link_1 != blank or block.settings.link_2 != blank %}
+                        <div class="buttons {{ block.settings.button_position }}">
+                            {% if block.settings.link_1 != blank %}
+                                <a class="button" href="{{ block.settings.link_1 }}">{{ block.settings.button_text_1 }}</a>
+                            {% endif %}	
+                            {% if block.settings.link_2 != blank %}
+                                <a class="button" href="{{ block.settings.link_2 }}">{{ block.settings.button_text_2 }}</a>
+                            {% endif %}	
+                        </div>
+                    {% endif %}	
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function getYoutubeId(url) {
+        var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        var match = url.match(regExp);
+        if (match && match[2].length == 11) {
+            return match[2];
+        } else {
+            return 'error';
+        }
+    }
+    jQuery('.thumbnail-video').click(function(){
+        jQuery(this).parent().addClass('playing');
+        var url = jQuery('.video-iframe').data('url'),
+        id = getYoutubeId(url);
+        jQuery('.video-iframe').html('<iframe src="//www.youtube.com/embed/' + id + '?autoplay=1" frameborder="0" allowfullscreen></iframe>');
+    });
+</script>

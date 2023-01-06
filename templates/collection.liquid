@@ -1,0 +1,104 @@
+{{ 'range_slider.css' | asset_url | stylesheet_tag }}
+{% section 'inner-banner-sec' %}
+
+<section class="collection-product-listing product_sec">
+  <div class="container">
+    {% section 'inner-sec' %}
+    <div class="row g-48px">
+      <div class="col-xl-3 col-lg-4">
+        <div class="aside">
+          <div class="filter_collapse">
+            <label class="collapse_txt d-block d-lg-none">FILTER</label>
+            <input type="checkbox" class="collapse_btn d-block d-lg-none">
+            <div id="bc-sf-filter-tree" class="collapse_drop"></div>
+          </div>
+        </div>
+      </div>
+      {% paginate collection.products by 12 %}
+        <div class="col-xl-9 col-lg-8 products">
+          <div class="row flex-grid sort-opts">
+            <div class="col sort-items">
+              <div id="bc-sf-filter-top-sorting"></div>
+            </div>
+          </div>
+
+          <div id="bc-sf-filter-products" class="row flex-grid"></div>
+          {% comment %} {% section 'product-top-sec' %} {% endcomment %}
+          <div id="bc-sf-filter-bottom-pagination"></div>
+          <div id="bc-sf-filter-load-more"></div>
+        </div>
+      {% endpaginate %}
+    </div>
+  </div>
+</section>
+
+  {% comment %} <section class="product_sec">
+    <div class="container">
+      {% section 'inner-sec' %}
+      <div class="row g-48px">
+        <div class="col-xl-3 col-lg-4">
+          {% section 'aside-sec' %}
+        </div>
+        <div class="col-xl-9 col-lg-8">
+          <div class="p_list_right">
+            {% section 'product-top-sec' %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> {% endcomment %}
+
+{% section 'policy-sec' %}
+{% section 'customer-sec' %}
+{% section 'stay-sec' %}
+{{ 'range_slider.js' | asset_url | script_tag }}
+
+
+{% assign today = 'today' | date: '%Y-%m-%d' %}
+{% assign hmac = today
+  | append: ':'
+  | append: shop.permanent_domain
+  | hmac_sha256: 'b6916832e1c9e32a920ef9372ec482d5'
+%}
+
+<script>
+  var productBlockTemplate = {{ js_product_block | json }};
+  document.addEventListener("DOMContentLoaded", function() {
+  	handleFiltering('{{ collection.id }}', '{{ hmac }}', 15, 1);
+  });
+</script>
+
+<script>
+  // Declare bcSfFilterConfig variable
+  var bcSfFilterConfig = {
+  	label: {
+  		sorting: {% assign temp = 'collections.sorting.title' | t  %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Sorting" {% endunless %},
+  		sorting_best_selling: {% assign temp = collection.sort_options[1].name %} {% unless temp == nil %} {{ temp | json }} {% else %} "Best Selling" {% endunless %},
+  		sorting_featured: {% assign temp = collection.sort_options[0].name %} {% unless temp == nil %} {{ temp | json }} {% else %} "Featured" {% endunless %},
+  		sorting_title_ascending: {% assign temp = collection.sort_options[2].name %} {% unless temp == nil %} {{ temp | json }} {% else %} "Alphabetically, A-Z" {% endunless %},
+  		sorting_title_descending: {% assign temp = collection.sort_options[3].name %} {% unless temp == nil %} {{ temp | json }} {% else %} "Alphabetically, Z-A" {% endunless %},
+  		sorting_price_ascending: {% assign temp = collection.sort_options[4].name %} {% unless temp == nil %} {{ temp | json }} {% else %} "Lowest Price" {% endunless %},
+  		sorting_price_descending: {% assign temp = collection.sort_options[5].name %} {% unless temp == nil %} {{ temp | json }} {% else %} "Highest Price" {% endunless %},
+  		sorting_date_ascending: {% assign temp = collection.sort_options[6].name %} {% unless temp == nil  %} {{ temp | json }} {% else %} "Date, Old to New" {% endunless %},
+  		sorting_date_descending: {% assign temp = collection.sort_options[7].name %} {% unless temp == nil  %} {{ temp | json }} {% else %} "Date, New to Old" {% endunless %},
+  		sorting_relevance: {% assign temp = 'collections.sorting.relevance' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Relevance" {% endunless %},
+
+  		from_price: "From Price",
+  		sale: {{ 'products.product.on_sale' | t | json }},
+  		sale_price: {{ 'products.product.sale_price' | t | json }},
+  		sold_out: {{ 'products.product.sold_out' | t | json }},
+  		vendor: {{ 'products.product.vendor' | t |json }},
+  		regular_price: {{ 'products.product.regular_price' | t | json }},
+  		items_with_count_one: {{ 'collections.general.items_with_count.one' | t | json}},
+  		items_with_count_other: {{ 'collections.general.items_with_count.other' | t | json }},
+  		current_page: {{ 'general.pagination.current_page' | t | json }},
+  	},
+  	custom: {
+  		asset_url:  "{{ 'bc-sf-filter-asset-holder.gif' | asset_url | split: '?' | first | remove: 'bc-sf-filter-asset-holder.gif' }}"
+  		// Add custom value here
+  	}
+  };
+</script>
+
+<!-- start_collection_js_code -->
+<script src="//ui.powerreviews.com/stable/4.0/ui.js"></script>

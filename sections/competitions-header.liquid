@@ -1,0 +1,37 @@
+{% assign additionalCSS = "" %}
+
+{% if section.settings.header_image %}
+    {% capture additionalCSS %}
+    background-image: url({{ section.settings.header_image | img_url: 'x1300' }}
+    {% endcapture %}
+{% endif %}
+
+<section class="competition-header">
+    <div class="container">
+        <div class="header" style="{{ additionalCSS }}">
+            {% unless section.settings.heading_text == blank %}
+            <div class="inner">
+                <h1>{% if section.settings.heading_text %}{{ section.settings.heading_text }}{% else %}{{ page.title }}{% endif %}</h1>
+            </div>
+            {% endunless %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Competitions Header",
+    "settings" : [
+        {
+            "label": "Header Image",
+            "id": "header_image",
+            "type": "image_picker"
+        },
+        {
+            "label": "Heading Text",
+            "id": "heading_text",
+            "type": "text"
+        }
+    ]
+}
+{% endschema %}

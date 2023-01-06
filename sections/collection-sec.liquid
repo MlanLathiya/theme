@@ -1,0 +1,52 @@
+<div class="container">
+  <h2 class="clction_title"><span>The Josef Seibel Collection</span></h2>
+  <div class="owl-carousel collection_slider">
+    {% for block in section.blocks limit: section.blocks.size %}
+      <div class="item">
+        <a href="{{ collections[block.settings.feature_collection].url }}" class="collection">
+          {% if block.settings.feature_collection_image %}
+            <img src="{{ block.settings.feature_collection_image | img_url: '405x' }}" alt="">
+          {% else %}
+            <img src="{{ collections[block.settings.feature_collection].image | img_url: '405x' }}" alt="">
+          {% endif %}
+
+          <div class="cap">
+            <h3>{{ collections[block.settings.feature_collection].title }}</h3>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "collection_sec",
+  "tag": "section",
+  "class": "collection_sec",
+  "blocks": [
+    {
+      "name": "collection_sec",
+      "type": "collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "feature_collection",
+          "label": "Feature collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "collection_sec",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

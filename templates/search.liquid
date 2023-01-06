@@ -1,0 +1,86 @@
+<section class="search-results collection-product-listing">
+  <div class="container">
+    <h1>Search Results For: {{ search.terms | escape }}</h1>
+    <div class="row flex-grid">
+      <div class="col col-3 sidebar">
+        <div id="bc-sf-filter-tree-mobile"></div> 
+        <div id="bc-sf-filter-tree"></div>
+      </div>
+
+      {% paginate search.results by 20 %}
+      <div class="col col-9 products">	
+        <div id="bc-sf-filter-products" class="row flex-grid">
+          {% for item in search.results %}
+
+          {% assign pImages = "" %}
+
+          {% for image in item.images %}
+          {% assign imgUrl = image.src | product_img_url: 'x1024' %}
+          {% assign pImages = pImages | append: imgUrl %}
+          {% unless forloop.last %}
+          {% assign pImages = pImages | append: "<||>"  %}
+          {% endunless %}
+          {% endfor %}
+
+          {% assign pImages = pImages | split: "<||>" %}
+          {% assign pImages = pImages | sort %}
+
+          <div class="col col-4 product">
+            <div class="inner">
+              <div class="image">
+                {% assign imgSrc = pImages[0] %}
+                {% if pImages.size < 1 %}
+                {% assign imgSrc =  product.featured_image | img_url: '1024x' %}
+                {% endif %}
+                <a href="{{ item.url }}">
+                  <img src="{{ imgSrc }}" class="img-center"/>
+                </a>
+              </div>
+              <div class="info">
+                <h2><a href="{{ item.url }}">{{ item.title }}</a></h2>
+                <p class="price">{% if item.compare_at_price_max > item.price %}<span class="from-text">From </span>{% endif %}<span class="the-price {% if item.compare_at_price_max > item.price %}sale{% endif %}"><span class="Bold-theme-hook-DO-NOT-DELETE bold_product_page_price" style="display:none !important;"></span><span class="Bold-theme-hook-DO-NOT-DELETE bold_product_price" data-override-value-set="1" data-override-value="{{ item.price }}" style="display:none !important;"></span>{{ item.price | money }}</span></p>
+                <p>{% if item.metafields.op_suite.short_desc %}{{ item.metafields.op_suite.short_desc }}{% else %}{{ item.metafields.opsuite.short_desc }}{% endif %}</p>
+              </div>
+            </div>
+          </div>
+
+          {% endfor %}
+        </div>
+        <div id="bc-sf-filter-bottom-pagination"></div>
+          <div id="bc-sf-filter-load-more"></div>
+      </div>
+      {% endpaginate %}
+    </div>
+  </div>
+</section>
+
+<script>   
+	// Declare bcSfFilterConfig variable   
+	var bcSfFilterConfig = {     
+	  label: {       
+		sorting: {% assign temp = 'collections.sorting.title' | t  %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Sorting" {% endunless %},       
+		sorting_best_selling: {% assign temp = collection.sort_options[1].name %} {% unless temp == nil %} {{ temp | json }} {% else %} "Best Selling" {% endunless %},       
+		sorting_featured: {% assign temp = collection.sort_options[0].name %} {% unless temp == nil %} {{ temp | json }} {% else %} "Featured" {% endunless %},       
+		sorting_title_ascending: {% assign temp = collection.sort_options[2].name %} {% unless temp == nil %} {{ temp | json }} {% else %} "Alphabetically, A-Z" {% endunless %},       
+		sorting_title_descending: {% assign temp = collection.sort_options[3].name %} {% unless temp == nil %} {{ temp | json }} {% else %} "Alphabetically, Z-A" {% endunless %},       
+	   sorting_price_ascending: {% assign temp = collection.sort_options[4].name %} {% unless temp == nil %} {{ temp | json }} {% else %} "Lowest Price" {% endunless %},       
+		sorting_price_descending: {% assign temp = collection.sort_options[5].name %} {% unless temp == nil %} {{ temp | json }} {% else %} "Highest Price" {% endunless %},       
+		sorting_date_ascending: {% assign temp = collection.sort_options[6].name %} {% unless temp == nil  %} {{ temp | json }} {% else %} "Date, Old to New" {% endunless %},       
+		sorting_date_descending: {% assign temp = collection.sort_options[7].name %} {% unless temp == nil  %} {{ temp | json }} {% else %} "Date, New to Old" {% endunless %},       
+		sorting_relevance: {% assign temp = 'collections.sorting.relevance' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Relevance" {% endunless %},        
+  
+		from_price: "From Price",
+		sale: {{ 'products.product.on_sale' | t | json }},       
+		sale_price: {{ 'products.product.sale_price' | t | json }},       
+		sold_out: {{ 'products.product.sold_out' | t | json }},       
+		vendor: {{ 'products.product.vendor' | t |json }},       
+		regular_price: {{ 'products.product.regular_price' | t | json }},       items_with_count_one: {{ 'collections.general.items_with_count.one' | t | json}},       
+		items_with_count_other: {{ 'collections.general.items_with_count.other' | t | json }},       
+		current_page: {{ 'general.pagination.current_page' | t | json }}, 
+	  },     
+	  custom: {       
+		  asset_url:  "{{ 'bc-sf-filter-asset-holder.gif' | asset_url | split: '?' | first | remove: 'bc-sf-filter-asset-holder.gif' }}"
+		// Add custom value here     
+	  }    
+	}; 
+  </script>

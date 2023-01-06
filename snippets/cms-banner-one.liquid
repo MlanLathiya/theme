@@ -1,0 +1,80 @@
+<div class="banner onecolumn {% if block.settings.video_link != blank or block.settings.video_src != blank %}banner-video{% endif %} {{ block.settings.custom_class }} {{ block.settings.add_padding_top }} {{ block.settings.add_padding_bottom }} {{ block.settings.add_margin_top }} {{ block.settings.add_margin_bottom }} {{ block.settings.add_border_top }} {{ block.settings.add_border_bottom }} {{ block.settings.border_width }}{% unless block.settings.link_1 != blank or block.settings.link_2 != blank %} no-button{% endunless %}" {% if block.settings.background_color != '' %}style="background-color: {{ block.settings.background_color }}"{% endif %}>
+    <div class="wrapper {{ block.settings.max_width }}">
+        <div class="row">
+            <div class="col-img {% if block.settings.video_link != blank or block.settings.video_src != blank %}video{% endif %} {{ block.settings.text_color | escape }}">
+                <div class="inner">
+                    <div class="image">
+                        {% if block.settings.link != blank %}<a class="link" href="{{ block.settings.link }}">{% endif %}	
+                            {% if block.settings.image %}
+                                <picture>
+                                    <source media="(min-width: 992px)" srcset="{{ block.settings.image | img_url: '1920x' }}">
+                                    {% if block.settings.mobile_image != blank %}
+                                        <source srcset="{{ block.settings.mobile_image | img_url: 'master' }}">
+                                    {% else %}
+                                        <source srcset="{{ block.settings.image | img_url: 'x680', crop: 'center' }}">
+                                    {% endif %}
+                                    <img src="{{ block.settings.image | img_url: '1920x' }}" alt="{% if block.settings.image_alt != blank %}{{ block.settings.image_alt }}{% else %}{% if block.settings.title != blank %}{{ block.settings.title }}{% endif %}{% endif %}" />
+                                </picture>
+                            {% else %}
+                                {% if block.settings.video_src == blank %}
+                                    {% assign video_link = block.settings.video_link %}
+                                    {% assign video_id = block.settings.video_link.id %}
+                                    {% if video_id != blank %}
+                                        {% assign thumbnail_url = 'http://img.youtube.com/vi/' | append: video_id | append: '/maxresdefault.jpg' %}
+                                        <img src="{{thumbnail_url}}" alt="" />
+                                    {% else %}
+                                        <span class="placeholder-background">
+                                            {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                                            {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                                        </span>
+                                    {% endif %}
+                                {% else %}
+                                    <span class="placeholder-background">
+                                        {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                                        {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                                    </span>
+                                {% endif %}
+                            {% endif %}
+                        {% if block.settings.link != blank %}</a>{% endif %}
+                        {% if block.settings.video_src == blank %}
+                            {% if block.settings.video_link != blank %}
+                                <iframe allow="autoplay" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/{{ block.settings.video_link.id }}?autoplay=1&mute=1&loop=1&playlist={{ block.settings.video_link.id }}&origin={{ shop.secure_url }}"></iframe>
+                            {% endif %}
+                        {% else %}
+                            <video preload="auto" autoplay="autoplay" muted="muted" {% if block.settings.video_controls %}controls="controls"{%endif%} {% if block.settings.video_loop %}loop="loop"{%endif%} {% if block.settings.image %}poster="{{ block.settings.image | img_url: '1920x' }}"{% endif %} playsinline>
+                                <source src="{{ block.settings.video_src | append: '.mp4' | file_url  }}" type="video/mp4"></source>
+                                <source src="{{ block.settings.video_src | append: '.webm' | file_url  }}" type="video/webm"></source>
+                                <source src="{{ block.settings.video_src | append: '.ogv' | file_url  }}" type="video/ogg"></source>
+                            </video>
+                        {% endif %}
+                    </div>
+
+                    {% if block.settings.title != blank or block.settings.content != blank or block.settings.link_1 != blank or block.settings.link_2 != blank %}
+                        <div class="caption {{ block.settings.content_position }} {{ block.settings.vertical_align }} {{ block.settings.horizontal_align }}">	
+                            <div class="wrapper">
+                                <div class="content">
+                                    {% if block.settings.title != blank %}
+                                        <{{ block.settings.title_tag }} class="title">{{ block.settings.title }}</{{ block.settings.title_tag }}>
+                                    {% endif %}
+                                    {% if block.settings.content != blank %}
+                                        <div class="text">{{ block.settings.content }}</div>
+                                    {% endif %}
+                                    {% if block.settings.link_1 != blank or block.settings.link_2 != blank %}
+                                    <div class="buttons {{ block.settings.button_position }}">
+                                        {% if block.settings.link_1 != blank %}
+                                            <a class="button" href="{{ block.settings.link_1 }}">{{ block.settings.button_text_1 }}</a>
+                                        {% endif %}	
+                                        {% if block.settings.link_2 != blank %}
+                                            <a class="button" href="{{ block.settings.link_2 }}">{{ block.settings.button_text_2 }}</a>
+                                        {% endif %}	
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

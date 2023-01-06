@@ -1,0 +1,19 @@
+<div class="pagination">
+	{% if paginate.previous.is_link %}
+		{% assign previous_page_number = paginate.current_page | minus: 1 %}
+		{% unless previous_page_number == 1 %}
+			<a href="?page=1">1</a>
+			<a href="#" id="more">...</a>
+		{% endunless %}
+		<a href="{{ paginate.previous.url }}" id="prev">{{ paginate.current_page | minus: 1 }}</a>
+	{% endif %}
+	<a href="{{ paginate.current_page.url }}" id="current">{{ paginate.current_page }}</a>
+	{% if paginate.next.is_link %}
+		<a href="{{ paginate.next.url }}" id="next">{{ paginate.current_page | plus: 1 }}</a>
+		{% assign next_page_number = paginate.current_page | plus: 1 %}
+		{% unless next_page_number == paginate.pages %}
+			<a href="#" id="more">...</a>
+			<a href="?page={{ paginate.pages }}" id="last">{{ paginate.pages }}</a>
+		{% endunless %}
+	{% endif %}
+</div>

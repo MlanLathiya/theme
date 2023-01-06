@@ -1,0 +1,83 @@
+<section class="gallery-container">
+	<div class="container">
+		{% for block in section.blocks limit: section.blocks.size %}
+			<div class="row text">
+				<h3 class="cursive-font">{{ block.settings.header }}</h3>
+				<p class="text-center">{{ block.settings.text }}</p>
+			</div>
+			<div class="row flex-grid gallery magnific-all">
+				<a href="{{ block.settings.image_1 | img_url: '1300x' }}" alt="#" class="magnific item col col-4" data-title="Josef Seibel">
+			    	<img src="{{ block.settings.image_1 | img_url: '350x' }}" width="300" height="200" class="img-center" />
+			    	<div class="overlay">
+			    		<i class="fa fa-search" aria-hidden="true"></i>
+			    	</div>
+			    </a>
+			    <a href="{{ block.settings.image_2 | img_url: '1300x' }}" alt="#" class="magnific item col col-4" data-title="Josef Seibel">
+			    	<img src="{{ block.settings.image_2 | img_url: '350x' }}" width="300" height="200" class="img-center" />
+			    	<div class="overlay">
+			    		<i class="fa fa-search" aria-hidden="true"></i>
+			    	</div>
+			    </a>
+			    <a href="{{ block.settings.image_3 | img_url: '1300x' }}" alt="#" class="magnific item col col-4" data-title="Josef Seibel">
+			    	<img src="{{ block.settings.image_3 | img_url: '350x' }}" width="300" height="200" class="img-center" />
+			    	<div class="overlay">
+			    		<i class="fa fa-search" aria-hidden="true"></i>
+			    	</div>
+			    </a>
+			</div>
+		{% endfor %}
+	</div>
+</section>
+
+{% schema %}
+{
+	"name": "Text CTA With Gallery",
+	"max_blocks": 1,
+	"blocks": [
+		{
+			"name": "Text CTA With Gallery",
+			"type": "image_picker",
+			"settings": [
+				{
+					"type": "text",
+					"id": "header",
+					"label": "Header"
+				},
+				{
+					"type": "richtext",
+					"id": "text",
+					"label": "Text",
+					"default": "<p>Example</p>"
+				},
+				{
+					"type": "image_picker",
+					"id": "image_1",
+					"label": "Image 1"
+				},
+				{
+					"type": "image_picker",
+					"id": "image_2",
+					"label": "Image 2"
+				},
+				{
+					"type": "image_picker",
+					"id": "image_3",
+					"label": "Image 3"
+				}
+			]
+		}
+	],
+	"presets": [
+        {
+            "name": "Text CTA With Gallery",
+            "category": "Image",
+            "blocks": [
+                {
+                    "type": "image_picker"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}
+

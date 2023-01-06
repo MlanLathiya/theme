@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="inner">
+        <div class="row">
+            {% for block in section.blocks limit: section.blocks.size %}
+                <div class="col-md-4">
+                    <div class="policy">
+                        {% capture image %}{{ block.settings.image_name }}.png{% endcapture %}
+                        <figure><img src="{{ block.settings.image_name | img_url: '55x' }}" alt=""></figure>
+                        <h3>{{ block.settings.heading_title  }}</h3>
+                        <p>{{ block.settings.heading_text }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "policy_sec",
+    "tag": "section",
+    "class": "policy_sec",
+    "max_blocks": 3,
+    "blocks": [
+        {
+            "name": "policy_sec",
+            "type": "image_picker",
+            "settings": [
+                {
+                    "label": "Heading Title",
+                    "id": "heading_title",
+                    "type": "text"
+                },
+                {
+                    "label": "Heading Text",
+                    "id": "heading_text",
+                    "type": "text"
+                },
+                {
+                    "label": "image_name",
+                    "id": "image_name",
+                    "type": "image_picker"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "policy_sec",
+            "category": "Image",
+            "blocks": [
+                {
+                    "type": "image_picker"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

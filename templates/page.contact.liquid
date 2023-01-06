@@ -1,0 +1,71 @@
+
+<section class="contact-form-container">
+	<div class="container">
+		<div class="row flex-grid">
+			<div class="col col-12">
+				<h1>Contact Us</h1>
+				<p>{{ settings.contact_page_intro_text }}</p>
+				{% form 'contact' %}
+					
+                    {% if form.posted_successfully? %}
+						<p class="form-success">
+							{{ 'contact.form.post_success' | t }}
+						</p>
+			        {% endif %}
+
+		        	{{ form.errors | default_errors }}
+
+					<div class="col col-6">
+	            		<label for="ContactFormFirstName">First Name</label>
+						<input type="text" id="ContactFormFirstName" name="contact[first_name]" placeholder="First Name" value="{{ form.first_name }}">
+					</div>
+					<div class="col col-6">
+						<label for="ContactFormLastName">Last Name</label>
+						<input type="text" id="ContactFormLastName" name="contact[last_name]" placeholder="Last Name" value="{{ form.last_name }}">
+					</div>
+					<div class="col col-12">
+						<label for="ContactFormAddress1">Address 1</label>
+						<input type="text" id="ContactFormAddress1" name="contact[address1]" placeholder="Address 1" value="{{ form.address1 }}">
+					</div>
+					<div class="col col-12">
+						<label for="ContactFormAddress2">Address 2</label>
+						<input type="text" id="ContactFormAddress2" name="contact[address2]" placeholder="Address 2" value="{{ form.address2 }}">
+					</div>
+					<div class="col col-6">
+	            		<label for="ContactFormTown">Town/City</label>
+						<input type="text" id="ContactFormTown" name="contact[city]" placeholder="Town/City" value="{{ form.city }}">
+					</div>
+					<div class="col col-6">
+						<label for="ContactFormPostCode">PostCode</label>
+						<input type="text" id="ContactFormPostCode" name="contact[zip]" placeholder="PostCode" value="{{ form.zip }}">
+					</div>
+					<div class="col col-12">
+						<label for="ContactFormEmail">Email</label>
+						<input type="email" id="ContactFormEmail" name="contact[email]" placeholder="example@domain.com" value="{{ form.email }}">
+					</div>
+					<div class="col col-12">
+						<label for="ContactFormMessage">Message</label>
+						<textarea id="ContactFormMessage" name="contact[body]">{{ form.body }}</textarea>
+					</div>
+                    {{ settings.contact_page_bottom_text }}
+                    <div id="contact-agree">
+                        <label>
+                            <input type="radio" name="contact[optin]" value="1" class="agree-to-be-contacted"><span>Yes Please - OPT IN</span>
+                        </label>
+                    </div>
+                    <div id="contact-decline">
+                        <label>
+                            <input type="radio" name="contact[optin]" value="0" class="agree-to-be-contacted"><span>No Thank You - OPT OUT</span>
+                        </label>
+                    </div>
+					<input type="submit" class="btn btn-primary" value="{{ 'contact.form.send' | t }}">
+				{% endform %}
+			</div>
+		</div>
+		{% if page.content != blank %}
+			<div class="">
+				{{ page.content }}
+			</div>
+		{% endif %}
+	</div>
+</section>

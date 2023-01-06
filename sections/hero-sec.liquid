@@ -1,0 +1,66 @@
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-indicators d-none">
+        {% for block in section.blocks limit: section.blocks.size %}
+            {% if forloop.index == 1 %}
+                <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="{{ forloop.index | minus: 1 }}"
+                        class="active"
+                        aria-current="true" aria-label="Slide {{ forloop.index }}"></button>
+            {% else %}
+                <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="{{ forloop.index | minus: 1 }}"
+                        aria-label="Slide {{ forloop.index }}"></button>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="carousel-inner">
+        {% for block in section.blocks limit: section.blocks.size %}
+            {% if block.settings.slide_image %}
+                {% if forloop.index == 1 %}
+                    <div class="carousel-item active">
+                        <img src="{{ block.settings.slide_image | img_url: '1300x' }}" class="d-block w-100" alt="...">
+                    </div>
+                {% else %}
+                    <div class="carousel-item">
+                        <img src="{{ block.settings.slide_image | img_url: '1300x' }}" class="d-block w-100" alt="...">
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <i class="bi bi-chevron-left"></i></button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <i class="bi bi-chevron-right"></i></button>
+</div>
+
+{% schema %}
+{
+    "name": "Image Slider",
+    "tag": "section",
+    "class": "hero_sec",
+    "blocks": [
+        {
+            "type": "image_picker",
+            "name": "Image",
+            "settings": [
+                {
+                    "label": "Image",
+                    "id": "slide_image",
+                    "type": "image_picker"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Image Slider",
+            "category": "Image",
+            "blocks": [
+                {
+                    "type": "image_picker"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

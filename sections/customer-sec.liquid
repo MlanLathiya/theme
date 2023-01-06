@@ -1,0 +1,76 @@
+<div class="container">
+    {% for block in section.blocks limit: 1 %}
+        <h2>{{ block.settings.heading }}</h2>
+    {% endfor %}
+
+    <div class="row g-170px">
+        {% for block in section.blocks limit: section.blocks.size %}
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="cus_block">
+                    <div class="star_detail">
+                        {% for i in (1..block.settings.rate) %}
+                            <i><img src="{{ block.settings.star_image | asset_url }}" alt=""></i>
+                        {% endfor %}
+                    </div>
+                    <p>{{ block.settings.comment }}</p>
+                    {% if forloop.index == 2 %}
+                        <figure><img src="{{ block.settings.customer_logo | asset_url }}" alt=""></figure>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "customer_sec",
+    "tag": "section",
+    "class": "customer_sec",
+    "max_blocks": 3,
+    "blocks": [
+        {
+            "name": "customer_sec",
+            "type": "text",
+            "settings": [
+                {
+                    "label": "Heading",
+                    "id": "heading",
+                    "type": "text"
+                },
+                {
+                    "label": "Comment",
+                    "id": "comment",
+                    "type": "text"
+                },
+                {
+                    "label": "Rating Star",
+                    "id": "rate",
+                    "type": "number"
+                },
+                {
+                    "label": "Star Image",
+                    "id": "star_image",
+                    "type": "text"
+                },
+                {
+                "label": "Customer Logo",
+                "id": "customer_logo",
+                "type": "text"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "customer_sec",
+            "category": "Text",
+            "blocks": [
+                {
+                    "type": "text"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,292 @@
+
+{% comment %}
+Number of related items per row,
+and number of rows.
+{% endcomment %}
+{% assign number_of_related_products_per_row = 3 %}
+{% assign number_of_rows = 1 %}
+{% comment %}
+Heading.
+Leave blank if you don't need one.
+{% endcomment %}
+{% comment %}
+Set either or both to true, if you want
+to limit yourself to items with same vendor, and/or type.
+{% endcomment %}
+{% assign same_vendor = true %}
+{% assign same_type = true %}
+{% comment %}
+Collections to ignore.
+Never pick related items from those.
+{% endcomment %}
+{% assign exclusions = 'frontpage,all,best-seller-internal-use,full-price' | split: ',' %}
+{% comment %}
+Looking for a relevant collection.
+{% endcomment %}
+{% assign found_a_collection = false %}
+{% if collection and collection.all_products_count > 1 %}
+{% unless exclusions contains collection.handle %}
+{% assign found_a_collection = true %}
+{% endunless %}
+{% endif %}
+{% unless found_a_collection %}
+{% for c in product.collections %}
+{% unless exclusions contains c.handle or c.all_products_count < 2 %}
+{% assign found_a_collection = true %}
+{% assign collection = c %}
+{% break %}
+{% endunless %}
+{% endfor %}
+{% endunless %}
+{% comment %}
+If we have a relevant collection.
+{% endcomment %}
+
+
+{% if found_a_collection %}
+{% assign counter = 0 %}
+{% assign break_at = number_of_rows | times: number_of_related_products_per_row %}
+{% assign current_product = product %}
+{% capture related_items %}
+{% assign product_in = '' %}
+{% assign primary_cat = '' %}
+
+{% for c in product.collections %}
+    {% unless exclusions contains c.handle or c.all_products_count < 2 %}
+    {% assign found_a_collection = true %}
+    {% assign collection = c %}
+    {% else %}
+    {% continue %}
+    {% endunless %}
+
+	
+    {% for product in collection.products %}
+      {% unless product.handle == current_product.handle %}
+      {% unless same_vendor and current_product.vendor != product.vendor %}
+      {% unless same_type and current_product.type != product.type %}
+
+
+      {% assign other_title = current_product.title | truncatewords: 3, "" %}
+      {% if product.title contains other_title %}
+        {% if product_in == '' %}
+          {% assign product_in = product_in | append: product.id | append: "<|>" %}
+        {% else %}
+
+          {% if product_in contains product.id   %}
+            {% continue %}
+          {% endif %}
+
+          {% assign product_in = product_in | append: product.id | append: "<|>" %}
+
+        {% endif %}
+
+        <div class="col col-4 test" data-index="{% increment item_count %}">
+          <div class="image">
+            <a href="{{ product.url }}">
+              <img src="{{ product.featured_image | product_img_url: 'x1024' }}">
+            </a>
+          </div>
+          <div class="info">
+            <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
+            <p><span class="Bold-theme-hook-DO-NOT-DELETE bold_product_price" data-override-value-set="1" data-override-value="{{ product.price }}" style="display:none !important;"></span>{{ product.price | money }}</p>
+            {% for product_option in product.options_with_values %}
+            {% if product_option.name == 'Color' %}
+            <ul class="colors unstyled inline">
+              {% for value in product_option.values %}
+              <li id="{{ value | downcase }}"></li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        {% assign counter = counter | plus: 1 %}
+      {% endif %}
+
+
+      {% if counter == break_at %}
+      {% break %}
+      {% endif %}
+
+      {% endunless %}
+      {% endunless %}
+      {% endunless %}
+
+      {% if counter == break_at %}
+      {% break %}
+      {% endif %}
+
+    {% endfor %}
+
+    {% if counter == break_at %}
+    {% break %}
+    {% endif %}
+{% endfor %}
+
+
+
+{% if counter < break_at %}
+  {% for tag in current_product.tags %}
+  {% if tag contains 'primary_' %}
+    {% assign primary_cat = tag | replace: 'primary_', '' | handle%}
+    {% break %}
+  {% endif %}
+  {% endfor %}
+    
+  {% if primary_cat != '' %}
+      {% assign collection = collections[primary_cat] %}
+      {% for product in collection.products %}
+        {% unless product.handle == current_product.handle %}
+        {% unless same_vendor and current_product.vendor != product.vendor %}
+        {% unless same_type and current_product.type != product.type %}
+
+          {% if product_in == '' %}
+            {% assign product_in = product_in | append: product.id | append: "<|>" %}
+          {% else %}
+
+            {% if product_in contains product.id   %}
+              {% continue %}
+            {% endif %}
+
+            {% assign product_in = product_in | append: product.id | append: "<|>" %}
+
+          {% endif %}
+
+          <div class="col col-4 test2" data-index="{% increment item_count %}">
+            <div class="image">
+              <a href="{{ product.url }}">
+                <img src="{{ product.featured_image | product_img_url: 'x1024' }}">
+              </a>
+            </div>
+            <div class="info">
+              <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
+              <p><span class="Bold-theme-hook-DO-NOT-DELETE bold_product_price" data-override-value-set="1" data-override-value="{{ product.price }}" style="display:none !important;"></span>{{ product.price | money }}</p>
+              {% for product_option in product.options_with_values %}
+              {% if product_option.name == 'Color' %}
+              <ul class="colors unstyled inline">
+                {% for value in product_option.values %}
+                <li id="{{ value | downcase }}"></li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+
+          {% assign counter = counter | plus: 1 %}
+
+
+          {% if counter == break_at %}
+          {% break %}
+          {% endif %}
+
+        {% endunless %}
+        {% endunless %}
+        {% endunless %}
+
+        {% if counter == break_at %}
+        {% break %}
+        {% endif %}
+
+      {% endfor %}
+
+  {% endif %}  
+{% endif %}
+
+
+{% endcapture %}
+{% endif %}
+
+{% comment %} another related if counter is less than break_at {% endcomment %}
+{% if counter < break_at %}
+  {% capture other_related_items %}
+
+  {% for c in product.collections %}
+    {% unless exclusions contains c.handle or c.all_products_count < 2 %}
+      {% assign found_a_collection = true %}
+      {% assign collection = c %}
+    {% else %}
+      {% continue %}
+    {% endunless %}
+
+    {% for product in collection.products %}
+      {% unless product.handle == current_product.handle %}
+        {% unless same_vendor and current_product.vendor != product.vendor %}
+          {% unless same_type and current_product.type != product.type %}
+
+          {% if product_in == '' %}
+            {% assign product_in = product_in | append: product.id | append: "<|>" %}
+          {% else %}
+    
+            {% if product_in contains product.id   %}
+              {% continue %}
+            {% endif %}
+    
+            {% assign product_in = product_in | append: product.id | append: "<|>" %}
+    
+          {% endif %}
+
+            <div class="col col-4" data-index="{% increment item_count %}">
+              <div class="image">
+                <a href="{{ product.url }}">
+                  <img src="{{ product.featured_image | product_img_url: 'x1024' }}">
+                </a>
+              </div>
+              <div class="info">
+                <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
+                <p><span class="Bold-theme-hook-DO-NOT-DELETE bold_product_price" data-override-value-set="1" data-override-value="{{ product.price }}" style="display:none !important;"></span>{{ product.price | money }}</p>
+                {% for product_option in product.options_with_values %}
+                {% if product_option.name == 'Color' %}
+                <ul class="colors unstyled inline">
+                  {% for value in product_option.values %}
+                  <li id="{{ value | downcase }}"></li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+
+            {% assign counter = counter | plus: 1 %}
+
+
+            {% if counter == break_at %}
+            {% break %}
+            {% endif %}
+
+          {% endunless %}
+        {% endunless %}
+      {% endunless %}
+
+      {% if counter == break_at %}
+      {% break %}
+      {% endif %}
+
+    {% endfor %}
+
+    {% if counter == break_at %}
+    {% break %}
+    {% endif %}
+
+  {% endfor %}
+  {% endcapture %}
+{% endif %}
+
+{% assign other_related_items = other_related_items | trim %}
+{% assign related_items = related_items | trim %}
+{% assign related_items = related_items | append: other_related_items %}
+
+
+{% unless related_items == blank %}
+
+  
+ <section class="related-products-container">
+	<div class="container">
+		<h3 class="title">You May Also Like</h3>
+		<div class="row flex-grid">
+          {{ related_items }}
+		</div>
+	</div>
+</section>
+{% endunless %}

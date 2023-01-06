@@ -1,0 +1,56 @@
+<div class="section-header">
+    <div class="container">
+        {% if shop.customer_accounts_enabled %}
+            {% if customer  %}
+                <h2><a href="/account">Your Account</a></h2>
+            {% else %}
+                {% if shop.customer_accounts_optional %}
+                    <h2>Account Login</h2>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+
+<section>
+    <div class="container">
+    <div class="flex-grid">
+        <div class="col col-6" id="login-section">
+            <h4>Login</h4>
+            {% form 'customer_login' %}
+                {{ form.errors | default_errors }}
+                <div class="flex-grid">
+                    <div class="col col-12">
+                        <label for="customer_email">Email Address</label>
+                        <input type="email" name="customer[email]" placeholder="example@domain.com" />
+                    </div>
+                    <div class="col col-12">
+                        <label for="customer_password">Password</label>
+                        <input type="password" name="customer[password]" placeholder="Password" />
+                    </div>
+                    <div class="col col-12">
+                        <p>Don't have an account? {{ 'Click Here To Create One Now' | customer_register_link }}</p>
+                        <input type="submit" value="Sign In" class="btn btn-primary" />
+                    </div>
+                </div>
+            {% endform %}
+        </div>
+        <div class="col col-6" id="forgot-password-section">
+            <h4>Reset Password</h4>
+            {% form 'recover_customer_password' %}
+                {{ form.errors | default_errors }}
+                <div class="flex-grid">
+                    <div class="col col-12">
+                        <label for="customer_email">Email Address</label>
+                        <input type="email" name="email" placeholder="example@domain.com" />
+                    </div>
+                    <div class="col col-12">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                    </div>
+                </div>
+            {% endform %}
+        </div>
+    </div>
+
+    </div>
+</section>

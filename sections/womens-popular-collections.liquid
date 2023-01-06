@@ -1,0 +1,51 @@
+<section class="popular-categories-section">
+    <div class="container">
+        <h2>Popular Collections</h2>
+        <div class="flex-grid">
+            {% for block in section.blocks limit: section.blocks.size %}
+                <div class="col col-3">
+                    <div class="image" style="background-image: url({{ collections[block.settings.popular_collection].image | img_url: '1024x' }})">
+                        <a href="{{ collections[block.settings.popular_collection].url }}">
+                        </a>
+                    </div>
+                    <p>
+                        <a href="{{ collections[block.settings.popular_collection].url }}">
+                            {{ collections[block.settings.popular_collection].title }} >
+                        </a>
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+	"name": "Popular Collections",
+	"max_blocks": 4,
+	"blocks": [
+		{
+			"name": "Popular Collections",
+			"type": "collection",
+			"settings": [
+				{
+					"type": "collection",
+					"id": "popular_collection",
+					"label": "Popular Collection"
+				}
+			]
+		}
+	],
+	"presets": [
+        {
+            "name": "Popular Collections",
+            "category": "Image",
+            "blocks": [
+                {
+                    "type": "collection"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

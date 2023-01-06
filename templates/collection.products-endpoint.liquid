@@ -1,0 +1,31 @@
+{% comment %} Please don’t update this content {% endcomment %}
+
+{% layout none %}
+{% paginate collection.products by 50 %}
+  {
+    "products":
+      [
+        {% for product in collection.products %}
+          {
+            "id":{{ product.id }},
+            "position":{{ forloop.index }},
+            "metafields":[
+              
+              {% comment %}
+                Single Metafield
+              {% endcomment %}
+              {% assign v_reviews = product.metafields.spr["reviews"] %}
+              {% if v_reviews != blank %}
+                {
+                  "namespace": "spr",
+                  "key": "reviews",
+                  "value": {{ v_reviews | json }}
+                },
+              {% endif %}
+        
+            ]
+          },
+        {% endfor %}
+      ]
+  }
+{% endpaginate %}

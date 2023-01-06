@@ -1,0 +1,109 @@
+{% comment %} 
+    The liquid code below sorts the images by their image names as the client wants
+    the order determined by the names of images and not the order set in shopify 
+{% endcomment %}
+{% assign pImages = "" %}
+
+{% for image in product.images %}
+{% comment %} <!--{{image}}--> {% endcomment %}
+    {% assign imgUrl = image.src | product_img_url: '400x' %}
+    {% assign pImages = pImages | append: imgUrl | append: "::" | append: image.id %}
+    {% unless forloop.last %}
+        {% assign pImages = pImages | append: "<||>"  %}
+    {% endunless %}
+{% endfor %}
+
+{% assign pImages = pImages | split: "<||>" %}
+{% assign pImages = pImages | sort %}
+
+{% assign colour_image_relations = product.metafields.op_suite.colour_image_relations | split: "<|>" %}
+{% assign colour_image_relations = colour_image_relations | sort %}
+
+{% assign imgSrc = blank %}
+
+
+{% comment %}Get the first colour in the colour images relations{% endcomment %}
+{% assign first_colour  = colour_image_relations[0] | split: "::" | first %}
+
+{% assign first_col_img_ids = "" %}
+
+{% for col_rel in colour_image_relations %}
+  {% assign col_rel_parts = col_rel | split: "::" %}
+  {% comment %}Skip current iteration of the current colour (col_rel_parts[0]) isn't the first colour in the sorted list {% endcomment %}
+  {% unless col_rel_parts[0] == first_colour %}
+    {% continue %}
+  {% endunless %}
+  {% assign first_col_img_ids = first_col_img_ids | append: col_rel_parts[1] | append: "," %}
+{% endfor %}
+
+{% assign first_col_img_ids = first_col_img_ids | split: "," %}
+
+<!-- {{ first_colour }} -->
+<!-- {{ first_col_img_ids | json }} -->
+
+{% comment %}Loop over list of sorted images{% endcomment %}
+{% for img in pImages %}
+    
+  {% assign img_parts = img | split: "::" %}
+
+  {% unless first_col_img_ids contains img_parts[1] %}
+    {% continue %}
+  {% endunless %}
+
+  {% assign imgSrc = img_parts[0] %}
+  {% break %}
+{% endfor %}
+
+
+{% comment %} <!-- {{img_parts}}--> {% endcomment %}
+
+<div class="product col col-4">
+    {% if imgSrc == blank %}
+      {% assign imgSrc = pImages[0] | split: ":" %}
+      {% assign imgSrc = imgSrc[0] %}
+      {% if pImages.size < 1 %}
+          {% assign imgSrc =  product.featured_image | img_url: '400x' %}
+      {% endif %}
+    {% endif %}
+	<div class="image" style="background-image: url({{ imgSrc }})">
+		<a href="{{ product.url | within: collection }}"></a>
+	</div>
+	<div class="info">
+		<h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
+
+		{% comment %}
+		<!-- /snippets/bv-inline-ratings.liquid -->
+		<!-- Bazaarvoice Inline Rating -->
+		{% endcomment %}
+		<div data-bv-show="inline_rating"
+		data-bv-product-Id="{{product.id}}" data-bv-redirect-url="{{
+		product.url }}"></div>
+		{% comment %}
+		<!-- End Bazaarvoice Inline Rating -->
+		{% endcomment %}
+
+
+		{% comment %} <span class="material">White Leather</span> {% endcomment %}
+		<p class="price">{% if product.compare_at_price_max > product.price %}<span class="from-text">From </span>{% endif %}<span class="the-price {% if product.compare_at_price_max > product.price %}sale{% endif %}"><span class="Bold-theme-hook-DO-NOT-DELETE bold_product_page_price" style="display:none !important;"></span><span class="Bold-theme-hook-DO-NOT-DELETE bold_product_price" data-override-value-set="1" data-override-value="{{ product.price }}" style="display:none !important;"></span>{{ product.price | money }}</span></p>
+		{% for tag in product.tags %}
+			{% if tag == 'Josef Seibel' %}
+				<img src="{{ 'js-hover-logo.png' | asset_url }}"/>
+			{% endif %}
+			{% if tag == 'Gerry Webber' %}
+				<img src="{{ 'gerry-webber-hover-logo.png' | asset_url }}"/>
+			{% endif %}
+			{% if tag == 'Romika' %}
+				<img src="{{ 'romika-hover-logo.png' | asset_url }}"/>
+			{% endif %}
+		{% endfor %}
+		{% comment %} {% for product_option in product.options_with_values %}
+			{% if product_option.name == 'Color' %}
+				<ul class="colors unstyled inline">
+					{% for value in product_option.values %}
+						<li id="{{ value | downcase }}"></li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		{% endfor %} {% endcomment %}
+	</div>
+</div>

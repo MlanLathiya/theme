@@ -1,0 +1,84 @@
+{% include 'usp-bar' %}
+
+<section class="collection-header">
+	<div class="container">
+		<div class="row flex-grid">
+			{% if collection.image %}
+				<div class="col col-4 image" style="background-image: url({{ collection.image | img_url: '1024x' }})">
+				</div>
+			{% else %}
+				<div class="col col-4 image" style="background-image: url({{ 'collection-default-img.jpg' | asset_url }})">
+				</div>
+			{% endif %}
+			<div class="col col-8 info">
+				<h1>{{ collection.title }}</h1>
+				<p>{{ collection.description }}</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="collection-product-listing">
+	<div class="container">
+		<div class="row flex-grid">
+			<div class="col col-3 sidebar">
+				{% include 'product-filter-menu' %}
+			</div>
+			{% paginate collection.products by 15 %}
+				<div class="col col-9 products">
+					<div class="row flex-grid sort-opts">
+						<div class="col items-found">
+							<span>Found {{ paginate.items }} items</span>
+						</div>
+						<div class="col sort-items">
+							<label for="sort-by">Sort by</label> 
+                            {% assign sort_key = collection.sort_by | default: collection.default_sort_by | escape  %}
+                            <div class="select-wrap">
+                                <select id="sort-by">
+                                    <option value="manual" {% if sort_key == "manual" %}selected{% endif %}>Featured</option>
+                                    <option value="price-ascending" {% if sort_key == "price-ascending" %}selected{% endif %}>Price: Low to High</option>
+                                    <option value="price-descending" {% if sort_key == "price-descending" %}selected{% endif %}>Price: High to Low</option>
+                                    <option value="best-selling" {% if sort_key == "best-selling" %}selected{% endif %}>Best Selling</option>
+                                </select>
+                            </div>
+						</div>
+					</div>
+                    <div class="filter-loader">
+                        <div class="loader">
+                            <div class="loader-bar"></div>
+                            <div class="loader-bar"></div>
+                            <div class="loader-bar"></div>
+                            <div class="loader-bar"></div>
+                        </div>
+                    </div>
+					<div class="row flex-grid">
+						{% for product in collection.products %}
+							{% include 'product-block' %}
+						{% endfor %}
+					</div>
+					{% if paginate.pages > 1 %}
+						{% include 'pagination' %}
+					{% endif %}
+				</div>
+			{% endpaginate %}
+		</div>
+	</div>
+</section>
+
+{% include 'js-product-block' %}
+
+<section class="collection-last-text-block">
+	<div class="container">
+		<h3>{{ collection.title }}</h3>
+		<p>{{ collection.description }}</p>
+	</div>
+</section>
+
+{% assign today =  "today" | date: "%Y-%m-%d" %}
+{% assign hmac = today | append: ":" | append: shop.permanent_domain | hmac_sha256: "b6916832e1c9e32a920ef9372ec482d5" %}
+
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+        handleFiltering('{{ collection.id }}', '{{ hmac }}', 15, 1);
+	});
+</script>

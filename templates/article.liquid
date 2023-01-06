@@ -1,0 +1,29 @@
+<section class="single-blog-post-container">
+    <div class="container">
+        <div class="image {% if article.image %}has-background-image{% endif %}">
+            
+            <img src="{{ article | img_url: 'x1024' }}" alt="">
+            <div class="h1-wrapper"><h1>{{ article.title }}</h1></div>
+        </div>
+        <div class="content">
+            {{ article.content }}
+        </div>
+    </div>
+</section>
+
+<section class="article-pagination">
+    <div class="container">
+        <div class="flex-grid">
+            {% if(blog.previous_article) %}
+                <div class="col col-6">
+                    <a href="{{ blog.previous_article }}" class="btn btn-primary">Previous Article</a>
+                </div>
+            {% endif %}
+            {% if(blog.next_article) %}
+                <div class="col col-6">
+                    <a href="{{ blog.next_article }}" class="btn btn-primary">Next Article</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>

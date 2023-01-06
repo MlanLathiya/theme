@@ -1,0 +1,46 @@
+<section class="no-padding usp-bar">
+	<div class="container">
+		<div class="row flex-grid">
+			<div class="col col-4">
+				<span><i class="fas fa-truck"></i>  FREE UK DELIVERY ON ORDERS OVER £30</span>
+			</div>
+			<div class="col col-4">
+				<span></i>  60 DAYS RETURNS POLICY</span>
+			</div>
+			<div class="col col-4">
+				<span><i class="far fa-credit-card"></i>  SECURE PAYMENT</span>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% schema %}
+{
+	"name": "USP Bar",
+	"max_blocks": 1,
+	"blocks": [
+		{
+			"name": "USP Bar",
+			"type": "text",
+			"settings": [
+				{
+					"type": "collection",
+					"id": "usp_bar",
+					"label": "USP Bar"
+				}
+			]
+		}
+	],
+	"presets": [
+        {
+            "name": "UPS Bar",
+            "category": "Text",
+            "blocks": [
+                {
+                    "type": "text"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,67 @@
+{% for block in section.blocks limit: section.blocks.size %}
+    <section class="related-products-container">
+        <div class="container">
+            <h3 class="title">Featured Products</h3>
+            <div class="row flex-grid">
+                {% assign collection = collections[block.settings.related_collection] %}
+                {% unless collection.title == 'Home page' %}
+                    {% unless forloop.index > 3 %}
+                        {% for product in collection.products %}
+                            <div class="col col-4">
+                                <div class="image">
+                                    <a href="{{ product.url }}">
+                                        <img src="{{ product.featured_image | product_img_url: 'x1024' }}">
+                                    </a>
+                                </div>
+                                <div class="info">
+                                    <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
+                                    <p><span class="Bold-theme-hook-DO-NOT-DELETE bold_product_price" data-override-value-set="1" data-override-value="{{ product.price }}" style="display:none !important;"></span>{{ product.price | money }}</p>
+                                    {% for product_option in product.options_with_values %}
+                                        {% if product_option.name == 'Color' %}
+                                            <ul class="colors unstyled inline">
+                                                {% for value in product_option.values %}
+                                                    <li id="{{ value | downcase }}"></li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endunless %}
+                {% endunless %}
+            </div>
+        </div>
+    </section>
+{% endfor %}
+
+{% schema %}
+{
+	"name": "Related Products",
+	"max_blocks": 1,
+	"blocks": [
+		{
+			"name": "Related Products",
+			"type": "collection",
+			"settings": [
+				{
+					"type": "collection",
+					"id": "related_collection",
+					"label": "Related Collection"
+				}
+			]
+		}
+	],
+	"presets": [
+        {
+            "name": "Related Products",
+            "category": "Image",
+            "blocks": [
+                {
+                    "type": "collection"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,51 @@
+<div class="section-header">
+    <div class="container">
+        <h2>Register</h2>
+    </div>
+</div>
+<section id="register-section">
+    <div class="container">
+        {% form 'create_customer' %}
+            {{ form.errors | default_errors }}
+            <div class="flex-grid">
+                <div class="col col-6">
+                    <label for="first_name">First Name</label>
+                    <input type="text" value="" name="customer[first_name]" size="30" placeholder="First Name" />
+                </div>
+                <div class="col col-6">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" value="" name="customer[last_name]" size="30" placeholder="Last Name" />
+                </div>
+                <div class="col col-12">
+                    <label for="email">Email Address</label>
+                    <input type="email" value="" name="customer[email]" size="30" placeholder="example@domain.com" />
+                </div>
+                <div class="col col-12">
+                    <label for="password">Password</label>
+                    <input type="password" value="" name="customer[password]" size="30" placeholder="Password" />
+                </div>
+                <div class="col col-12">
+                    <p>
+                        Please tell us if you would like to be contacted by email or 
+                        text with information about goods and services we feel may be of interest 
+                        to you. We will process your data in accordance with our 
+                        <a href="/pages/privacy-policy">Privacy Policy</a>.
+                    </p>
+                    <div id="contact-agree">
+                        <label>
+                            <input type="radio" name="agree-to-be-contacted" value="agree" class="agree-to-be-contacted"><span>Yes Please</span>
+                        </label>
+                    </div>
+                    <div id="contact-decline">
+                        <label>
+                            <input type="radio" name="agree-to-be-contacted" value="decline" class="agree-to-be-contacted"><span>No Thank You</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col col-12">
+                    <input type="submit" value="Create Account" class="btn btn-primary" />
+                </div>
+            </div>
+        {% endform %}
+    </div>
+</section>

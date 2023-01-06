@@ -1,0 +1,22 @@
+<div id="blog-email-signup">    
+    {{ section.settings.text_content }}
+    <form class="blog" method="POST" action="#">
+        <input type="email" name="sign-up" placeholder="EMAIL ADDRESS">
+        <input type="submit" value="Submit" class="btn btn-primary" />
+    </form>
+    <p id="blog-email-signup-alert-message"></p>
+</div>
+
+{% schema %}
+{
+	"name": "Email Sign-up form",
+    "settings": [
+        {
+            "id": "text_content",
+            "type": "richtext",
+            "label": "Text",
+            "default": "<p>Lorem ipsum jipsum kipsum</p>"
+		}
+    ]
+}
+{% endschema %}

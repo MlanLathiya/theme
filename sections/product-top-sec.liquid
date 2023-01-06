@@ -1,0 +1,253 @@
+{% paginate collection.products by 12 %}
+  {% for product in collection.products limit: collection.products.size %}
+    {% assign waterproof = false %}
+    {% assign removableInsole = false %}
+    {% assign vegan = false %}
+    {% assign fasteningTypeLace = false %}
+    {% assign zip = false %}
+    {% assign wideFit = false %}
+    {% assign leather = false %}
+    {% assign sale = false %}
+    {% for tag in product.tags limit: product.tags.size %}
+      {%- capture product_tag -%}
+      {{tag | downcase}}
+      {%- endcapture %}
+
+      {% if product_tag contains 'sale' %}
+        {% assign sale = true %}
+      {% endif %}
+
+      {% if product_tag contains 'waterproof_yes' %}
+        {% assign waterproof = true %}
+      {% endif %}
+
+      {% if product_tag contains 'removable insole' %}
+        {% assign removableInsole = true %}
+      {% endif %}
+
+      {% if product_tag contains 'vegan' %}
+        {% assign vegan = true %}
+      {% endif %}
+
+      {% if product_tag contains 'fastening-type_lace' %}
+        {% assign fasteningTypeLace = true %}
+      {% endif %}
+
+      {% if product_tag contains 'zip' %}
+        {% assign zip = true %}
+      {% endif %}
+
+      {% if product_tag contains 'wide-fit_yes' %}
+        {% assign wideFit = true %}
+      {% endif %}
+
+      {% if product_tag contains 'leather' %}
+        {% assign leather = true %}
+      {% endif %}
+    {% endfor %}
+
+    <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-30">
+      <div class="prod_block">
+        {% assign all_colours = '' %}
+        {% assign available_colours = '' %}
+        {% for product_option in product.options_with_values %}
+          {% if product_option.name == 'Colour' %}
+            {% assign colours = '' %}
+            {% assign opt_vals = product_option.values %}
+            {% for value in opt_vals %}
+              {% assign all_colours = all_colours | append: value | append: '<|>' %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+
+        {% assign all_colours = all_colours | split: '<|>' %}
+        {% for colour in all_colours %}
+          {% assign temp_colour = colour | strip | downcase %}
+          {% for variant in product.variants %}
+            {% assign variant_colour_value = variant.title | split: ' / ' | first | strip | downcase %}
+
+            {% if variant_colour_value == temp_colour %}
+              {% assign juno_stock = variant.metafields.juno.stock | strip %}
+              {% if variant.available == false %}
+                {% if juno_stock contains 'hidden' %}
+                  {% continue %}
+                {% endif %}
+              {% endif %}
+              {% assign available_colours = available_colours | append: colour | append: '<|>' %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+
+        {% assign available_colours_array = available_colours | split: '<|>' | uniq %}
+        <figure>
+          {% if sale %}
+            <div class="sale">SALE</div>
+          {% endif %}
+          {% if available_colours != '' %}
+            {% for value in available_colours_array %}
+              {% assign index = forloop.index %}
+              {% for variant in product.variants %}
+                {% assign variant_colour_value = variant.title | split: ' / ' | first | strip | downcase %}
+                {% assign temp_colour = value | strip | downcase %}
+                {% if variant_colour_value == temp_colour %}
+                  {% if index == 1 %}
+                    <img
+                      src="{{ variant.image | img_url: '405x' }} "
+                      alt=""
+                      class="p_image"
+                      id="img-color{{ variant.id }}"
+                    >
+                  {% else %}
+                    <img
+                      src="{{ variant.image | img_url: '405x' }} "
+                      alt=""
+                      class="p_image hide"
+                      id="img-color{{ variant.id }}"
+                    >
+                  {% endif %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+          {% endif %}
+        </figure>
+        <div class="cap_info">
+          <h3>{{ product.title }}</h3>
+          <span class="price">{{ product.price | money_with_currency }}</span>
+
+          <div class="pwr-category-snippets">
+            <div class="review-id" id="snippet-{{product.id}}" data-id="snippet-{{product.id}}"></div>
+          </div>
+
+          <div class="color_info">
+            {% if available_colours != '' %}
+              {% for value in available_colours_array %}
+                {% assign index = forloop.index %}
+                {% for variant in product.variants %}
+                  {% assign variant_colour_value = variant.title | split: ' / ' | first | strip | downcase %}
+                  {% assign temp_colour = value | strip | downcase %}
+                  {% if variant_colour_value == temp_colour %}
+                    {% for image in product.images %}
+                      {% assign alt = image.alt %}
+                      {% if alt contains 'swatch_' %}
+                        {% assign alt = alt | replace: 'swatch_', '' | strip | downcase %}
+                        {% if alt == variant_colour_value %}
+                          {% if index == 1 %}
+                            <div
+                              class="form-check form-check-inline"
+                              data-toggle="tooltip"
+                              title="{{ value }}"
+                            >
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                checked="checked"
+                                id="color{{ variant.id }}"
+                                value="option2"
+                              >
+                              <label class="form-check-label" for="color{{ variant.id }}">
+                                <img
+                                  src="{{ image | img_url: '22x22', crop: 'center' }}"
+                                  alt=""
+                              ></label>
+                            </div>
+                          {% else %}
+                            <div
+                              class="form-check form-check-inline"
+                              data-toggle="tooltip"
+                              title="{{ value }}"
+                            >
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="color{{ variant.id }}"
+                                value="option2"
+                              >
+                              <label class="form-check-label" for="color{{ variant.id }}">
+                                <img
+                                  src="{{ image | img_url: '22x22', crop: 'center' }}"
+                                  alt=""
+                              ></label>
+                            </div>
+                          {% endif %}
+                          {% break %}
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                    {% break %}
+                  {% endif %}
+                {% endfor %}
+              {% endfor %}
+            {% endif %}
+          </div>
+
+          <div class="feature_info">
+            {% if waterproof %}
+              <img src="{{ 'waterproof_1.jpg' | asset_url }} " alt="">
+            {% endif %}
+
+            {% if removableInsole %}
+              <img src="{{ 'aside_feature_icon3.png' | asset_url }} " alt="">
+            {% endif %}
+
+            {% if vegan %}
+              <img src="{{ 'vegan_1.jpg' | asset_url }} " alt="">
+            {% endif %}
+
+            {% if fasteningTypeLace %}
+              <img src="{{ 'aside_feature_icon5.png' | asset_url }} " alt="">
+            {% endif %}
+
+            {% if zip %}
+              <img src="{{ 'aside_feature_icon6.png' | asset_url }} " alt="">
+            {% endif %}
+
+            {% if wideFit %}
+              <img src="{{ 'aside_feature_icon7.png' | asset_url }} " alt="">
+            {% endif %}
+
+            {% if leather %}
+              <img src="{{ 'aside_feature_icon8.png' | asset_url }} " alt="">
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+
+  <div class="pagination_info">
+    <span>{{ current_page }} of {{ paginate.pages }} pages</span>
+    <a href="{{ paginate.previous.url }}" class="prev btns bordered">Previous</a>
+    <a href="{{ paginate.next.url }}" class="next btns">Next</a>
+  </div>
+{% endpaginate %}
+
+<script src="//ui.powerreviews.com/stable/4.0/ui.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script>
+  var params = [];
+  $('.pwr-category-snippets .review-id').each(function (i) {
+    var obj = {},
+      product_id = {};
+    product_id['CategorySnippet'] = $(this).data('id');
+    obj['api_key'] = '354c0837-4e2b-4ee9-843d-b0114e6e4f44';
+    obj['locale'] = 'en_GB';
+    obj['merchant_group_id'] = '345204098';
+    obj['merchant_id'] = '2032301978';
+    obj['page_id'] = $(this).data('id').replace('snippet-', '');
+    obj['components'] = product_id;
+    params[i] = obj;
+  });
+
+  POWERREVIEWS.display.render(params);
+</script>
+
+{% schema %}
+{
+  "name": "product_top_sec",
+  "class": "row g-48px"
+}
+{% endschema %}

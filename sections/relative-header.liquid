@@ -1,0 +1,62 @@
+<section>
+    {% if collection == null %}
+        <div class="top_part">
+            <div class="container">Our Autumn Sale is now on - get up to 50% off!</div>
+        </div>
+    {% endif %}
+
+    <div class="container">
+        <nav class="navbar navbar-expand-xl navbar-light">
+            <a class="navbar-brand" href="/">
+                <img src="{{ 'logo.svg' | asset_url }}" alt="">
+            </a>
+
+            <div class="navright order-xl-3 ms-auto ms-xl-0">
+                <ul>
+                    <li><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target=".search">
+                            <img src="{{ 'nav_icon1.png' | asset_url }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ 'nav_icon2.png' | asset_url }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ 'nav_icon3.png' | asset_url }}" alt=""></a></li>
+                </ul>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    {% for link in linklists.main-menu.links %}
+                        <li class="nav-item">
+                            {% if link.links != blank %}
+                                <a class="nav-link dropdown-toggle" href="{{ link.url }}" id="navbarDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">{{ link.title }}</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    {% for child_link in link.links %}
+                                        <li>
+                                            <a href= "{{ child_link.url }}" class="dropdown-item">{{ child_link.title }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <a href="{{ link.url }}" class="nav-link {% if link.active %}active{% endif %}" aria-current="page">{{ link.title }}</a>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </nav>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "relative_header",
+    "tag": "header",
+    "class": "relative"
+}
+{% endschema %}

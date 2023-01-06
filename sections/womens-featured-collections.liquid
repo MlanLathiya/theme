@@ -1,0 +1,51 @@
+<section class="mens-womens-featured-collections">
+    <div class="container">
+        <h2>Featured Collections</h2>
+        <div class="flex-grid">
+            {% for block in section.blocks limit: section.blocks.size %}
+                <div class="col col-6">
+                    <div class="image" style="background-image: url({{ collections[block.settings.featured_collection].image | img_url: '1024x' }})">
+                        <a href="{{ collections[block.settings.featured_collection].url }}">
+                        </a>
+                    </div>
+                    <p>
+                        <a href="{{ collections[block.settings.featured_collection].url }}">
+                            {{ collections[block.settings.featured_collection].title }} >
+                        </a>
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+	"name": "M+F Featured Collections",
+	"max_blocks": 2,
+	"blocks": [
+		{
+			"name": "M+F Featured Collections",
+			"type": "collection",
+			"settings": [
+				{
+					"type": "collection",
+					"id": "featured_collection",
+					"label": "Featured Collection"
+				}
+			]
+		}
+	],
+	"presets": [
+        {
+            "name": "M+F Featured Collections",
+            "category": "Image",
+            "blocks": [
+                {
+                    "type": "collection"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

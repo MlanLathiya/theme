@@ -1,0 +1,24 @@
+{% comment %} Please don’t update this content {% endcomment %}
+
+{% layout none %}
+{
+  "product":
+    {
+      "id":{{ product.id }},
+      "metafields":[
+        
+              {% comment %}
+                Single Metafield
+              {% endcomment %}
+              {% assign v_reviews = product.metafields.spr["reviews"] %}
+              {% if v_reviews != blank %}
+                {
+                  "namespace": "spr",
+                  "key": "reviews",
+                  "value": {{ v_reviews | json }}
+                },
+              {% endif %}
+        
+      ]
+    }
+}

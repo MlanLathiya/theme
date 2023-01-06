@@ -1,0 +1,204 @@
+[
+  {
+    "name": "Competitions Page",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Competitions"
+      },
+      {
+        "type": "textarea",
+        "id": "competition_list",
+        "label": "Competitions",
+        "default": "-",
+        "info": "Comma separeated list of competition names for form dropdown",
+        "placeholder": "Competition 1, Competition 2"
+      },
+      {
+        "type": "header",
+        "content": "Competition Images"
+      },
+      {
+        "type": "image_picker",
+        "id": "competition_image_1",
+        "label": "Competitions Image 1",
+        "info": "First Image To Appear On The Competitions Page"
+      },
+      {
+        "type": "image_picker",
+        "id": "competition_image_2",
+        "label": "Competitions Image 2",
+        "info": "Second Image To Appear On The Competitions Page"
+      }
+    ]
+  },
+  {
+    "name": "Contact Page",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Contact Page Header Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "contact_page_header_image",
+        "label": "Contact Page Header Image"
+      },
+      {
+        "type": "header",
+        "content": "Contact Page Intro Text"
+      },
+      {
+        "type": "textarea",
+        "id": "contact_page_intro_text",
+        "label": "Contact Page Intro Text"
+      },
+      {
+        "type": "richtext",
+        "id": "contact_page_bottom_text",
+        "label": "Contact Page Bottom Text",
+        "default": "<p>Example Text with <a href=\"\/\">link<\/a><\/p>"
+      }
+    ]
+  },
+  {
+    "name": "About Page",
+    "settings": [
+      {
+        "type": "header",
+        "content": "About Us Page"
+      },
+      {
+        "type": "text",
+        "id": "about_page_header",
+        "label": "Header"
+      },
+      {
+        "type": "textarea",
+        "id": "about_page_intro_text",
+        "label": "About Page Intro Text"
+      },
+      {
+        "type": "header",
+        "content": "Brands Information"
+      },
+      {
+        "type": "textarea",
+        "id": "about_josef_seibel_text",
+        "label": "About Josef Seibel Text"
+      },
+      {
+        "type": "textarea",
+        "id": "about_romika_text",
+        "label": "About Romika Text"
+      },
+      {
+        "type": "textarea",
+        "id": "about_gerry_webber_text",
+        "label": "About Gerry Webber Text"
+      }
+    ]
+  },
+  {
+    "name": "Email Address",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Email Address"
+      },
+      {
+        "type": "text",
+        "id": "email_address",
+        "label": "Email Address",
+        "default": "service@josefseibel.co.uk",
+        "info": "Enter the Email Address you would like to be advertised on the site",
+        "placeholder": "example@domain.com"
+      }
+    ]
+  },
+  {
+    "name": "Telephone Number",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Telephone Number"
+      },
+      {
+        "type": "text",
+        "id": "telephone_number",
+        "label": "Telephone Number",
+        "default": "01534 655 423",
+        "info": "Enter the Telephone Number you would like to be advertised on the site",
+        "placeholder": "01534 655 423"
+      }
+    ]
+  },
+  {
+    "name": "Opening Times",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Opening Times"
+      },
+      {
+        "type": "text",
+        "id": "mon_fri_opening_time",
+        "label": "Mon-Fri Opening Times",
+        "info": "Example: 9-5"
+      },
+      {
+        "type": "text",
+        "id": "sat_opening_time",
+        "label": "Saturday Opening Times",
+        "info": "Example: 9-5"
+      },
+      {
+        "type": "text",
+        "id": "sun_opening_time",
+        "label": "Sunday Opening Times",
+        "info": "Example: 9-5"
+      }
+    ]
+  },
+  {
+    "name": "Social Media Accounts",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social Media Accounts"
+      },
+      {
+        "type": "text",
+        "id": "facebook_url",
+        "label": "Facebook URL",
+        "default": "https:\/\/www.facebook.com\/JosefSeibelUK",
+        "info": "Enter the URL to your Facebook account",
+        "placeholder": "https:\/\/www.facebook.com\/JosefSeibelUK"
+      },
+      {
+        "type": "text",
+        "id": "twitter_url",
+        "label": "Twitter URL",
+        "default": "https:\/\/twitter.com\/Josef_Seibel",
+        "info": "Enter the URL to your Twitter account",
+        "placeholder": "https:\/\/twitter.com\/Josef_Seibel"
+      },
+      {
+        "type": "text",
+        "id": "instagram_url",
+        "label": "Instagram URL",
+        "default": "https:\/\/www.instagram.com\/josefseibelofficial\/",
+        "info": "Enter the URL to your Instagram account",
+        "placeholder": "https:\/\/www.instagram.com\/josefseibelofficial\/"
+      },
+      {
+        "type": "text",
+        "id": "pinterest_url",
+        "label": "Pinterest URL",
+        "default": "https:\/\/www.pinterest.co.uk\/josefseibel\/",
+        "info": "Enter the URL to your Pinterest account",
+        "placeholder": "https:\/\/www.pinterest.co.uk\/josefseibel\/"
+      }
+    ]
+  }
+]

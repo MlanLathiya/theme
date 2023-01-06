@@ -1,0 +1,223 @@
+
+<div class="txt-content onecolumn {{ section.settings.add_padding_top }} {{ section.settings.add_padding_bottom }} {{ section.settings.add_margin_top }} {{ section.settings.add_margin_bottom }} {{ section.settings.add_border_top }} {{ section.settings.add_border_bottom }} {{ section.settings.border_width }}" {% if section.settings.background_color != '' %}style="background-color: {{ section.settings.background_color }}"{% endif %}>
+    <div class="wrapper {{ section.settings.max_width }}">
+        <div class="row">
+            <div class="col-text {{ section.settings.text_color | escape }} {{ section.settings.content_align | escape }} {{ section.settings.content_width }} {{ section.settings.content_positon }}">
+                <div class="text-content">
+                    {% if section.settings.title != blank %}
+                        <{{ section.settings.title_tag }} class="title">{{ section.settings.title }}</{{ section.settings.title_tag }}>
+                    {% endif %}
+                    {% if section.settings.content != blank or section.settings.link_1 != blank or section.settings.link_2 != blank %}
+                    <div class="content">
+                        {% if section.settings.content != blank %}
+                            <div class="text">{{ section.settings.content }}</div>
+                        {% endif %}
+                        {% if section.settings.link_1 != blank or section.settings.link_2 != blank %}
+                            <div class="buttons {{ section.settings.button_position }}">
+                                {% if section.settings.link_1 != blank %}
+                                    <a class="button" href="{{ section.settings.link_1 }}">{{ section.settings.button_text_1 }}</a>
+                                {% endif %}	
+                                {% if section.settings.link_2 != blank %}
+                                    <a class="button" href="{{ section.settings.link_2 }}">{{ section.settings.button_text_2 }}</a>
+                                {% endif %}	
+                            </div>
+                        {% endif %}	
+                    </div>
+                    {% endif %}	
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+    "name": "One Col - Content",
+    "settings": [
+        {
+            "type": "select",
+            "id": "max_width",
+            "label": "Max width",
+            "options": [
+                { "value": "", "label": "Wide Width" },
+                { "value": "full-width", "label": "Full Width" },
+                { "value": "narrow-width", "label": "Narrow Width" }
+            ],
+            "default": ""
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color"
+        },
+        {
+            "type": "select",
+            "id": "add_border_top",
+            "label": "Add border top?",
+            "options": [
+                { "value": "border-top", "label": "Yes" },
+                { "value": "", "label": "No" }
+            ],
+            "default": ""
+        },
+        {
+            "type": "select",
+            "id": "add_border_bottom",
+            "label": "Add border bottom?",
+            "options": [
+                { "value": "border-bottom", "label": "Yes" },
+                { "value": "", "label": "No" }
+            ],
+            "default": ""
+        },
+        {
+            "type": "select",
+            "id": "border_width",
+            "label": "Border Width",
+            "options": [
+                { "value": "", "label": "Border Ful Width" },
+                { "value": "border-content-center", "label": "Border Wide Width" }
+            ],
+            "default": ""
+        },
+        {
+            "type": "select",
+            "id": "add_padding_top",
+            "label": "Add padding top?",
+            "options": [
+                { "value": "padding-top", "label": "Yes" },
+                { "value": "", "label": "No" }
+            ],
+            "default": ""
+        },
+        {
+            "type": "select",
+            "id": "add_padding_bottom",
+            "label": "Add padding bottom?",
+            "options": [
+                { "value": "padding-bottom", "label": "Yes" },
+                { "value": "", "label": "No" }
+            ],
+            "default": ""
+        },
+        {
+            "type": "select",
+            "id": "add_margin_top",
+            "label": "Add margin top?",
+            "options": [
+                { "value": "margin-top", "label": "Yes" },
+                { "value": "", "label": "No" }
+            ],
+            "default": ""
+        },
+        {
+            "type": "select",
+            "id": "add_margin_bottom",
+            "label": "Add margin bottom?",
+            "options": [
+                { "value": "margin-bottom", "label": "Yes" },
+                { "value": "", "label": "No" }
+            ],
+            "default": ""
+        },
+        {
+            "type": "text",
+            "id": "custom_class",
+            "label": "Custom class"
+        },
+        {
+            "type": "select",
+            "id": "content_width",
+            "label": "Content Width",
+            "options": [
+                { "value": "", "label": "Content Full" },
+                { "value": "content-center", "label": "Content Center" }
+            ],
+            "default": ""
+        },
+        {
+            "type": "select",
+            "id": "content_align",
+            "label": "Content align",
+            "options": [
+                { "value": "text-left", "label": "Left" },
+                { "value": "text-center", "label": "Center" },
+                { "value": "text-right", "label": "Right" }
+            ],
+            "default": "text-center"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Banner"
+        },
+        {
+            "type": "select",
+            "id": "content_positon",
+            "label": "Content Order",
+            "options": [
+                { "value": "", "label": "Title Content" },
+                { "value": "title-left", "label": "Title Left - Content Right" },
+                { "value": "title-right", "label": "Title Right - Content Left" }
+            ],
+            "default": ""
+        },
+        {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text color",
+            "options": [
+                { "value": "text-light", "label": "Light" },
+                { "value": "text-dark", "label": "Dark" }
+            ],
+            "default": "text-dark"
+        },
+        {
+            "type": "select",
+            "id": "title_tag",
+            "label": "Title H Tag",
+            "options": [
+                { "value": "h1", "label": "H1" },
+                { "value": "h2", "label": "H2" },
+                { "value": "h3", "label": "H3" },
+                { "value": "h4", "label": "H4" },
+                { "value": "h5", "label": "H5" },
+                { "value": "h6", "label": "H6" }
+            ],
+            "default": "h2"
+        },  
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content",
+            "default": "<p>Lorem ipsum dolor sit amet</p>"
+        },
+        {
+            "type": "url",
+            "id": "link_1",
+            "label": "Button Link 1"
+        },
+        {
+            "type": "text",
+            "id": "button_text_1",
+            "label": "Button Text 1",
+            "default": "Shop Now"
+        },
+        {
+            "type": "url",
+            "id": "link_2",
+            "label": "Button Link 2"
+        },
+        {
+            "type": "text",
+            "id": "button_text_2",
+            "label": "Button Text 2",
+            "default": "Shop Now"
+        }
+    ],
+    "presets": [{
+        "name": "Juno Onecolumn Content",
+        "category": "Text"
+    }]
+}
+{% endschema %}

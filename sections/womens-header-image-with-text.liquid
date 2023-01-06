@@ -1,0 +1,51 @@
+<section class="mens-womens-landing-page-header">
+    <div class="container">
+        {% for block in section.blocks limit: section.blocks.size %}
+            <div class="image" style="background-image: url({{ block.settings.image | img_url: '1024x' }})">
+                <h1>{{ block.settings.header }}</h1>
+                <p>{{ block.settings.text }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% schema %}
+{
+	"name": "Header Image With Text",
+	"max_blocks": 1,
+	"blocks": [
+		{
+			"name": "Header Image With Text",
+			"type": "image_picker",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "Image"
+				},
+                {
+					"type": "text",
+					"id": "header",
+					"label": "Header"
+				},
+				{
+					"type": "textarea",
+					"id": "text",
+					"label": "Text"
+				}
+			]
+		}
+	],
+	"presets": [
+        {
+            "name": "Header Image With Text",
+            "category": "Image",
+            "blocks": [
+                {
+                    "type": "image_picker"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

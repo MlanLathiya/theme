@@ -1,0 +1,96 @@
+<div class="container">
+    {% for block in section.blocks limit: section.blocks.size %}
+        <h2>{{ block.settings.heading }}</h2>
+        <p>{{ block.settings.text }}</p>
+
+        <div class="stay_detail_2">
+            {% for i in (1..block.settings.rate) %}
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="checkbox_{{ i }}">
+                    <label class="form-check-label" for="checkbox_{{ i }}">checkbox_{{ i }}</label>
+                </div>
+            {% endfor %}
+        </div>
+
+    {% endfor %}
+
+
+    <div class="stay_detail_2">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" value="" id="men1">
+            <label class="form-check-label" for="men1">Women’s</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" value="" id="men2">
+            <label class="form-check-label" for="men2">Men’s</label>
+        </div>
+    </div>
+
+    <div class="stay_form">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Email Address" aria-label="" aria-describedby="button-addon2">
+            <button class="btn" type="button" id="button-addon2">SIGN UP</button>
+        </div>
+    </div>
+
+    <div class="receive_email">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" value="" id="mail1">
+            <label class="form-check-label" for="mail1">I’d like to receive emails from Josef Seibel. For details on how we use your information, please read our <a href="#">Privacy Policy</a> and <a href="#">Cookie Policy</a></label>
+        </div>
+    </div>
+
+</div>
+
+{% schema %}
+{
+    "name": "stay_sec",
+    "tag": "section",
+    "class": "stay_sec",
+    "max_blocks": 3,
+    "blocks": [
+        {
+            "name": "stay_sec",
+            "type": "text",
+            "settings": [
+                {
+                    "label": "Heading",
+                    "id": "heading",
+                    "type": "text"
+                },
+                {
+                    "label": "Text",
+                    "id": "text",
+                    "type": "text"
+                },
+                {
+                    "label": "Checkbox Count",
+                    "id": "checkbox",
+                    "type": "number"
+                },
+                {
+                    "label": "checkbox-1 Label",
+                    "id": "checkbox_1",
+                    "type": "text"
+                },
+                {
+                "label": "checkbox-2 Label",
+                "id": "checkbox_2",
+                "type": "text"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "stay_sec",
+            "category": "Text",
+            "blocks": [
+                {
+                    "type": "text"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

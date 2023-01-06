@@ -1,0 +1,152 @@
+$primary: #004136;
+$primaryRGB: rgb(18, 58, 47);
+$secondary: #333333;
+
+$grey: #1a1a1a;
+$lightGrey: #ECECEC;
+$darkGrey: #262626;
+$error: #e60000;
+
+$sectionPadding: 30px;
+
+$lightGreen: #44ab44;
+
+#emwis {
+    display: none;
+}
+
+.modal-container {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    position: relative;
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    .dark-area {
+        position: fixed;
+        display: block;
+        content: '';
+        background-color:rgba(#000, 0.6);
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+    #emwis-modal {
+        width: 90%;
+        max-width: 450px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background-color: #ffffff;
+        .modal-header, .modal-content {
+            padding: $sectionPadding / 2;
+            display: flex;
+        }
+        .modal-header {
+            background-color: $primary;
+            color: #ffffff;
+            align-items: center;
+            flex-direction: row;
+            justify-content: space-between;
+            h3 {
+                margin: 0;
+            }
+            .close-modal {
+                cursor: pointer;
+            }
+        }
+        .modal-content {
+            position: relative;
+            flex-direction: column;
+            .input-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                label {
+                    flex: 1;
+                }
+                input[type="email"] {
+                    padding: $sectionPadding / 4;
+                    font-size: 16px;
+                    flex: 1.5;
+                }
+                button {
+                    margin: ($sectionPadding / 2) 0 0 ($sectionPadding / 2);
+                    width: auto;
+                }
+                .error, .success {
+                    margin: 0;
+                    font-size: 14px;
+                }
+                .success {
+                    color: $lightGreen;
+                }
+
+                .newsletter-checkbox {
+                    margin-top: 15px;
+                }
+            }
+            .block-loader {
+                display: none;
+                background-color: rgba(#fff, 0.8);
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                align-items: center;
+                justify-content: center;
+                &.show {
+                    display: flex;
+                }
+                .loader {               
+                    width: 50px;
+                    height: 50px;
+                    min-width: 50px;
+                    display: block;
+                }
+            }
+        }
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.section-header {
+    padding: $sectionPadding;
+    border-bottom: 1px solid $lightGrey;
+    border-top: 1px solid $lightGrey;
+    margin-top: $sectionPadding / 2;
+    h2 {
+        margin-bottom: 0;
+    }
+    .container {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1300px;
+    }
+}
+
+
+/* Customer Login/ Register */
+
+#forgot-password-section, #login-section, #register-section {
+    form {
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        .flex-grid {
+            max-width: 1000px;
+        }
+    }
+}
+
+#customer_register_link {
+    text-decoration: underline;
+}

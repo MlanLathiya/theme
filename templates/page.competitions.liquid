@@ -1,0 +1,67 @@
+<section class="competitions-intro">
+    <div class="container">
+        <div class="flex-grid">
+            <div class="col col-7 info">
+                <h2>Competitions</h2>
+                {{ page.content }}
+                {% comment %}competition-entry-form{% endcomment %}
+                {% form 'contact', id: 'competitions-form' %}
+
+                    {% if form.posted_successfully? %}
+						<p class="form-success">
+							{{ 'contact.form.post_success' | t }}
+						</p>
+			        {% endif %}
+
+              <ul class="errors"></ul>
+ 					<p>
+                     We would love to say in touch with you via email, just to let you know about exciting new products, competitions, and any other brand news we think you may want to hear about!!  
+					<p>
+						Be assured that we will never pass your details on and your data will be processed in accordance with our <a href="/pages/privacy-policy">Privacy Policy</a>. 
+                    </p>
+                    <div id="contact-agree">
+                        <label>
+                            <input type="radio" name="contact[email_optin]" value="1" class="agree-to-be-contacted"><span>Yes please!</span>
+                        </label>
+                    </div>
+                    <div id="contact-decline">
+                        <label>
+                            <input type="radio" name="contact[email_optin]" value="0" class="agree-to-be-contacted"><span>No thanks </span>
+                        </label>
+                    </div>
+					<p>
+              		</p>
+                      
+                    {{ form.errors | default_errors }}
+                    
+                    <input type="hidden" name="contact[email_origin]" value="{{ page.url }}">
+                    <label for="email">Email Address</label>
+                    <input type="email" name="contact[email]" id="ContactFormEmail" placeholder="example@domain.com" value="{{ form.email }}"/>
+                    <input type="name" name="name" id="ContactFormEmail" placeholder="name" value="{{ form.email }}"/>
+
+
+                    {% assign competitions = settings.competition_list | split: ',' %}
+                    <label for="competition">Select Competition</label>
+                    <select id="competition" name="contact[competition]">
+                        {% for comp in competitions %}
+                        <option value="{{ comp }}" {% if form.competition == comp %}selected="selected"{% endif %}>{{ comp }}</option>
+                        {% endfor %}
+                    </select>
+                    <p class="success"></p>
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                   
+                {% endform %}
+            </div>
+            <div class="col col-5 images">
+                <div class="flex-grid">
+                    <div class="col col-12">
+                        <div class="inner" style="background-image:url({{ settings.competition_image_1 | img_url: '1024x' }})">
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

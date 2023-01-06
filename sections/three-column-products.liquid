@@ -1,0 +1,57 @@
+<section class="collections">
+	<div class="container">
+		<div class="row flex-grid">
+			{% for block in section.blocks limit: section.blocks.size %}
+				<div class="col col-4">
+					<div class="collection">
+						{% if block.settings.feature_collection_image  %}
+							<div class="image" style="background-image: url({{ block.settings.feature_collection_image | img_url: '405x' }})"></div>
+						{% else %}
+							<div class="image" style="background-image: url({{ collections[block.settings.feature_collection].image | img_url: '405x' }})"></div>
+						{% endif %}
+						<div class="info">
+							<h3>{{ collections[block.settings.feature_collection].title }}</h3>
+							<a href="{{ collections[block.settings.feature_collection].url }}" class="btn btn-primary">SHOP NOW</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+
+{% schema %}
+{
+	"name": "Product Collections",
+	"max_blocks": 3,
+	"blocks": [
+		{
+			"name": "Product Collection",
+			"type": "collection",
+			"settings": [
+				{
+					"type": "collection",
+					"id": "feature_collection",
+					"label": "Feature collection"
+				},
+				{
+					"type": "image_picker",
+					"id": "feature_collection_image",
+					"label": "Collection Image"
+				}
+			]
+		}
+	],
+	"presets": [
+        {
+            "name": "Product Collections",
+            "category": "Image",
+            "blocks": [
+                {
+                    "type": "collection"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

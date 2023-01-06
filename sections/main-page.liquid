@@ -1,0 +1,41 @@
+{% if section.settings.enable_title or section.settings.enable_content %}
+<div class="cms-page">
+   
+    <div class="page-width">
+        {% if section.settings.enable_title %}
+        <div class="page-title">
+            <h1 class="h4">{{ page.title }}</h1>
+        </div>
+        {% endif %}
+        {% if section.settings.enable_content %}
+        <div class="row">
+            <div class="cms-content">
+                {{ page.content }}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
+{% schema %}
+{
+    "name": "main-page",
+    "tag": "section",
+    "class": "spaced-section cms-main-content",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "enable_title",
+            "default": true,
+            "label": "enable_title"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_content",
+            "default": true,
+            "label": "enable_content"
+        }
+    ]
+}
+{% endschema %}

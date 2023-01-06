@@ -1,0 +1,50 @@
+<section class="brands-page-container">
+    <div class="container">
+        <h1>Shop By Brand</h1>
+        <div class="flex-grid">
+            {% for block in section.blocks limit: section.blocks.size %}
+                <div class="col col-4">
+                    <div class="inner">
+                        <a href="{{ collections[block.settings.feature_collection].url }}">
+                            <img src="{{ collections[block.settings.feature_collection].image | img_url: '1024x' }}" class="img-center"/>
+                            <div class="overlay">
+                                <span>Shop {{ collections[block.settings.feature_collection].title }}</span>
+                            </div> 
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+	"name": "Brand Collections",
+	"max_blocks": 100,
+	"blocks": [
+		{
+			"name": "Brand Collections",
+			"type": "collection",
+			"settings": [
+				{
+					"type": "collection",
+					"id": "feature_collection",
+					"label": "Brand collection"
+				}
+			]
+		}
+	],
+	"presets": [
+        {
+            "name": "Brand Collections",
+            "category": "Image",
+            "blocks": [
+                {
+                    "type": "collection"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

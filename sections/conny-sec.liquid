@@ -1,0 +1,150 @@
+<div class="row g-0 ">
+    <div class="col-lg-6 align-self-center">
+        <div class="details">
+            {% for block in section.blocks limit: section.blocks.size %}
+                <h3>{{ collections[block.settings.collection_name].title }}</h3>
+                <p>{{ collections[block.settings.collection_name].description }}</p>
+
+                {% for product in collections[block.settings.collection_name].products limit: collections[block.settings.collection_name].products.size %}
+                    {% if product.handle == block.settings.product_name %}
+                        {% for image in product.images limit: 1 %}
+                                <figure class="prod_image"><img src="{{ image | img_url: '405x' }}" alt=""></figure>
+                        {% endfor %}
+                        <h4>{{ product.title }}</h4>
+                        <div class="price">{{ product.price | money_with_currency }}</div>
+
+                        <div id="pwr-snippets" class="star_detail justify-content-center">
+                            <div id="pr-reviewsnippet"></div>
+                        </div>
+
+                        {% assign all_colours = "" %}
+                        {% assign available_colours = "" %}
+                        {% for product_option in product.options_with_values %}
+                            {% if product_option.name == 'Colour' %}
+                                {% assign colours = "" %}
+                                {% assign opt_vals = product_option.values %}
+                                {% for value in opt_vals %}
+                                    {% assign all_colours = all_colours | append: value | append: '<|>'  %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+
+                        {% assign all_colours = all_colours | split: "<|>" %}
+                        {% for colour in all_colours %}
+                            {% assign temp_colour = colour | strip | downcase %}
+                            {% for variant in product.variants %}
+
+                                {% assign variant_colour_value = variant.title | split: ' / ' | first | strip | downcase %}
+
+                                {% if variant_colour_value == temp_colour  %}
+                                    {% assign juno_stock = variant.metafields.juno.stock | strip %}
+                                    {% if  variant.available == false  %}
+                                        {% if juno_stock contains "hidden" %}
+                                            {% continue %}
+                                        {% endif %}
+                                    {% endif %}
+                                    {% assign available_colours = available_colours | append: colour | append: '<|>'  %}
+                                {% endif %}
+
+                            {% endfor %}
+                        {% endfor %}
+
+                        {% assign available_colours_array = available_colours | split: "<|>" | uniq %}
+                        {% if available_colours != "" %}
+                            <div class="color_info justify-content-center">
+                                {% for value in available_colours_array %}
+                                    {% for variant in product.variants %}
+                                        {% assign variant_colour_value = variant.title | split: ' / ' | first | strip | downcase %}
+                                        {% assign temp_colour = value | strip | downcase %}
+                                        {% if variant_colour_value == temp_colour  %}
+                                            {% assign has_swatch = false %}
+                                            {% for image in product.images %}
+                                                {% assign alt = image.alt %}
+                                                {% if alt contains 'swatch_' %}
+                                                    {% assign alt = alt | replace: 'swatch_', '' | strip | downcase  %}
+                                                    {% if alt == variant_colour_value %}
+                                                        <div class="form-check form-check-inline" data-toggle="tooltip" title="{{ value }}">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="ConnyRadio1" value="option1">
+                                                            <label class="form-check-label" for="ConnyRadio1"><img src="{{ image | img_url: '22x22', crop: 'center' }}" alt=""></label>
+                                                        </div>
+                                                        {% assign has_swatch = true%}
+                                                        {% break %}
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                            {% break %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <script src='//ui.powerreviews.com/stable/4.0/ui.js'></script>
+                        <script>
+                            POWERREVIEWS.display.render({
+                                api_key: "354c0837-4e2b-4ee9-843d-b0114e6e4f44",
+                                locale: "en_GB",
+                                merchant_group_id: "345204098",
+                                merchant_id: "2032301978",
+                                page_id: "{{ product.id }}",
+                                components: {
+                                    ReviewSnippet: "pr-reviewsnippet"
+                                }
+                            });
+                        </script>
+                    {% else %}
+                    {% endif %}
+                {% endfor %}
+                <a href="{{ collections[block.settings.collection_name].url }}" class="btns">EXPLORE</a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-lg-6">
+        {% for block in section.blocks limit: section.blocks.size %}
+            <figure class="big_image"><img src="{{ collections[block.settings.collection_name].image.src | img_url: 'x1920' }}" alt=""></figure>
+        {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "conny_sec",
+    "tag": "section",
+    "class": "conny_sec",
+	"max_blocks": 1,
+	"blocks": [
+		{
+			"name": "conny_sec",
+			"type": "collection",
+			"settings": [
+				{
+					"type": "collection",
+					"id": "collection_name",
+					"label": "collection"
+				},
+				{
+					"type": "textarea",
+					"id": "collection_text",
+					"label": "collection Text"
+				},
+				{
+					"type": "product",
+					"id": "product_name",
+					"label": "product"
+				}
+			]
+		}
+	],
+	"presets": [
+        {
+            "name": "conny_sec",
+            "category": "Image",
+            "blocks": [
+                {
+                    "type": "collection"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,32 @@
+<section class="cart-section">
+    <div class="container">
+        <h1>Your Cart</h1>
+        <p class="cart-quantity">{{ cart.item_count }} {{ cart.item_count | pluralize: 'Item', 'Items' }} ({{ cart.total_price | money }})</p>
+        <form action="/cart" method="post" class="product-form">
+            {% for item in cart.items %}
+                <div class="flex-grid row">
+                    <div class="col col-3 image">
+                        <img src="{{ item.product.featured_image | img_url: 'x1024' }}" />
+                    </div>
+                    <div class="col col-4 title">
+                        <p>{{ item.title }}</p>
+                    </div>
+                    <div class="col col-4 quantity">
+                        <label>Quantity</label>
+                        <input type="text" name="updates[]" size="4" id="updates_{{ item.id }}" value="{{ item.quantity }}" />
+                    </div>
+                    <div class="col col-1 remove">
+                        <a href="/cart/change?line={{ forloop.index }}&quantity=0">Remove</a>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="cart-total-container">
+                <p class="total"><span class="grey">Total</span> {{ cart.total_price | money }}</p>
+            </div>
+            <div class="buttons">
+                <input type="submit" value="Update Quantities" class="btn btn-secondary">
+                <input type="submit" name="checkout" value="Checkout" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+</section>

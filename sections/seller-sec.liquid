@@ -1,0 +1,283 @@
+<div class="container">
+    {% for block in section.blocks limit: section.blocks.size %}
+        <h2 class="clction_title"><span>{{ block.settings.collection_title }}</span></h2>
+        <div class="row g-48px">
+
+            {% comment %}{% for product in collections[block.settings.collection_name].products limit: collections[block.settings.collection_name].products.size %}
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="prod_block">
+                        <figure>
+                            <div class="sale">SALE</div>
+                            {% for image in product.images limit: product.images.size %}
+                                <img src="{{ image | img_url: '405x' }}" alt="" class="p_image" id="img-color1Radio1">
+                                {{ forloop.index }}
+                            {% endfor %}
+                            <img src="{{ 'seller_prod_1.jpg' | asset_url }}" alt="" class="p_image" id="img-color1Radio1">
+                            <img src="{{ 'seller_prod_2.jpg' | asset_url }}" alt="" class="p_image hide" id="img-color1Radio2">
+                            <img src="{{ 'seller_prod_3.jpg' | asset_url }}" alt="" class="p_image hide" id="img-color1Radio3">
+                            <img src="{{ 'seller_prod_4.jpg' | asset_url }}" alt="" class="p_image hide" id="img-color1Radio4">
+                            <img src="{{ 'seller_prod_2.jpg' | asset_url }}" alt="" class="p_image hide" id="img-color1Radio5">
+                        </figure>
+                        <div class="cap_info">
+                            <h3>JOSEF SEIBEL Maren 06</h3>
+                            <span class="price">£110.00GBP</span>
+                            <div class="star_detail">
+                                <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                                <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                                <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                                <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                                <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                                <span>4.9 &nbsp; 55 Reviews</span>
+                            </div>
+
+                            <div class="color_info">
+                                <div class="form-check form-check-inline" data-toggle="tooltip" title="Red">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" checked="checked" id="color1Radio1" value="option1">
+                                    <label class="form-check-label" for="color1Radio1"><img src="{{ 'color_2.png' | asset_url }}" alt=""></label>
+                                </div>
+
+                                <div class="form-check form-check-inline" data-toggle="tooltip" title="Gray">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="color1Radio2" value="option2">
+                                    <label class="form-check-label" for="color1Radio2"><img src="{{ 'color_1.png' | asset_url }}" alt=""></label>
+                                </div>
+
+                                <div class="form-check form-check-inline" data-toggle="tooltip" title="Black">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="color1Radio3" value="option3">
+                                    <label class="form-check-label" for="color1Radio3"><img src="{{ 'color_3.png' | asset_url }}" alt=""></label>
+                                </div>
+
+                                <div class="form-check form-check-inline" data-toggle="tooltip" title="Brown">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="color1Radio4" value="option4">
+                                    <label class="form-check-label" for="color1Radio4"><img src="{{ 'color_4.png' | asset_url }}" alt=""></label>
+                                </div>
+
+                                <div class="form-check form-check-inline" data-toggle="tooltip" title="Dark">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="color1Radio5" value="option5">
+                                    <label class="form-check-label" for="color1Radio5"><img src="{{ 'color_5.png' | asset_url }}" alt=""></label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}{% endcomment %}
+        </div>
+    {% endfor %}
+
+    <div class="row g-48px">
+        <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="prod_block">
+                <figure>
+                    <div class="sale">SALE</div>
+                    <img src="{{ 'seller_prod_1.jpg' | asset_url }}" alt="" class="p_image" id="img-color1Radio1">
+                    <img src="{{ 'seller_prod_2.jpg' | asset_url }}" alt="" class="p_image hide" id="img-color1Radio2">
+                    <img src="{{ 'seller_prod_3.jpg' | asset_url }}" alt="" class="p_image hide" id="img-color1Radio3">
+                    <img src="{{ 'seller_prod_4.jpg' | asset_url }}" alt="" class="p_image hide" id="img-color1Radio4">
+                    <img src="{{ 'seller_prod_2.jpg' | asset_url }}" alt="" class="p_image hide" id="img-color1Radio5">
+                </figure>
+                <div class="cap_info">
+                    <h3>JOSEF SEIBEL Maren 06</h3>
+                    <span class="price">£110.00GBP</span>
+                    <div class="star_detail">
+                        <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                        <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                        <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                        <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                        <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                        <span>4.9 &nbsp; 55 Reviews</span>
+                    </div>
+
+                    <div class="color_info">
+                        <div class="form-check form-check-inline" data-toggle="tooltip" title="Red">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" checked="checked" id="color1Radio1" value="option1">
+                            <label class="form-check-label" for="color1Radio1"><img src="{{ 'color_2.png' | asset_url }}" alt=""></label>
+                        </div>
+
+                        <div class="form-check form-check-inline" data-toggle="tooltip" title="Gray">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="color1Radio2" value="option2">
+                            <label class="form-check-label" for="color1Radio2"><img src="{{ 'color_1.png' | asset_url }}" alt=""></label>
+                        </div>
+
+                        <div class="form-check form-check-inline" data-toggle="tooltip" title="Black">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="color1Radio3" value="option3">
+                            <label class="form-check-label" for="color1Radio3"><img src="{{ 'color_3.png' | asset_url }}" alt=""></label>
+                        </div>
+
+                        <div class="form-check form-check-inline" data-toggle="tooltip" title="Brown">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="color1Radio4" value="option4">
+                            <label class="form-check-label" for="color1Radio4"><img src="{{ 'color_4.png' | asset_url }}" alt=""></label>
+                        </div>
+
+                        <div class="form-check form-check-inline" data-toggle="tooltip" title="Dark">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="color1Radio5" value="option5">
+                            <label class="form-check-label" for="color1Radio5"><img src="{{ 'color_5.png' | asset_url }}" alt=""></label>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="prod_block">
+                <figure>
+                    <div class="sale">SALE</div>
+                    <img src="{{ 'seller_prod_2.jpg' | asset_url }}" alt="" class="p_image" id="img-color2Radio1">
+                    <img src="{{ 'seller_prod_3.jpg' | asset_url }}" alt="" class="p_image hide" id="img-color2Radio2">
+                </figure>
+                <div class="cap_info">
+                    <h3>JOSEF SEIBEL Jonah 05</h3>
+                    <span class="price">£89.00GBP</span>
+                    <div class="star_detail">
+                        <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                        <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                        <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                        <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                        <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                        <span>4.9 &nbsp; 55 Reviews</span>
+                    </div>
+                    <div class="color_info">
+                        <div class="form-check form-check-inline" data-toggle="tooltip" title="Black">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" checked="checked" id="color2Radio1" value="option3">
+                            <label class="form-check-label" for="color2Radio1"><img src="{{ 'color_3.png' | asset_url }}" alt=""></label>
+                        </div>
+
+                        <div class="form-check form-check-inline" data-toggle="tooltip" title="Brown">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="color2Radio2" value="option4">
+                            <label class="form-check-label" for="color2Radio2"><img src="{{ 'color_4.png' | asset_url }}" alt=""></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="prod_block">
+                <figure>
+                    <div class="sale">SALE</div>
+                    <img src="{{ 'seller_prod_3.jpg' | asset_url }}" alt="" class="p_image" id="img-color3Radio1">
+                </figure>
+                <div class="cap_info">
+                    <h3>JOSEF SEIBEL Jasper 51</h3>
+                    <span class="price">£99.00GBP</span>
+                    <div class="star_detail">
+                        <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                        <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                        <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                        <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                        <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                        <span>5.0 &nbsp; 10 Reviews</span>
+                    </div>
+                    <div class="color_info">
+                        <div class="form-check form-check-inline" data-toggle="tooltip" title="Brown">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" checked="checked" id="color3Radio1" value="option4">
+                            <label class="form-check-label" for="color3Radio1"><img src="{{ 'color_4.png' | asset_url }}" alt=""></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 d-block d-md-none d-lg-block">
+            <div class="prod_block">
+                <figure>
+                    <div class="sale">SALE</div>
+                    <img src="{{ 'seller_prod_1.jpg' | asset_url }}" alt="" class="p_image" id="img-color4Radio1">
+                    <img src="{{ 'seller_prod_2.jpg' | asset_url }}" alt="" class="p_image hide" id="img-color4Radio2">
+                    <img src="{{ 'seller_prod_3.jpg' | asset_url }}" alt="" class="p_image hide" id="img-color4Radio3">
+                    <img src="{{ 'seller_prod_4.jpg' | asset_url }}" alt="" class="p_image hide" id="img-color4Radio4">
+                    <img src="{{ 'seller_prod_2.jpg' | asset_url }}" alt="" class="p_image hide" id="img-color4Radio5">
+                </figure>
+                <div class="cap_info">
+                    <h3>JOSEF SEIBEL Maren 06</h3>
+                    <span class="price">£110.00GBP</span>
+                    <div class="star_detail">
+                        <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                        <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                        <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                        <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                        <i><img src="{{ 'star.png' | asset_url }}" alt=""></i>
+                        <span>4.9 &nbsp; 55 Reviews</span>
+                    </div>
+                    <div class="color_info">
+                        <div class="form-check form-check-inline" data-toggle="tooltip" title="Red">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" checked="checked" id="color4Radio1" value="option1">
+                            <label class="form-check-label" for="color4Radio1"><img src="{{ 'color_2.png' | asset_url }}" alt=""></label>
+                        </div>
+
+                        <div class="form-check form-check-inline" data-toggle="tooltip" title="Gray">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="color4Radio2" value="option2">
+                            <label class="form-check-label" for="color4Radio2"><img src="{{ 'color_1.png' | asset_url }}" alt=""></label>
+                        </div>
+
+                        <div class="form-check form-check-inline" data-toggle="tooltip" title="Black">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="color4Radio3" value="option3">
+                            <label class="form-check-label" for="color4Radio3"><img src="{{ 'color_3.png' | asset_url }}" alt=""></label>
+                        </div>
+
+                        <div class="form-check form-check-inline" data-toggle="tooltip" title="Brwon">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="color4Radio4" value="option4">
+                            <label class="form-check-label" for="color4Radio4"><img src="{{ 'color_4.png' | asset_url }}" alt=""></label>
+                        </div>
+
+                        <div class="form-check form-check-inline" data-toggle="tooltip" title="Dark">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="color4Radio5" value="option5">
+                            <label class="form-check-label" for="color4Radio5"><img src="{{ 'color_5.png' | asset_url }}" alt=""></label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-100 text-center">
+        <a href="#" class="btns">SHOP</a>
+    </div>
+
+</div>
+
+{% schema %}
+{
+    "name": "seller_sec",
+    "tag": "section",
+    "class": "seller_sec",
+	"max_blocks": 1,
+	"blocks": [
+		{
+			"name": "seller_sec",
+			"type": "collection",
+			"settings": [
+				{
+					"type": "collection",
+					"id": "collection_name",
+					"label": "collection"
+				},
+				{
+					"type": "textarea",
+					"id": "collection_title",
+					"label": "collection Text"
+				},
+				{
+					"type": "product",
+					"id": "product_name",
+					"label": "product"
+				}
+			]
+		}
+	],
+	"presets": [
+        {
+            "name": "seller_sec",
+            "category": "Image",
+            "blocks": [
+                {
+                    "type": "collection"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

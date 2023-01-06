@@ -1,0 +1,52 @@
+<section>
+    <div class="container">
+        <h1 class="text-center">{{ settings.about_page_header }}</h1>
+        <p class="text-center margin-centered">{{ settings.about_page_intro_text }}</p>
+    </div>
+</section>
+
+<div class="video-wrapper">
+    <div class="video" id="video"></div>
+</div>
+
+<section class="about-the-brands-section">
+    <div class="container">
+        <div class="flex-grid">
+            <div class="col col-4">
+                <div class="inner">
+                    <div class="image">
+                        <img src="{{ 'js-hover-logo.png' | asset_url }}" class="img-center"/>
+                    </div>
+                    <div class="info">
+                        <p class="text-center">
+                            {{ settings.about_josef_seibel_text }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-4">
+                <div class="inner">
+                    <div class="image">
+                        <img src="{{ 'romika-hover-logo.png' | asset_url }}" class="img-center"/>
+                    </div>
+                    <div class="info">
+                        <p class="text-center">
+                            {{ settings.about_romika_text }}
+                    </div>
+                </div>
+            </div>
+            <div class="col col-4">
+                <div class="inner">
+                    <div class="image">
+                        <img src="{{ 'gerry-webber-hover-logo.png' | asset_url }}" class="img-center"/>
+                    </div>
+                    <div class="info">
+                        <p class="text-center">
+                            {{ settings.about_gerry_webber_text }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

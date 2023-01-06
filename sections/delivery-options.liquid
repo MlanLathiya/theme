@@ -1,0 +1,51 @@
+<div class="delivery-options-accordian">
+    {% for block in section.blocks %}
+        <div class="tab accordion-row">
+            <div class="tab-head">
+                <span class="label">{{ block.settings.option_name }}</span>
+                <span class="indicator"><i class="fas fa-plus"></i><i class="fas fa-minus"></i></span>
+            </div>
+            <div class="content">
+                <p>
+                    {{ block.settings.option_description }}
+                </p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% schema %}
+{
+    "name": "Product Delivery Options",
+    "max_blocks": 20,
+    "blocks": [
+        {
+            "type": "text",
+            "name": "Delivery Option",
+            "settings": [
+                {
+                    "label": "Option Name",
+                    "id": "option_name",
+                    "type": "text"
+                },
+                {
+                    "label": "Option Description",
+                    "id": "option_description",
+                    "type": "textarea"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Delivery Option",
+            "category": "Text",
+            "blocks": [
+                {
+                    "type": "text"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

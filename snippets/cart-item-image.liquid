@@ -1,0 +1,46 @@
+{% assign item_image = item.product.featured_image | img_url: 'x300' %}
+
+{% assign pImages = "" %}
+
+{% for image in item.product.images %}
+  {% assign imgUrl = image.src | product_img_url: 'x300' %}
+  {% assign pImages = pImages | append: imgUrl | append: "::" | append: image.id %}
+  {% unless forloop.last %}
+      {% assign pImages = pImages | append: "<||>"  %}
+  {% endunless %}
+{% endfor %}
+
+{% assign pImages = pImages | split: "<||>" %}
+{% assign pImages = pImages | sort %}
+
+{% assign colour_image_relations = item.product.metafields.op_suite.colour_image_relations | split: "<|>" %}
+{% assign colour_image_relations = colour_image_relations | sort %}
+
+{% assign colour_selected = item.variant.option1 %}
+
+{% assign selected_colour_img_ids = "" %}
+
+{% for col_rel in colour_image_relations %}
+{% assign col_rel_parts = col_rel | split: "::" %}
+{% comment %}Skip current iteration of the current colour (col_rel_parts[0]) isn't the selected colour of the item {% endcomment %}
+{% unless col_rel_parts[0] == colour_selected %}
+  {% continue %}
+{% endunless %}
+{% assign selected_colour_img_ids = selected_colour_img_ids | append: col_rel_parts[1] | append: "," %}
+{% endfor %}
+
+{% assign selected_colour_img_ids = selected_colour_img_ids | split: "," %}
+
+{% for img in pImages %}
+
+{% assign img_parts = img | split: "::" %}
+
+{% unless selected_colour_img_ids contains img_parts[1] %}
+  {% continue %}
+{% endunless %}
+
+{% assign item_image = img_parts[0] %}
+{% break %}
+{% endfor %}
+
+<img src="{{ item_image }}" alt="{{ item.title }} image" />

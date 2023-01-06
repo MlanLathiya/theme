@@ -1,0 +1,599 @@
+{% include 'usp-bar' %}
+
+{% unless product.type == 'Shoecare' %}
+    
+{% else %}
+
+{% endunless %}
+
+{% assign pImagesSorted = pImagesSorted | split: "<|>" %}
+
+{% assign upper_material = "" %}
+
+{% if product.metafields.op_suite.material %}
+    {% assign first_chars = product.metafields.op_suite.material | slice: 0, 2 %}
+    {% unless first_chars == "::" %}
+        {% assign materialSkus = product.metafields.op_suite.material | split: "<|>" %}
+        {% if materialSkus.size > 1 %}
+            {% assign materialSkus = materialSkus | sort %}
+            <script>var upperMaterialRelations = {};
+            {% for materialSku in materialSkus %}
+                {% assign materialSkuParts = materialSku | split: "::" %}
+                {% comment %}make upper_material variable the first material in list {% endcomment %}
+                {% if forloop.first %}
+                    {% assign upper_material = materialSkuParts[0] %}
+                {% endif %}
+                upperMaterialRelations['{{ materialSkuParts[1] }}'] = "{{ materialSkuParts[0] }}"
+            {% endfor %}
+            </script>
+        {% else %}
+            {% assign materialSkuParts = materialSkus | split: "::" %}
+            {% if materialSkuParts.size > 1 %}
+                {% assign upper_material = materialSkuParts[0] %}
+            {% else %}
+                {% assign upper_material = product.metafields.op_suite.material %}
+            {% endif %}
+        {% endif %}
+    {% endunless %}
+{% else %}
+    {% assign upper_material = product.metafields.opsuite.material %}
+{% endif %}
+
+{% assign price = product.price %}
+
+{% for opt in product.options_with_values %}
+  {% unless opt.name == 'Colour' || opt.name == 'Color' %}
+      {% continue %}
+  {% endunless %}
+  {% assign colourOpt = "option" | append: forloop.index %}
+  {% assign opt_vals = opt.values | sort %}
+  {% for variant in product.variants %}
+    {% if variant[colourOpt] == opt_vals[0] %}
+      {% assign price = variant.price %}
+      {% if variant.compare_at_price > variant.price %}
+        {% assign selectedVariantWasPrice = variant.compare_at_price %}
+      {% endif %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+<section class="product-container">
+	<div class="container">
+		<div class="row flex-grid">
+			<div class="col col-8 image">
+				<div id="featured-image-container">
+					<div class="loader">
+						<div class="loader-bar"></div>
+						<div class="loader-bar"></div>
+						<div class="loader-bar"></div>
+						<div class="loader-bar"></div>
+					</div>
+
+                    <div class="owl-carousel" id="product-main-images">
+                      	{% assign exclude = "" %}
+                        {% for image in product.images %}
+                            {% comment %}68602_juna02_192505_dunkelblau_womens_ss20_rrp_C2_A375.00_1{% endcomment %}      
+                            {% assign image_src = image.src | downcase %}
+                            {% assign image_alt = image.alt | downcase | strip %}
+                            {% for opt in product.options_with_values %}
+                                {% unless opt.name == 'Colour' || opt.name == 'Color' %}
+                                    {% continue %}
+                                {% endunless %}
+                                {% assign variant_colours = opt.values  %}                      
+                               
+                                {% for arr in variant_colours %}
+                                    {% assign variant_title = arr | downcase | strip %}
+
+                                    {% if variant_title == image_alt %}
+                       					{% assign exclude = exclude | append: image.id | append: "<|>" %}
+                      					
+                                        <div class="image-zoom" data-id="{{ image.id }}" data-value="alt::{{image_alt}}::title::{{variant_title}}" data-colour="{{arr}}">
+                                            <img src="{{ image | img_url: 'x1024' }}" data-zoom="{{ image | img_url: 'x1024' }}" alt="{{ image.alt | escape }}" />
+                                        </div>
+                                    
+                                    {% endif %}
+                      
+                      				
+                                {% endfor %}
+                            {% endfor %}
+                                
+                        {% endfor %}
+                      
+                        {% for image in product.images %}
+                              {% comment %}68602_juna02_192505_dunkelblau_womens_ss20_rrp_C2_A375.00_1{% endcomment %}      
+                              {% assign image_src = image.src | downcase %}
+                              {% assign image_alt = image.alt | downcase | strip %}
+                              {% for opt in product.options_with_values %}
+                                  {% unless opt.name == 'Colour' || opt.name == 'Color' %}
+                                      {% continue %}
+                                  {% endunless %}
+                                  {% assign variant_colours = opt.values  %}                      
+
+                                  {% for arr in variant_colours %}
+                                      {% assign variant_title = arr | downcase | strip %}
+
+                                        {% if exclude contains image.id %}
+                      
+                      					{% else %}
+                      						{% assign arr2 = variant_title | split : " - " %}
+                                            {% assign c1 = arr2[0] | strip | replace: "-", "" %}
+                                            {% assign c2 = arr2[1] | strip | replace: "-", "" %}
+                      						
+                      						{% if image_src contains c2  %}
+                       
+                                            	<div class="image-zoom"  data-id="{{ image.id }}" data-colour="{{arr}}">
+                                                    <img src="{{ image | img_url: 'x1024' }}" data-zoom="{{ image | img_url: 'x1024' }}" alt="{{ product.title | escape }}" />
+                                                </div>
+                                            {% endif %}
+                      					{% endif %}  
+
+                                  {% endfor %}
+                              {% endfor %}
+
+                          {% endfor %}
+                    </div>
+                  
+                 
+					
+					{% for tag in product.tags %}
+						{% if tag == 'wide-fit_Yes' %}
+							<span id="wide-fit">Wide Fit</span>
+						{% endif %}
+						{% if tag == 'waterproof_Yes' %}
+							<span id="waterproof">Waterproof</span>
+						{% endif %}
+					{% endfor %}
+				</div>
+				<div class="other-images-container">
+					<div class="owl-carousel slider-container" id="product-slider">
+                        
+                       
+                      
+                      
+                      	{% assign exclude = "" %}
+                        {% for image in product.images %}
+                            {% comment %}68602_juna02_192505_dunkelblau_womens_ss20_rrp_C2_A375.00_1{% endcomment %}      
+                            {% assign image_src = image.src | downcase %}
+                            {% assign image_alt = image.alt | downcase | strip %}
+                            {% for opt in product.options_with_values %}
+                                {% unless opt.name == 'Colour' || opt.name == 'Color' %}
+                                    {% continue %}
+                                {% endunless %}
+                                {% assign variant_colours = opt.values  %}                      
+                               
+                                {% for arr in variant_colours %}
+                                    {% assign variant_title = arr | downcase | strip %}
+
+                                    {% if variant_title == image_alt %}
+                       					{% assign exclude = exclude | append: image.id | append: "<|>" %}
+                      					
+                                        <div class="item" data-id="{{ image.id }}" data-colour="{{arr}}">
+                                            <img class="thumbnail" src="{{ image | img_url: 'x150' }}" alt="{{ image.alt | escape }}" />
+                                        </div>
+                                    
+                                    {% endif %}
+                      
+                      				
+                                {% endfor %}
+                            {% endfor %}
+                                
+                        {% endfor %}
+                      
+                        {% for image in product.images %}
+                              {% comment %}68602_juna02_192505_dunkelblau_womens_ss20_rrp_C2_A375.00_1{% endcomment %}      
+                              {% assign image_src = image.src | downcase %}
+                              {% assign image_alt = image.alt | downcase | strip %}
+                              {% for opt in product.options_with_values %}
+                                  {% unless opt.name == 'Colour' || opt.name == 'Color' %}
+                                      {% continue %}
+                                  {% endunless %}
+                                  {% assign variant_colours = opt.values  %}                      
+
+                                  {% for arr in variant_colours %}
+                                      {% assign variant_title = arr | downcase | strip %}
+
+                                        {% if exclude contains image.id %}
+                      
+                      					{% else %}
+                      						{% assign arr2 = variant_title | split : " - " %}
+                                            {% assign c1 = arr2[0] | strip | replace: "-", "" %}
+                                            {% assign c2 = arr2[1] | strip | replace: "-", "" %}
+                      						
+                      						{% if image_src contains c2  %}
+                       
+                                            	<div class="item" data-id="{{ image.id }}" data-colour="{{arr}}">
+                                                  <img class="thumbnail" src="{{ image | img_url: 'x150' }}" alt="{{ image.alt | escape }}" />
+                                              </div>
+                                            {% endif %}
+                      					{% endif %}  
+
+                                  {% endfor %}
+                              {% endfor %}
+
+                          {% endfor %}
+                      
+                      
+                        
+                        
+					</div>
+				</div>
+			</div>
+			<div class="col col-4 info">
+				<h1 class="product-name">{{ product.title  }}</h1>
+
+                {% comment %}
+                <!-- /snippets/bv-summary.liquid -->
+                <!-- Bazaarvoice Summary Container -->
+                {% endcomment %}
+                <div class="bv_main_container">
+                    <div data-bv-show="rating_summary" data-bv-product-Id="{{product.id}}">
+                        {% if product.metafields.bazaarvoice.reviews-aggregate-ratings %}
+                            {{ product.metafields.bazaarvoice.reviews-aggregate-ratings }}
+                        {% endif %}
+                    </div>
+                </div>
+                {% comment %}
+                <!-- End Bazaarvoice Summary Container -->
+                {% endcomment %}
+
+
+                <p class="was-price"><span class="money">{% if selectedVariantWasPrice %}{{ selectedVariantWasPrice | money }}{% endif %}</span></p>
+				        <p class="price">
+                      <span class="the-price {% if selectedVariantWasPrice %}sale{% endif %}"><span class="money">{{ price | money }}</span></span>
+                    {% comment %} <span class="the-price {% if product.compare_at_price_max > product.price %}sale{% endif %}">{% endcomment %} 
+                        <span class="Bold-theme-hook-DO-NOT-DELETE bold_product_page_price" style="display:none !important;">
+                        </span>
+                        <span class="Bold-theme-hook-DO-NOT-DELETE bold_product_price" 
+                            data-override-value-set="1" data-override-value="{{ product.price }}" style="display:none !important;">
+                        </span>
+                        {% comment %} {{ product.price | money }} 
+                    </span>{% endcomment %}
+                </p>
+				<p class="compare_at">was {{ product.compare_at_price_max | money }}</p>
+                
+                
+                <div class="default-short-desc short-desc">
+                    {% assign description = product.description %}
+                  {% assign description = description | split: '<h3>' %}
+                  {{ description[0] }}
+                  </div>
+                <div class="variant-short-desc short-desc"></div>
+
+				{% for product_option in product.options_with_values %}
+                    {% if product_option.name == 'Colour' || product_option.name == 'Color' %}
+                        {% comment %}
+                        <script>console.log({{ product_option.name | json }});</script>
+                        {% endcomment %}
+						<div class="color-swatches">
+                            {% assign opt_vals = product_option.values %}
+							{% for value in opt_vals %}
+                                {% assign colourParts = value | split: ' - ' %}
+								<a class="color-swatch" id="{{ colourParts[0] | downcase }}">
+									<span class="tooltiptext">{{ value }}</span>
+								</a>
+							{% endfor %}
+						</div>
+					{% endif %}
+				{% endfor %}
+				<form action="/cart/add" method="post" enctype="multipart/form-data" class="product-form product-page {% if product.variants.size > 1 %}has-variants{% endif %}" id="AddToCartForm">
+                    {% assign opt_count = 0 %}
+                    {% assign selected_colour = "" %}
+                    {% assign first_options = "" %}
+                    {% for product_option in product.options_with_values %}
+                        {% assign opt_count = opt_count | plus: 1 %}
+                        <label>{{product_option.name}}</label>
+                        <select class="option-select" name="option{{ opt_count }}"> 
+                            {% assign opt_vals = product_option.values %}
+
+                            {% assign first_options = first_options | append: opt_vals.first | append: "<|>" %}
+
+                            {% if product_option.name == 'Colour' %}
+                                {% for value in opt_vals %}
+                                    {% if forloop.first %}{% assign selected_colour = value %}{% endif %}
+                                    <option data-valuehandle="{{ value | handleize }}" value="{{ value }}" {% if forloop.first %}selected{% endif %}>
+                                        {{ value }}
+                                    </option>
+                                {% endfor %}
+                            {% endif %}
+                        </select>
+                    {% endfor %} 
+					<input id="product-handle" type="hidden" name="handle" value="{{ product.handle }}" /> 
+                    {% assign first_options = first_options | split: "<|>" %}
+                    {% assign variant_id = "" %}
+                    {% for variant in product.variants %}
+                        {% if first_options contains variant.option1 and first_options contains variant.option2 %}
+                            {% assign variant_id = variant.id %}
+                            {% break %}
+                        {% endif %}
+                    {% endfor %}
+                    <input id="variant-selected" type="hidden" name="id" value="{{ variant_id }}" /> 
+					<label for="quantity">{{ 'products.product.quantity' | t }}</label>
+                    <div class="quantity-selector product-page">
+                            <div class="action decrement">
+                                <span>-</span>
+                            </div>
+                            <div class="value">
+                                <span data-max-qty="20">1</span>
+                            </div>
+                            <div class="action increment">
+                                <span>+</span>
+                            </div>
+                            <input type="hidden" name="quantity" class="qty_value" value="1" />
+                        </div>
+                    {% comment %}    
+					{% unless product.available %}
+						<button type="submit" name="add" id="sold" class="btn" disabled>
+							<span>
+								{{ 'products.product.sold_out' | t }}
+							</span>
+						</button>
+                        {% if product.variants.size > 1 %}
+                            <button type="button" name="emwis" id="emwis" class="btn btn-secondary">
+                                <span>{{ "Email me when in stock" }}</span>
+                            </button>
+						{% endif %}
+					{% else %}
+                    {% endunless %}
+                    {% endcomment %}
+						<span class="error cart-error"></span>
+						<div class="flex-grid">
+							<div class="col col-12">
+								<button type="submit" name="add" id="add-to-cart" class="btn btn-primary">
+									<span>{{ 'products.product.add_to_cart' | t }}</span>
+                                </button>
+                                <button data-product-id="{{product.id}}" type="button" name="emwis" id="emwis" class="btn btn-secondary">
+                                    <span>{{ "Email me when in stock" }}</span>
+                                </button>
+                                
+                                {% comment %}
+                                  {% if product.variants.size > 1 %}
+									<button type="button" name="emwis" id="BIS_trigger" class="btn btn-secondary">
+									    <span>{{ "Email me when in stock" }}</span>
+								    </button>
+								{% endif %}
+								{% if product.variants.size > 1 %}
+									<span id="clear-opts">Clear Selection</span>
+								{% endif %}
+                              	{% endcomment %}
+							</div>
+						</div>
+				</form>
+				<div class="social-share-section">
+					<span>SHARE ME</span>
+					{% include 'social-share-icons' %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="product-tabs-container">
+	<div class="container">
+
+		<div class="tabs" id="product-tabs">
+			<div class="tab active" data-for="spec">Specification</div>
+			<div class="tab" data-for="desc">Description</div>
+			<div class="tab" data-for="rev" id="bv_reviews_tab">Reviews</div>
+			<div class="tab" data-for="del">Delivery/Returns</div>
+		</div>
+
+		{% comment %} <div id="tab-content">
+            {% capture spec_content %}
+		
+            {% endcapture %}
+            {{ spec_content }}
+        </div> {% endcomment %}
+        
+        
+
+		<div id="spec" class="tab-option" style="display: block;">
+            <div class="flex-grid specs">
+                <div class="col col-2 label">
+                    Upper Material
+                </div>
+                <div class="col col-10 value upper-material-val">   
+                    <div class="default-value">
+                        {% for tag in product.tags %}
+                            {% if tag contains 'upper-material_' %}                            
+                                {{ tag | remove: 'upper-material_'  }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>  
+                    
+                    {% for product_option in product.options_with_values %}
+                        {% for value in product_option.values %}
+                          {% assign variant_tag = 'upper-material-' | append: value | handleize | append: '_' %}
+                          {% for tag in product.tags %}
+                              {% if tag contains variant_tag %}  
+                                  <div class="variant-value {{ value | handleize }}">{{ tag | remove: variant_tag  }}</div>
+                              {% endif %}
+                          {% endfor %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+                <div class="col col-2 label">
+                    Lining Material
+                </div>
+                <div class="col col-10 value" id="lining_material">
+                    <div class="default-value">
+                        {% for tag in product.tags %}
+                            {% if tag contains 'lining-material_' %}                            
+                                {{ tag | remove: 'lining-material_'  }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>  
+                    
+                    {% for product_option in product.options_with_values %}
+                        {% for value in product_option.values %}
+                          {% assign variant_tag = 'lining-material-' | append: value | handleize | append: '_' %}
+                          {% for tag in product.tags %}
+                              {% if tag contains variant_tag %}  
+                                  <div class="variant-value {{ value | handleize }}">{{ tag | remove: variant_tag  }}</div>
+                              {% endif %}
+                          {% endfor %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+                <div class="col col-2 label">
+                    Sole Material
+                </div>
+                <div class="col col-10 value">                   
+
+                    <div class="default-value">
+                        {% for tag in product.tags %}
+                            {% if tag contains 'sole-material_' %}                            
+                                {{ tag | remove: 'sole-material_'  }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>  
+                    
+                    {% for product_option in product.options_with_values %}
+                        {% for value in product_option.values %}
+                          {% assign variant_tag = 'sole-material-' | append: value | handleize | append: '_' %}
+                          {% for tag in product.tags %}
+                              {% if tag contains variant_tag %}  
+                                  <div class="variant-value {{ value | handleize }}">{{ tag | remove: variant_tag  }}</div>
+                              {% endif %}
+                          {% endfor %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+                   <div class="col col-2 label">
+                    Fastening Type
+                </div>
+                <div class="col col-10 value">
+                   
+                    <div class="default-value">
+                        {% for tag in product.tags %}
+                            {% if tag contains 'fastening-type_' %}                            
+                                {{ tag | remove: 'fastening-type_'  }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>  
+                    
+                    {% for product_option in product.options_with_values %}
+                        {% for value in product_option.values %}
+                          {% assign variant_tag = 'fastening-type-' | append: value | handleize | append: '_' %}
+                          {% for tag in product.tags %}
+                              {% if tag contains variant_tag %}  
+                                  <div class="variant-value {{ value | handleize }}">{{ tag | remove: variant_tag  }}</div>
+                              {% endif %}
+                          {% endfor %}
+                        {% endfor %}
+                    {% endfor %}
+
+                </div>
+                <div class="col col-2 label">
+                    Removable Insole
+                </div>
+                <div class="col col-10 value">
+                    
+                    <div class="default-value">
+                        {% for tag in product.tags %}
+                            {% if tag contains 'removable-insole_' %}                            
+                                {{ tag | remove: 'removable-insole_'  }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>  
+                    
+                    {% for product_option in product.options_with_values %}
+                        {% for value in product_option.values %}
+                          {% assign variant_tag = 'removable-insole-' | append: value | handleize | append: '_' %}
+                          {% for tag in product.tags %}
+                              {% if tag contains variant_tag %}  
+                                  <div class="variant-value {{ value | handleize }}">{{ tag | remove: variant_tag  }}</div>
+                              {% endif %}
+                          {% endfor %}
+                        {% endfor %}
+                    {% endfor %}
+
+                </div>
+                <div class="col col-2 label">
+                    Wide Fit
+                </div>
+                <div class="col col-10 value">
+                    <div class="default-value">
+                        {% for tag in product.tags %}
+                            {% if tag contains 'wide-fit_' %}                            
+                                {{ tag | remove: 'wide-fit_'  }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>  
+                    
+                    {% for product_option in product.options_with_values %}
+                        {% for value in product_option.values %}
+                          {% assign variant_tag = 'wide-fit-' | append: value | handleize | append: '_' %}
+                          {% for tag in product.tags %}
+                              {% if tag contains variant_tag %}  
+                                  <div class="variant-value {{ value | handleize }}">{{ tag | remove: variant_tag  }}</div>
+                              {% endif %}
+                          {% endfor %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+		</div>
+
+		<div id="desc" class="tab-option">		
+            <h3>Description</h3>
+            <div class="default-long-desc">
+                {% for tabContent in description %}
+
+                {% assign thisTabsContents = tabContent | split: "</h3>" %}
+
+
+                {% assign thisTitleCheck = thisTabsContents[0] | downcase | trim %}
+                {% if thisTitleCheck == 'description' %}
+                    {{ thisTabsContents[1] }}
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="variant-long-desc"></div>
+		</div>
+
+		<div id="rev" class="tab-option">
+			<h3>Reviews</h3>
+            
+            {% comment %}
+            <!-- /snippets/bv-ratings-reviews.liquid -->
+            <!-- Bazaarvoice Ratings & Reviews -->
+            {% endcomment %}
+            <div data-bv-show="reviews" data-bv-product-Id="{{product.id}}">
+            {% if product.metafields.bazaarvoice.reviews %}
+            {{ product.metafields.bazaarvoice.reviews }}
+            {% endif %}
+            </div>
+            <div data-bv-show="questions" data-bv-product-Id="{{product.id}}">
+            {% if product.metafields.bazaarvoice.questions %}
+            {{ product.metafields.bazaarvoice.questions }}
+            {% endif %}
+            </div>
+            {% comment %}
+            <!-- End Bazaarvoice Ratings & Reviews -->
+            {% endcomment %}
+
+			{% comment %} {% include 'product-reviews' %} {% endcomment %}
+		</div>
+
+		<div id="del" class="tab-option">
+			{% section 'delivery-options' %}
+		</div>
+
+	</div>
+</section>
+
+<script>
+    {% if product.metafields.op_suite.colour_field_data %}
+        var colourFieldData = JSON.parse({{ product.metafields.op_suite.colour_field_data | json }}); 
+        document.getElementById('desc').getElementsByTagName('P')[0].innerHTML = Object.values(colourFieldData)[0].description;
+    {% endif %}
+</script>
+
+{% comment %}
+{% include 'emwis-form' %}
+{% endcomment %}
+{% include 'back-in-stock-form' %}
+
+
+{% include 'related-products' %}

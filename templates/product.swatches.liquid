@@ -1,0 +1,81 @@
+{% layout none %}
+			 
+    {% assign all_colours = "" %}
+    {% assign available_colours = "" %}
+    {% for product_option in product.options_with_values %}
+            {% if product_option.name == 'Colour' || product_option.name == 'Color' %}
+                {% assign colours =  %}
+                {% assign opt_vals = product_option.values %}
+                    {% for value in opt_vals %}
+                        {% assign all_colours = all_colours | append: value | append: '<|>'  %}
+                {% endfor %}                         
+            {% endif %}
+    {% endfor %}              	
+    {% assign all_colours = all_colours | split: "<|>" %}              
+    
+    {% for colour in all_colours %}
+        {% assign temp_colour = colour | strip | downcase %}
+        {% for variant in product.variants %}
+    
+            {% assign variant_colour_value = variant.title | split: ' / ' | first | strip | downcase %}
+            
+            
+            {% if variant_colour_value == temp_colour  %}
+                {% assign juno_stock = variant.metafields.juno.stock | strip %}
+                {% if  variant.available == false  %}
+                    {% if juno_stock contains "hidden" %}
+
+                        {% continue %}
+                        
+                    {% endif %}
+                {% endif %}
+                {% assign available_colours = available_colours | append: colour | append: '<|>'  %}
+            {% endif %}
+
+        {% endfor %}
+    {% endfor %}
+
+    {% assign available_colours_array = available_colours | split: "<|>" | uniq %}
+    
+
+    {% if available_colours != "" %}              	
+    <div class="collection-swatches">
+        {% for value in available_colours_array %}
+        {% for variant in product.variants %}
+            {% assign variant_colour_value = variant.title | split: ' / ' | first | strip | downcase %}
+            {% assign temp_colour = value | strip | downcase %}
+            {% if variant_colour_value == temp_colour  %}
+                {% assign large_image = variant.image  %}
+                {% assign has_swatch = false %}
+                {% for image in product.images %}
+                    {% assign alt = image.alt %}
+                    {% if alt contains 'swatch_' %}
+                        {% assign alt = alt | replace: 'swatch_', '' | strip | downcase  %}
+                        {% if alt == variant_colour_value %}
+                            <a class="color-swatch" data-image="{{ large_image | img_url: 'large' }}" style="background-image: url({{ image | img_url: '150x150', crop: 'center' }});">
+                                <span class="tooltiptext">{{ value }}</span>
+                            </a>
+                            {% assign has_swatch = true%}
+                            {% break %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+
+
+                {% if  has_swatch == false %}
+                    {% if variant.image %}
+                        <a class="color-swatch" data-image="{{ variant.image | img_url: 'large' }}" style="background-image: url({{ variant.image | img_url: '300x300', crop: 'center' }});">
+                            <span class="tooltiptext">{{ value }}</span>
+                        </a>
+                    {% else %}
+                    <a class="color-swatch" id="{{ value | split: " - " | first  | downcase }}">
+                        <span class="tooltiptext">{{ value }}</span>
+                    </a>
+                    {% endif %}                            
+                {% endif %}
+            {% break %}
+            {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </div>
+    {% endif %}

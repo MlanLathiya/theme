@@ -1,0 +1,50 @@
+<section class="featured-collection">
+	<div class="container">
+		<div class="row flex-grid">
+			{% for block in section.blocks limit: section.blocks.size %}
+				<div class="image col col-8" style="background-image: url({{ collections[block.settings.feature_collection].image | img_url: '870x' }})"></div>
+				<div class="info col col-4">
+					<h3>{{ collections[block.settings.feature_collection].title }}</h3>
+					<p>{{ block.settings.feature_collection_text }}</p>
+					<a href="{{ collections[block.settings.feature_collection].url }}" class="btn btn-primary">Shop Now</a>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+
+{% schema %}
+{
+	"name": "Featured Collection",
+	"max_blocks": 1,
+	"blocks": [
+		{
+			"name": "Featured Collection",
+			"type": "collection",
+			"settings": [
+				{
+					"type": "collection",
+					"id": "feature_collection",
+					"label": "Featured collection"
+				},
+				{
+					"type": "textarea",
+					"id": "feature_collection_text",
+					"label": "Featured Collection Text"
+				}
+			]
+		}
+	],
+	"presets": [
+        {
+            "name": "Featured Collection",
+            "category": "Image",
+            "blocks": [
+                {
+                    "type": "collection"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

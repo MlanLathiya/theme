@@ -1,0 +1,31 @@
+<div class="cms-sections">
+  {% for block in section.blocks %}
+      {% case block.type %}
+  
+          {% when 'banner-one' %}
+          {% include 'cms-banner-one' %}
+  
+          {% when 'banner-two' %}
+          {% include 'cms-banner-two' %}
+  
+          {% when 'banner-three' %}
+          {% include 'cms-banner-three' %}
+  
+          {% when 'banner-four' %}
+          {% include 'cms-banner-four' %}
+  
+          {% when 'twocolumn-image-content' %}
+          {% include 'cms-twocolumn-image-content' %}
+		  
+		    {% when 'twocolumn-2content' %}
+          {% include 'cms-twocolumn-2content' %}
+  
+          {% when 'twocolumn-content-video' %}
+          {% include 'cms-twocolumn-content-video' %}
+  
+          {% when 'onecolumn-content' %}
+          {% include 'cms-onecolumn-content' %}
+  
+      {% endcase %}
+  {% endfor %}    
+</div>
