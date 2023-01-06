@@ -825,10 +825,20 @@
       "my-sec": {
         "type": "my-sec",
         "blocks": {
-          
+          "ece7e867-4624-4cec-bc41-c34c6a99b9cc": {
+            "type": "collection",
+            "settings": {
+              "heading": "#myjosefseibeluk",
+              "side_heading": "Day 18: Exploring Marrakesh,<br> with my sturdy pair of <span>Josef Seibels<\/span> to keep the trek going...",
+              "side_text": "The next instalment of Emily’s epic journey of North Africa as she finally reaches her destination.",
+              "background_image": "shopify:\/\/shop_images\/my_image_1.jpg",
+              "person_image": "shopify:\/\/shop_images\/my_image_3.jpg",
+              "product_image": "shopify:\/\/shop_images\/my_image_2.png"
+            }
+          }
         },
         "block_order": [
-          "1b43076e-9885-4b29-92d5-aa496938fbb5"
+          "ece7e867-4624-4cec-bc41-c34c6a99b9cc"
         ],
         "settings": {
         }
@@ -882,10 +892,7 @@
             "type": "text",
             "settings": {
               "heading": "Stay in the loop",
-              "text": "Subscribe to our mailing list and be the first to hear about the latest arrivals, new collections and promotions",
-              "checkbox": 2,
-              "checkbox_1": "Women’s",
-              "checkbox_2": "Men’s"
+              "text": "Subscribe to our mailing list and be the first to hear about the latest arrivals, new collections and promotions"
             }
           }
         },
