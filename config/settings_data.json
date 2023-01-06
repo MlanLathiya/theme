@@ -855,10 +855,32 @@
               "star_image": "shopify:\/\/shop_images\/star_white.png",
               "customer_logo": "shopify:\/\/shop_images\/customer_logo.png"
             }
+          },
+          "0f7795f4-a90a-4514-b76e-9a3e19cb84fe": {
+            "type": "collection",
+            "settings": {
+              "heading": "",
+              "comment": "Love my Josef Seibel shoes. Bought them to replace my last ones which only needed replacing because I had worn down the heels.",
+              "rate": 5,
+              "star_image": "shopify:\/\/shop_images\/star_white.png",
+              "customer_logo": "shopify:\/\/shop_images\/customer_logo.png"
+            }
+          },
+          "51646d99-490d-4333-9f7d-10dcd97984a9": {
+            "type": "collection",
+            "settings": {
+              "heading": "",
+              "comment": "These shoes fit perfectly. They are some of the most comfortable shoes I have owned. I have received several compliments from friends and strangers about them.",
+              "rate": 2,
+              "star_image": "shopify:\/\/shop_images\/star_white.png",
+              "customer_logo": "shopify:\/\/shop_images\/customer_logo.png"
+            }
           }
         },
         "block_order": [
-          "6cf4f42e-a28d-4f00-87ae-54f49b9e7f86"
+          "6cf4f42e-a28d-4f00-87ae-54f49b9e7f86",
+          "0f7795f4-a90a-4514-b76e-9a3e19cb84fe",
+          "51646d99-490d-4333-9f7d-10dcd97984a9"
         ],
         "settings": {
         }
