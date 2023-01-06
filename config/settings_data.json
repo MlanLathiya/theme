@@ -825,12 +825,23 @@
       "my-sec": {
         "type": "my-sec",
         "blocks": {
-         
+          "1b43076e-9885-4b29-92d5-aa496938fbb5": {
+            "type": "collection",
+            "settings": {
+              "heading": "#myjosefseibeluk",
+              "side_heading": "Day 18: Exploring Marrakesh,<br> with my sturdy pair of <span>Josef Seibels<\/span> to keep the trek going...",
+              "side_text": "The next instalment of Emily’s epic journey of North Africa as she finally reaches her destination.",
+              "background_image": "shopify:\/\/shop_images\/my_image_1.jpg",
+              "person_image": "shopify:\/\/shop_images\/my_image_3.jpg",
+              "product_image": "shopify:\/\/shop_images\/my_image_2.png"
+            }
+          }
         },
         "block_order": [
-          "my_sec_1"
+          "1b43076e-9885-4b29-92d5-aa496938fbb5"
         ],
-        "settings": {}
+        "settings": {
+        }
       },
       "customer-sec": {
         "type": "customer-sec",
