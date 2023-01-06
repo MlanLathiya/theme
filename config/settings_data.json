@@ -825,17 +825,7 @@
       "my-sec": {
         "type": "my-sec",
         "blocks": {
-          "my_sec_1": {
-            "type": "text",
-            "settings": {
-              "heading": "#myjosefseibeluk",
-              "side_heading": "Day 18: Exploring Marrakesh,<br> with my sturdy pair of <span>Josef Seibels</span> to keep the trek going... ",
-              "side_text": "The next instalment of Emily’s epic journey of North Africa as she finally reaches her destination. ",
-              "background_image": "my_image_1.jpg",
-              "person_image": "my_image_3.jpg",
-              "product_image": "my_image_2.png"
-            }
-          }
+         
         },
         "block_order": [
           "my_sec_1"
