@@ -5,7 +5,7 @@
     </h2>
     <div class="row g-48px">
       {% for product in collections[block.settings.collection_name].products
-        limit: collections[block.settings.collection_name].products.size
+        limit: 3
       %}
         {% assign waterproof = false %}
         {% assign removableInsole = false %}
@@ -187,36 +187,6 @@
                       {% endif %}
                     {% endfor %}
                   {% endfor %}
-                {% endif %}
-              </div>
-
-              <div class="feature_info">
-                {% if waterproof %}
-                  <img src="{{ 'waterproof_1.jpg' | asset_url }} " alt="">
-                {% endif %}
-
-                {% if removableInsole %}
-                  <img src="{{ 'aside_feature_icon3.png' | asset_url }} " alt="">
-                {% endif %}
-
-                {% if vegan %}
-                  <img src="{{ 'vegan_1.jpg' | asset_url }} " alt="">
-                {% endif %}
-
-                {% if fasteningTypeLace %}
-                  <img src="{{ 'aside_feature_icon5.png' | asset_url }} " alt="">
-                {% endif %}
-
-                {% if zip %}
-                  <img src="{{ 'aside_feature_icon6.png' | asset_url }} " alt="">
-                {% endif %}
-
-                {% if wideFit %}
-                  <img src="{{ 'aside_feature_icon7.png' | asset_url }} " alt="">
-                {% endif %}
-
-                {% if leather %}
-                  <img src="{{ 'aside_feature_icon8.png' | asset_url }} " alt="">
                 {% endif %}
               </div>
             </div>
