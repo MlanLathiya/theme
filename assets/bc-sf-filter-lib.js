@@ -8059,7 +8059,6 @@ BCSfFilter.prototype.init = function () {
     if (i && (bcSfFilterMainConfig.settings.general.showOutOfStockOption = j), "" != c) {
         var m = this.getTemplate("filterOptionRating"),
             n = "multiple" == a.selectType && void 0 !== a.showExactRating && 1 == a.showExactRating ? this.getClass("filterOptionMultipleList") : "";
-        console.log("aaa: ", a)
         m = m.replace(/{{itemMultipleSelect}}/g, n), m = m.replace(/{{itemList}}/g, c), this.buildFilterOption(m, a, b)
     }
 }, BCSfFilter.prototype.buildFilterOptionRatingData = function (a, b, c, d, e, f, g) {
