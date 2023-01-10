@@ -1232,7 +1232,8 @@ ul.footer_link li a:hover {
     font-weight: 700;
     letter-spacing: 1.1px;
     background: #ff0000;
-    position: absolute;
+    position: relative;
+    z-index: 500;
     left: -17px;
     top: 26px;
 }

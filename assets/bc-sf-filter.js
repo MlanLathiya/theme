@@ -18,16 +18,18 @@ var bcSfFilterTemplate = {
     // Grid Template
     'productGridItemHtml': '<div class="product col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-30">' +
         '<div class="prod_block {{soldOutClass}} {{saleClass}}">' +
+        '{{sale}}' +
         '<div class="image" data-featured-image="{{itemThumbUrl}}" style="background-image: url({{itemThumbUrl}})">' +
         '<a href="{{itemUrl}}"></a>' +
         '<div class="swatch-hover"></div>' +
         '</div>' +
-        '<div class="info">' +
+        '<div class="info cap_info">' +
         '<h3><a href="{{itemUrl}}">{{itemTitle}}</a></h3>' +
         //'<div data-bv-show="inline_rating" data-bv-product-Id="{{itemId}}" data-bv-redirect-url="{{itemUrl}}"></div>' +
-        '<div class="pwr-category-snippets"><div class="review-id" id="snippet-{{itemId}}" data-id="snippet-{{itemId}}"></div></div>' +
         '{{itemPrice}}' +
+        '<div class="pwr-category-snippets"><div class="review-id" id="snippet-{{itemId}}" data-id="snippet-{{itemId}}"></div></div>' +
         '{{itemSwatches}}' +
+        '{{feature}}' +
         '</div>' +
         '</div>' +
         '</div>',
@@ -81,28 +83,9 @@ BCSfFilter.prototype.buildProductGridItem = function (data, index) {
 
 
     var itemPriceHtml = '';
-    //     if (data.title != '')  {
-    //         itemPriceHtml += '<p class="price">';   
-    //         if (priceVaries && !onSale){
-    //           itemPriceHtml += '<span class="from-text">From </span>';
-    //         }
+    var saleDiv = '';
+    var feature = '';
 
-    //       	if (onSale){
-    //           itemPriceHtml += '<span class="from-text">From </span>';
-    //           itemPriceHtml += '<span class="the-price sale">';
-
-    //         }else{
-    //           itemPriceHtml += '<span class="the-price">';
-    //         }
-    //       	itemPriceHtml += '<span class="Bold-theme-hook-DO-NOT-DELETE bold_product_page_price" style="display:none !important;"></span>';
-    //       	itemPriceHtml += '<span class="Bold-theme-hook-DO-NOT-DELETE bold_product_price" data-override-value-set="1" data-override-value="'+data.price_min+'" style="display:none !important;"></span>';
-
-    //       	itemPriceHtml += this.formatMoney(data.price_min);
-
-    //       	itemPriceHtml += '</span>';
-
-    //         itemPriceHtml += '</p>';
-    //     }
     if (data.title != '') {
         var minPriceAvailableVariant = data.price_min;
         var minCompareAtPriceAvailableVariant = data.compare_at_price_min;
@@ -123,24 +106,62 @@ BCSfFilter.prototype.buildProductGridItem = function (data, index) {
         }
 
         itemPriceHtml += '<p class="price">';
-        //         if (priceVaries && !onSale){
-        //           itemPriceHtml += '<span class="from-text">From </span>';
-        //         }
-
-        if (onSale) {
-            itemPriceHtml += '<span class="from-text">From </span>';
-            itemPriceHtml += '<span class="the-price sale">';
-        } else {
-            itemPriceHtml += '<span class="the-price">';
+        itemPriceHtml += '<span class="the-price">';
+        if (data.tags.includes("sale")) {
+            saleDiv = '<div class="sale">SALE</div>';
         }
+        itemHtml = itemHtml.replace(/{{sale}}/g, saleDiv);
+
         itemPriceHtml += '<span class="Bold-theme-hook-DO-NOT-DELETE bold_product_page_price" style="display:none !important;"></span>';
         itemPriceHtml += '<span class="Bold-theme-hook-DO-NOT-DELETE bold_product_price" data-override-value-set="1" data-override-value="' + data.price_min + '" style="display:none !important;"></span>';
 
-        itemPriceHtml += this.formatMoney(minPriceAvailableVariant);
-
+        itemPriceHtml += this.formatMoney(minPriceAvailableVariant) + window.BOLD.common.Shopify.shop.currency;
         itemPriceHtml += '</span>';
-
         itemPriceHtml += '</p>';
+
+
+        feature += '<div class="feature_info">';
+        let heelHeight = false;
+        let waterproof = false;
+        let insole = false;
+        let vegan = false;
+        let lace = false;
+        let zip = false;
+        let wideFit = false;
+        let leather = false;
+        console.log("tags: ", data.tags)
+        
+        data.tags.forEach(tag => {
+            tag = tag.toLowerCase();
+            if (tag == "heel height_High") heelHeight = true;
+            if (tag == "waterproof_yes") waterproof = true;
+            if (tag == "removable insole") insole = true;
+            if (tag == "vegan") vegan = true;
+            if (tag == 'fastening-type_lace' || tag =='fastening-type_lace and zip') lace = true;
+            if (tag == "fastening-type_zip" || tag =='fastening-type_lace and zip') zip = true;
+            if (tag == "wide-fit_yes") wideFit = true;
+            if (tag == "leather") leather = true;
+        });
+
+        if (heelHeight) feature += '<img src="/assets/aside_feature_icon1.png" alt="heel height_">';
+
+        if (waterproof) feature += '<img src="/assets/waterproof_1.jpg" alt="waterproof_yes">';
+
+        if (insole) feature += '<img src="/assets/aside_feature_icon3.png" alt="removable insole">';
+
+        if (vegan) feature += '<img src="/assets/vegan_1.jpg" alt="vegan">';
+
+        if (lace) feature += '<img src="/assets/aside_feature_icon5.png" alt="fastening-type_lace">';
+
+        if (zip) feature += '<img src="/assets/aside_feature_icon6.png" alt="zip">';
+
+        if (wideFit) feature += '<img src="/assets/aside_feature_icon7.png" alt="wide-fit_yes">';
+
+        if (leather) feature += '<img src="/assets/aside_feature_icon8.png" alt="leather">';
+
+        feature += '</div>';
+
+        itemHtml = itemHtml.replace(/{{feature}}/g, feature);
     }
     itemHtml = itemHtml.replace(/{{itemPrice}}/g, itemPriceHtml);
 
@@ -317,10 +338,9 @@ BCSfFilter.prototype.buildExtrasProductList = function (data, eventType) {
                 contentType: false,
                 success: function (data) {
                     var swatches = jQ('.collection-swatches-' + _that.data('handle'))
-                    
+
                     swatches.append(data);
                     var large_image = swatches.parent().parent().find('.image').data('featured-image').replace('https:', '');
-                    console.log("large_image: ", large_image)
 
                     swatches.find('.color-swatch').each(function () {
                         if (large_image == jQ(this).data('image')) {
