@@ -352,6 +352,52 @@
         "type": "relative-header",
         "settings": {
         }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+        }
+      },
+      "search-modal": {
+        "type": "search-modal",
+        "settings": {
+        }
+      },
+      "page-about-template": {
+        "type": "page-about-template",
+        "blocks": {
+          "9c3e3c37-530b-436b-a6ee-08a25ad44809": {
+            "type": "onecolumn-content",
+            "settings": {
+              "max_width": "",
+              "background_color": "",
+              "add_border_top": "",
+              "add_border_bottom": "",
+              "border_width": "",
+              "add_padding_top": "",
+              "add_padding_bottom": "",
+              "add_margin_top": "",
+              "add_margin_bottom": "",
+              "custom_class": "",
+              "content_width": "",
+              "content_align": "text-center",
+              "title": "About JOSEF SEIBEL Group",
+              "content_positon": "",
+              "text_color": "text-dark",
+              "title_tag": "h2",
+              "content": "JOSEF SEIBEL is one of Europe's longest established shoe manufacturers. Built to the highest quality, Josef Seibel footwear offers the highest level of comfort for all day, everyday wear. Extensive, stylish ranges of shoes, boots and clogs for women and men are available through our retail stores and partners across the UK and Ireland.",
+              "link_1": "",
+              "button_text_1": "Shop Now",
+              "link_2": "",
+              "button_text_2": "Shop Now"
+            }
+          }
+        },
+        "block_order": [
+          "9c3e3c37-530b-436b-a6ee-08a25ad44809"
+        ],
+        "settings": {
+        }
       }
     },
     "content_for_index": [
