@@ -129,7 +129,6 @@ BCSfFilter.prototype.buildProductGridItem = function (data, index) {
         let zip = false;
         let wideFit = false;
         let leather = false;
-        console.log("tags: ", data.tags)
         
         data.tags.forEach(tag => {
             tag = tag.toLowerCase();

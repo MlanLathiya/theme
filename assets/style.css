@@ -2647,13 +2647,14 @@ ul.footer_link li a:hover {
 }
 
 .read_write_review a {
-    color: #000000;
-    text-decoration: underline;
+    color: #000000 !important;
+    text-decoration: underline !important;
 }
 
 .read_write_review a:hover {
-    color: #4f4f4f;
-    text-decoration: underline;
+    color: #4f4f4f !important;
+    text-decoration: underline !important;
+    cursor: pointer;
 }
 
 /* Product Slider */

@@ -1,53 +1,51 @@
-
 {% comment %}
-Number of related items per row,
-and number of rows.
+  Number of related items per row,
+  and number of rows.
 {% endcomment %}
-{% assign number_of_related_products_per_row = 3 %}
+{% assign number_of_related_products_per_row = 4 %}
 {% assign number_of_rows = 1 %}
 {% comment %}
-Heading.
-Leave blank if you don't need one.
+  Heading.
+  Leave blank if you don't need one.
 {% endcomment %}
 {% comment %}
-Set either or both to true, if you want
-to limit yourself to items with same vendor, and/or type.
+  Set either or both to true, if you want
+  to limit yourself to items with same vendor, and/or type.
 {% endcomment %}
 {% assign same_vendor = true %}
 {% assign same_type = true %}
 {% comment %}
-Collections to ignore.
-Never pick related items from those.
+  Collections to ignore.
+  Never pick related items from those.
 {% endcomment %}
 {% assign exclusions = 'frontpage,all,best-seller-internal-use,full-price' | split: ',' %}
 {% comment %}
-Looking for a relevant collection.
+  Looking for a relevant collection.
 {% endcomment %}
 {% assign found_a_collection = false %}
 {% if collection and collection.all_products_count > 1 %}
-{% unless exclusions contains collection.handle %}
-{% assign found_a_collection = true %}
-{% endunless %}
+  {% unless exclusions contains collection.handle %}
+    {% assign found_a_collection = true %}
+  {% endunless %}
 {% endif %}
 {% unless found_a_collection %}
-{% for c in product.collections %}
-{% unless exclusions contains c.handle or c.all_products_count < 2 %}
-{% assign found_a_collection = true %}
-{% assign collection = c %}
-{% break %}
-{% endunless %}
-{% endfor %}
+  {% for c in product.collections %}
+    {% unless exclusions contains c.handle or c.all_products_count < 2 %}
+      {% assign found_a_collection = true %}
+      {% assign collection = c %}
+      {% break %}
+    {% endunless %}
+  {% endfor %}
 {% endunless %}
 {% comment %}
-If we have a relevant collection.
+  If we have a relevant collection.
 {% endcomment %}
 
-
 {% if found_a_collection %}
-{% assign counter = 0 %}
-{% assign break_at = number_of_rows | times: number_of_related_products_per_row %}
-{% assign current_product = product %}
-{% capture related_items %}
+  {% assign counter = 0 %}
+  {% assign break_at = number_of_rows | times: number_of_related_products_per_row %}
+  {% assign current_product = product %}
+  {% capture related_items %}
 {% assign product_in = '' %}
 {% assign primary_cat = '' %}
 
@@ -80,7 +78,150 @@ If we have a relevant collection.
 
         {% endif %}
 
-        <div class="col col-4 test" data-index="{% increment item_count %}">
+        <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 mb-30">
+          <div class="prod_block">
+            {% assign all_colours = '' %}
+            {% assign available_colours = '' %}
+            {% for product_option in product.options_with_values %}
+              {% if product_option.name == 'Colour' %}
+                {% assign colours = '' %}
+                {% assign opt_vals = product_option.values %}
+                {% for value in opt_vals %}
+                  {% assign all_colours = all_colours | append: value | append: '<|>' %}
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+    
+            {% assign all_colours = all_colours | split: '<|>' %}
+            {% for colour in all_colours %}
+              {% assign temp_colour = colour | strip | downcase %}
+              {% for variant in product.variants %}
+                {% assign variant_colour_value = variant.title | split: ' / ' | first | strip | downcase %}
+    
+                {% if variant_colour_value == temp_colour %}
+                  {% assign juno_stock = variant.metafields.juno.stock | strip %}
+                  {% if variant.available == false %}
+                    {% if juno_stock contains 'hidden' %}
+                      {% continue %}
+                    {% endif %}
+                  {% endif %}
+                  {% assign available_colours = available_colours | append: colour | append: '<|>' %}
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+    
+            {% assign available_colours_array = available_colours | split: '<|>' | uniq %}
+            <figure>
+              {% if sale %}
+                <div class="sale">SALE</div>
+              {% endif %}
+              {% if available_colours != '' %}
+                {% for value in available_colours_array %}
+                  {% assign index = forloop.index %}
+                  {% for variant in product.variants %}
+                    {% assign variant_colour_value = variant.title | split: ' / ' | first | strip | downcase %}
+                    {% assign temp_colour = value | strip | downcase %}
+                    {% if variant_colour_value == temp_colour %}
+                      <a href="{{ product.url }}">
+                      {% if index == 1 %}
+                        <img
+                          src="{{ variant.image | img_url: '405x' }} "
+                          alt=""
+                          class="p_image"
+                          id="img-color{{ variant.id }}"
+                        >
+                      {% else %}
+                        <img
+                          src="{{ variant.image | img_url: '405x' }} "
+                          alt=""
+                          class="p_image hide"
+                          id="img-color{{ variant.id }}"
+                        >
+                      {% endif %}
+                    </a>
+                      {% break %}
+                    {% endif %}
+                  {% endfor %}
+                {% endfor %}
+              {% endif %}
+            </figure>
+            <div class="cap_info">
+              <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
+              <span class="price">{{ product.price | money_with_currency }}</span>
+    
+              <div class="pwr-category-snippets">
+                <div class="review-id" id="snippet-{{product.id}}" data-id="snippet-{{product.id}}"></div>
+              </div>
+    
+              <div class="color_info">
+                {% if available_colours != '' %}
+                  {% for value in available_colours_array %}
+                    {% assign index = forloop.index %}
+                    {% for variant in product.variants %}
+                      {% assign variant_colour_value = variant.title | split: ' / ' | first | strip | downcase %}
+                      {% assign temp_colour = value | strip | downcase %}
+                      {% if variant_colour_value == temp_colour %}
+                        {% for image in product.images %}
+                          {% assign alt = image.alt %}
+                          {% if alt contains 'swatch_' %}
+                            {% assign alt = alt | replace: 'swatch_', '' | strip | downcase %}
+                            {% if alt == variant_colour_value %}
+                              {% if index == 1 %}
+                                <div
+                                  class="form-check form-check-inline"
+                                  data-toggle="tooltip"
+                                  title="{{ value }}"
+                                >
+                                  <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="inlineRadioOptions"
+                                    checked="checked"
+                                    id="color{{ variant.id }}"
+                                    value="option2"
+                                  >
+                                  <label class="form-check-label" for="color{{ variant.id }}">
+                                    <img
+                                      src="{{ image | img_url: '22x22', crop: 'center' }}"
+                                      alt=""
+                                  ></label>
+                                </div>
+                              {% else %}
+                                <div
+                                  class="form-check form-check-inline"
+                                  data-toggle="tooltip"
+                                  title="{{ value }}"
+                                >
+                                  <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="inlineRadioOptions"
+                                    id="color{{ variant.id }}"
+                                    value="option2"
+                                  >
+                                  <label class="form-check-label" for="color{{ variant.id }}">
+                                    <img
+                                      src="{{ image | img_url: '22x22', crop: 'center' }}"
+                                      alt=""
+                                  ></label>
+                                </div>
+                              {% endif %}
+                              {% break %}
+                            {% endif %}
+                          {% endif %}
+                        {% endfor %}
+                        {% break %}
+                      {% endif %}
+                    {% endfor %}
+                  {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        {% comment %} <div class="col col-3 test" data-index="{% increment item_count %}">
           <div class="image">
             <a href="{{ product.url }}">
               <img src="{{ product.featured_image | product_img_url: 'x1024' }}">
@@ -99,7 +240,7 @@ If we have a relevant collection.
             {% endif %}
             {% endfor %}
           </div>
-        </div>
+        </div> {% endcomment %}
 
         {% assign counter = counter | plus: 1 %}
       {% endif %}
@@ -153,7 +294,7 @@ If we have a relevant collection.
 
           {% endif %}
 
-          <div class="col col-4 test2" data-index="{% increment item_count %}">
+          <div class="col col-3 test2" data-index="{% increment item_count %}">
             <div class="image">
               <a href="{{ product.url }}">
                 <img src="{{ product.featured_image | product_img_url: 'x1024' }}">
@@ -226,8 +367,148 @@ If we have a relevant collection.
             {% assign product_in = product_in | append: product.id | append: "<|>" %}
     
           {% endif %}
-
-            <div class="col col-4" data-index="{% increment item_count %}">
+          <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 mb-30">
+            <div class="prod_block">
+              {% assign all_colours = '' %}
+              {% assign available_colours = '' %}
+              {% for product_option in product.options_with_values %}
+                {% if product_option.name == 'Colour' %}
+                  {% assign colours = '' %}
+                  {% assign opt_vals = product_option.values %}
+                  {% for value in opt_vals %}
+                    {% assign all_colours = all_colours | append: value | append: '<|>' %}
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+      
+              {% assign all_colours = all_colours | split: '<|>' %}
+              {% for colour in all_colours %}
+                {% assign temp_colour = colour | strip | downcase %}
+                {% for variant in product.variants %}
+                  {% assign variant_colour_value = variant.title | split: ' / ' | first | strip | downcase %}
+      
+                  {% if variant_colour_value == temp_colour %}
+                    {% assign juno_stock = variant.metafields.juno.stock | strip %}
+                    {% if variant.available == false %}
+                      {% if juno_stock contains 'hidden' %}
+                        {% continue %}
+                      {% endif %}
+                    {% endif %}
+                    {% assign available_colours = available_colours | append: colour | append: '<|>' %}
+                  {% endif %}
+                {% endfor %}
+              {% endfor %}
+      
+              {% assign available_colours_array = available_colours | split: '<|>' | uniq %}
+              <figure>
+                {% if sale %}
+                  <div class="sale">SALE</div>
+                {% endif %}
+                {% if available_colours != '' %}
+                  {% for value in available_colours_array %}
+                    {% assign index = forloop.index %}
+                    {% for variant in product.variants %}
+                      {% assign variant_colour_value = variant.title | split: ' / ' | first | strip | downcase %}
+                      {% assign temp_colour = value | strip | downcase %}
+                      {% if variant_colour_value == temp_colour %}
+                        <a href="{{ product.url }}">
+                        {% if index == 1 %}
+                          <img
+                            src="{{ variant.image | img_url: '405x' }} "
+                            alt=""
+                            class="p_image"
+                            id="img-color{{ variant.id }}"
+                          >
+                        {% else %}
+                          <img
+                            src="{{ variant.image | img_url: '405x' }} "
+                            alt=""
+                            class="p_image hide"
+                            id="img-color{{ variant.id }}"
+                          >
+                        {% endif %}
+                      </a>
+                        {% break %}
+                      {% endif %}
+                    {% endfor %}
+                  {% endfor %}
+                {% endif %}
+              </figure>
+              <div class="cap_info">
+                <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
+                <span class="price">{{ product.price | money_with_currency }}</span>
+      
+                <div class="pwr-category-snippets">
+                  <div class="review-id" id="snippet-{{product.id}}" data-id="snippet-{{product.id}}"></div>
+                </div>
+      
+                <div class="color_info">
+                  {% if available_colours != '' %}
+                    {% for value in available_colours_array %}
+                      {% assign index = forloop.index %}
+                      {% for variant in product.variants %}
+                        {% assign variant_colour_value = variant.title | split: ' / ' | first | strip | downcase %}
+                        {% assign temp_colour = value | strip | downcase %}
+                        {% if variant_colour_value == temp_colour %}
+                          {% for image in product.images %}
+                            {% assign alt = image.alt %}
+                            {% if alt contains 'swatch_' %}
+                              {% assign alt = alt | replace: 'swatch_', '' | strip | downcase %}
+                              {% if alt == variant_colour_value %}
+                                {% if index == 1 %}
+                                  <div
+                                    class="form-check form-check-inline"
+                                    data-toggle="tooltip"
+                                    title="{{ value }}"
+                                  >
+                                    <input
+                                      class="form-check-input"
+                                      type="radio"
+                                      name="inlineRadioOptions"
+                                      checked="checked"
+                                      id="color{{ variant.id }}"
+                                      value="option2"
+                                    >
+                                    <label class="form-check-label" for="color{{ variant.id }}">
+                                      <img
+                                        src="{{ image | img_url: '22x22', crop: 'center' }}"
+                                        alt=""
+                                    ></label>
+                                  </div>
+                                {% else %}
+                                  <div
+                                    class="form-check form-check-inline"
+                                    data-toggle="tooltip"
+                                    title="{{ value }}"
+                                  >
+                                    <input
+                                      class="form-check-input"
+                                      type="radio"
+                                      name="inlineRadioOptions"
+                                      id="color{{ variant.id }}"
+                                      value="option2"
+                                    >
+                                    <label class="form-check-label" for="color{{ variant.id }}">
+                                      <img
+                                        src="{{ image | img_url: '22x22', crop: 'center' }}"
+                                        alt=""
+                                    ></label>
+                                  </div>
+                                {% endif %}
+                                {% break %}
+                              {% endif %}
+                            {% endif %}
+                          {% endfor %}
+                          {% break %}
+                        {% endif %}
+                      {% endfor %}
+                    {% endfor %}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+            {% comment %} <div class="col col-3 a" data-index="{% increment item_count %}">
               <div class="image">
                 <a href="{{ product.url }}">
                   <img src="{{ product.featured_image | product_img_url: 'x1024' }}">
@@ -246,7 +527,7 @@ If we have a relevant collection.
                 {% endif %}
                 {% endfor %}
               </div>
-            </div>
+            </div> {% endcomment %}
 
             {% assign counter = counter | plus: 1 %}
 
@@ -277,16 +558,13 @@ If we have a relevant collection.
 {% assign related_items = related_items | trim %}
 {% assign related_items = related_items | append: other_related_items %}
 
-
 {% unless related_items == blank %}
-
-  
- <section class="related-products-container">
-	<div class="container">
-		<h3 class="title">You May Also Like</h3>
-		<div class="row flex-grid">
-          {{ related_items }}
-		</div>
-	</div>
-</section>
+  <section class="related-products-container">
+    <div class="container">
+      <h2 class="title clction_title text-capitalize"><span>You May Also Like</span></h2>
+      <div class="row flex-grid">
+        {{ related_items }}
+      </div>
+    </div>
+  </section>
 {% endunless %}

@@ -41,6 +41,53 @@
 
 {% assign price = product.price %}
 
+{% assign heelHeight = false %}
+{% assign waterproof = false %}
+{% assign insole = false %}
+{% assign vegan = false %}
+{% assign lace = false %}
+{% assign zip = false %}
+{% assign wideFit = false %}
+{% assign leather = false %}
+
+{% for productTag in product.tags | downcase %}
+  {% capture tag %}
+   {{ productTag | downcase }}
+{% endcapture %}
+
+  {% if tag contains 'heel height_High' %}
+    {% assign heelHeight = true %}
+  {% endif %}
+
+  {% if tag contains 'waterproof_yes' %}
+    {% assign waterproof = true %}
+  {% endif %}
+
+  {% if tag contains 'removable insole' %}
+    {% assign insole = true %}
+  {% endif %}
+
+  {% if tag contains 'vegan' %}
+    {% assign vegan = true %}
+  {% endif %}
+
+  {% if tag contains 'fastening-type_lace' | tag contains 'fastening-type_lace and zip' %}
+    {% assign lace = true %}
+  {% endif %}
+
+  {% if tag contains 'fastening-type_zip' | tag contains 'fastening-type_lace and zip' %}
+    {% assign zip = true %}
+  {% endif %}
+
+  {% if tag contains 'wide-fit_yes' %}
+    {% assign wideFit = true %}
+  {% endif %}
+
+  {% if tag contains 'leather' %}
+    {% assign leather = true %}
+  {% endif %}
+{% endfor %}
+
 {% for opt in product.options_with_values %}
   {% unless opt.name == 'Colour' || opt.name == 'Color' %}
     {% continue %}
@@ -430,16 +477,103 @@
             </div>
           </form>
           <div class="social-share-section">
-            <span>SHARE ME</span>
             {% include 'social-share-icons' %}
           </div>
-        </div>
+          <div class="p_feature_list">
+            {% if heelHeight %}
+              <figure><img src="{{'aside_feature_icon1.png'}}" alt="heel height high"></figure>
+            {% endif %}
+
+            {% if waterproof %}
+              <figure><img src="{{ 'waterproof_1.jpg' | asset_url }}" alt="waterproof"></figure>
+            {% endif %}
+
+            {% if insole %}
+              <figure><img src="{{ 'aside_feature_icon3.png' | asset_url }}" alt="removable insole"></figure>
+            {% endif %}
+
+            {% if vegan %}
+              <figure><img src="{{ 'vegan_1.jpg' | asset_url }}" alt="vegan"></figure>
+            {% endif %}
+
+            {% if lace %}
+              <figure><img src="{{ 'aside_feature_icon5.png' | asset_url }}" alt="fastening type lace"></figure>
+            {% endif %}
+
+            {% if zip %}
+              <figure><img src="{{ 'aside_feature_icon6.png' | asset_url }}" alt="zip"></figure>
+            {% endif %}
+
+            {% if wideFit %}
+              <figure><img src="{{ 'aside_feature_icon7.png' | asset_url }}" alt="wideFit"></figure>
+            {% endif %}
+
+            {% if leather %}
+              <figure><img src="{{ 'aside_feature_icon8.png' | asset_url }}" alt="leather"></figure>
+            {% endif %}
+          </div>
+          
+          <hr class="line">
+            
+          <div class="default-short-desc short-desc">
+            {% assign description = product.description %}
+            {% assign description = description | split: '<h3>' %}
+            <h4>{{description[1]}}</h4>
+            <p>{{ description[2] }}</p>
+            <p>{{ description[0] }}</p>
+          </div>
+
+          <hr class="line">
+
+          <div id="rev" class="tab-option">
+            <h4 class="mb-4">Reviews</h4>
+            <!-- start_review_render_code_widget_section -->
+            <div id="pr-reviewdisplay"></div>
+            <!-- end_review_render_code_widget_section -->
+      
+            <!-- start_review_render_code_js_section -->
+      
+            <script>
+              POWERREVIEWS.display.render({
+                api_key: "354c0837-4e2b-4ee9-843d-b0114e6e4f44",
+                locale: "en_GB",
+                merchant_group_id: "345204098",
+                merchant_id: "2032301978",
+                page_id: "{{ product.id }}",
+                review_wrapper_url: "https://josef-seibel-shop.myshopify.com/pages/write-a-review/?pr_page_id={{ product.id }}",
+                product: {
+                    name: "{{ product.title | replace: "+", " " }}",
+                    url: "https://josef-seibel-shop.myshopify.com{{ product.url }}",
+                    image_url: "https:{{ product.featured_image | product_img_url: "large" }}",
+                    description: "{{ product.description | strip_html | strip_newlines | replace: "%0A", "%20" | replace: '"', '%27' | escape }}",
+                    category_name: {% if product.type != '' %}"{{ product.type }}"{% else %} "Default" {% endif %},
+                    upc: "{{ product.barcode }}",
+                    brand_name: "{{ product.vendor }}",
+                    price: "{{ product.price }}",
+                    in_stock: "{{ product.available }}",
+                        variants: [ {% for variant in product.variants %}
+                        {% assign product_name = product.title %}
+                        {% if product.variants.size > 1 %}{% assign product_name = variant.title %}{% endif %}
+                    {
+                    name: "{{ product_name | replace: "+", " " }}",
+                    description: "{{ product_name | escape }}",
+                    page_id_variant: "{{variant.id}}",
+                    upc: "{{ variant.barcode }}"
+                    }{% if forloop.last == false %}, {% endif %} {% endfor %}
+                ]},
+                components: {
+                    ReviewDisplay: "pr-reviewdisplay",
+                    ReviewSnippet: "pr-reviewsnippet"
+                }
+              });
+            </script>
+          </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="product-tabs-container">
+{% comment %} <section class="product-tabs-container">
   <div class="container">
     <div class="tabs" id="product-tabs">
       <div class="tab active" data-for="spec">Specification</div>
@@ -606,7 +740,6 @@
     <div id="rev" class="tab-option">
       <h3>Reviews</h3>
       <!-- start_review_render_code_widget_section -->
-      <script src="//ui.powerreviews.com/stable/4.0/ui.js"></script>
       <div id="pr-reviewdisplay" style=""></div>
       <!-- end_review_render_code_widget_section -->
 
@@ -646,39 +779,23 @@
             }
             });
       </script>
-      <!-- end_review_render_code_js_section -->
-      {% comment %}
-        <!-- /snippets/bv-ratings-reviews.liquid -->
-        <!-- Bazaarvoice Ratings & Reviews -->
-      {% endcomment %}
-      {% comment %}
-        <div data-bv-show="reviews" data-bv-product-Id="{{product.id}}">
-        {% if product.metafields.bazaarvoice.reviews %}
-        {{ product.metafields.bazaarvoice.reviews }}
-        {% endif %}
-        </div>
-        <div data-bv-show="questions" data-bv-product-Id="{{product.id}}">
-        {% if product.metafields.bazaarvoice.questions %}
-        {{ product.metafields.bazaarvoice.questions }}
-        {% endif %}
-        </div>
-      {% endcomment %}
-      {% comment %}
-        <!-- End Bazaarvoice Ratings & Reviews -->
-      {% endcomment %}
-
-      {% comment %} {% include 'product-reviews' %} {% endcomment %}
     </div>
 
     <div id="del" class="tab-option">
       {% section 'delivery-options' %}
     </div>
   </div>
-</section>
+</section> {% endcomment %}
 
 {% comment %}
   {% include 'emwis-form' %}
 {% endcomment %}
+{% section 'policy-sec' %}
+
 {% include 'back-in-stock-form' %}
 
 {% include 'related-products' %}
+
+{% section 'customer-sec' %}
+
+{% section 'stay-sec' %}

@@ -2641,6 +2641,7 @@ footer {
       }
     }
   }
+
   .info {
     .label {
       background-color: #004136;
@@ -2652,17 +2653,21 @@ footer {
       border: 0;
       border-radius: 0;
     }
+
     .variant-options {
       background: #fff;
       padding: 5px;
       margin-bottom: 5px;
+
       p {
         display: inline;
       }
     }
+
     #quantity {
       font-size: 11px;
     }
+
     .color-swatches {
       .color-swatch {
         background: transparent;
@@ -2673,12 +2678,14 @@ footer {
         margin-bottom: 10px;
         border-radius: 50%;
         position: relative;
+
         &:hover,
         &:active {
           .tooltiptext {
             visibility: visible;
           }
         }
+
         .tooltiptext {
           visibility: hidden;
           background-color: $primary;
@@ -2694,9 +2701,11 @@ footer {
           width: 85px;
           font-size: 12px;
         }
+
         &:not(:last-child) {
           margin-right: 2px;
         }
+
         input {
           display: none;
         }
@@ -5735,4 +5744,69 @@ footer {
     width: 85px;
     font-size: 12px;
   }
+}
+
+.pr-review-enhanced {
+  display: none !important;
+}
+
+.pr-rd-main-header {
+  display: none !important;
+}
+
+.pr-review .pr-rd-header {
+  display: none;
+}
+
+.pr-review .pr-rd-footer {
+  display: none;
+}
+
+.pr-rd-description-text:before {
+  content: open-quote;
+}
+
+.pr-rd-description-text:after {
+  content: close-quote;
+}
+
+.pr-rd-description-text {
+  color: unset !important;
+}
+
+.pr-rd-author-submission-date {
+  display: none;
+}
+
+.pr-rd-author-location {
+  display: none;
+}
+
+.pr-rd-content-block {
+  border-bottom: 1px solid #000 !important;
+}
+
+.pr-rd-images {
+  display: none !important;
+}
+
+.pr-rd-description {
+  margin-bottom: 0 !important;
+  padding-bottom: 15px !important;
+}
+
+// .pr-review-display .pr-review:first-of-type {
+//   display: block !important;
+// }
+
+// .pr-review {
+//   display: none;
+// }
+
+// .pr-rd-main-footer {
+//   display: none !important;
+// }
+
+.pr-rd-to-top{
+  display: none;
 }
