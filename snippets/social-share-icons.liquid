@@ -1,24 +1,24 @@
 <ul class="unstyled inline social-share-icons">
 	<li>
 		<a href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url | append: product.url }}" target="_blank">
-			<i class="fab fa-facebook"></i>
+			<i class="fa fa-facebook"></i>
 		</a>
 	</li>
 	<li>
 		<a href="https://twitter.com/intent/tweet?text=Check%20This%20Out:%20{{ shop.url | append: product.url }}" target="_blank">
-			<i class="fab fa-twitter"></i>
+			<i class="fa fa-twitter"></i>
 		</a>
 	</li>
 	{% if false %}
 	<li>
 		<a href="" target="_blank">
-			<i class="fab fa-instagram"></i>
+			<i class="fa fa-instagram"></i>
 		</a>
 	</li>
 	{% endif %}
 	<li>
 		<a href="//pinterest.com/pin/create/button/?url={{ shop.url | append: product.url }}&amp;media={{ product.featured_image | product_img_url: 'x1024' }}" target="_blank">
-			<i class="fab fa-pinterest"></i>
+			<i class="fa fa-pinterest"></i>
 		</a>
 	</li>
 </ul>

@@ -279,10 +279,6 @@ IMAGES
 LAYOUTS
 *********/
 
-.row {
-  width: 100%;
-}
-
 .flex-grid {
   width: 100%;
   display: -webkit-flex;
@@ -563,7 +559,7 @@ table tr.bv-secondary-rating-summary-stars {
 ========== CUSTOM INPUTS ==================
 =========================================*/
 .quantity-selector {
-  width: 90px;
+  width: 140px;
   display: flex;
   border: 1px solid $lightGrey;
 
@@ -2503,7 +2499,6 @@ footer {
 .product-form {
   width: 100%;
 
-  label,
   input,
   select,
   textarea {
@@ -2545,40 +2540,6 @@ footer {
     }
   }
 
-  label {
-    background-color: $primary;
-    color: #fff;
-    margin: 0;
-
-    &.color-swatch {
-      background: transparent;
-      display: inline-block;
-      width: 25px;
-      height: 25px;
-      margin-bottom: 10px;
-      border-radius: 50%;
-      position: relative;
-
-      &:not(:last-child) {
-        margin-right: 15px;
-      }
-
-      &.active {
-        &:after {
-          content: "\f00c";
-          font-family: FontAwesome;
-          position: absolute;
-          top: 4px;
-          left: 5px;
-        }
-      }
-
-      input {
-        display: none;
-      }
-    }
-  }
-
   select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -2610,66 +2571,6 @@ footer {
 
     .zoomImg {
       pointer-events: none !important;
-    }
-
-    #featured-image-container {
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      flex-wrap: wrap;
-      min-height: 350px;
-      border-bottom: 1px solid $primary;
-      position: relative;
-
-      img {
-        width: auto;
-        height: 350px;
-        display: block;
-
-        &.hidden {
-          display: none;
-        }
-      }
-
-      #wide-fit,
-      #waterproof {
-        width: 55px;
-        height: 55px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        color: #fff;
-        font-size: 10px;
-        z-index: 1000;
-      }
-
-      #wide-fit {
-        background-color: $primary;
-        top: 85px;
-      }
-
-      #waterproof {
-        background-color: blue;
-      }
-
-      @media (max-width: 1100px) {
-        min-height: 300px;
-
-        img {
-          height: 300px;
-        }
-      }
-    }
-
-    #product-main-images {
-      width: 350px;
     }
 
     .other-images-container {
@@ -2740,47 +2641,7 @@ footer {
       }
     }
   }
-
   .info {
-    background-color: $lightGrey;
-    color: $primary;
-    height: 0%;
-
-    .product-name {
-      margin: 0;
-      font-size: 26px;
-    }
-
-    .was-price {
-      // display: none;
-      margin-bottom: 0;
-
-      span {
-        text-decoration: line-through;
-      }
-    }
-
-    .price {
-      font-weight: 600;
-      font-size: 22px;
-      margin: 0;
-
-      .the-price {
-        &.sale {
-          color: #e60000;
-        }
-      }
-    }
-
-    .compare_at {
-      font-size: 12px;
-      display: none;
-    }
-
-    .short-desc {
-      margin: 20px 0;
-    }
-
     .label {
       background-color: #004136;
       color: #fff;
@@ -2791,21 +2652,17 @@ footer {
       border: 0;
       border-radius: 0;
     }
-
     .variant-options {
       background: #fff;
       padding: 5px;
       margin-bottom: 5px;
-
       p {
         display: inline;
       }
     }
-
     #quantity {
       font-size: 11px;
     }
-
     .color-swatches {
       .color-swatch {
         background: transparent;
@@ -2816,14 +2673,12 @@ footer {
         margin-bottom: 10px;
         border-radius: 50%;
         position: relative;
-
         &:hover,
         &:active {
           .tooltiptext {
             visibility: visible;
           }
         }
-
         .tooltiptext {
           visibility: hidden;
           background-color: $primary;
@@ -2839,11 +2694,9 @@ footer {
           width: 85px;
           font-size: 12px;
         }
-
         &:not(:last-child) {
           margin-right: 2px;
         }
-
         input {
           display: none;
         }
@@ -3296,13 +3149,6 @@ footer {
 .star-rating-container {
   width: 100%;
   float: left;
-}
-
-fieldset,
-label {
-  margin: 0;
-  padding: 0;
-  display: block;
 }
 
 .rating {
@@ -4265,16 +4111,6 @@ label {
   form {
     .flex-grid {
       flex-wrap: nowrap;
-    }
-
-    .row {
-      flex-wrap: nowrap;
-
-      &.item-row {
-        border-bottom: 1px solid $lightGrey;
-        padding: 15px 0px;
-        margin-bottom: 0;
-      }
     }
 
     .col {
