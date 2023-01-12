@@ -1,5 +1,5 @@
 {% assign column_per_row = section.settings.column_per_row %}
-
+{{ column_per_row }}
 
 <div class="banner banner-grid {{section.settings.col_spacing}} {{ section.settings.inner_spacing }} {{section.settings.style}}  {% if section.settings.video_link != blank or section.settings.video_src != blank %}banner-video{% endif %} {{ section.settings.custom_class }} {{ section.settings.add_padding_top }} {{ section.settings.add_padding_bottom }} {{ section.settings.add_margin_top }} {{ section.settings.add_margin_bottom }} {{ section.settings.add_border_top }} {{ section.settings.add_border_bottom }} {{ section.settings.border_width }}{% unless section.settings.link_1 != blank or section.settings.link_2 != blank %} no-button{% endunless %}" {% if section.settings.background_color != '' %}style="background-color: {{ section.settings.background_color }}"{% endif %}>
     <div class="wrapper {{ section.settings.max_width }}">
