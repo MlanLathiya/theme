@@ -384,7 +384,18 @@
           "d69b99a6-e1d7-4971-942d-6d2de6861da2": {
             "type": "banner-two",
             "settings": {
-              
+              "image_1": "shopify:\/\/shop_images\/js_logo.jpg",
+              "title_1": "Banner",
+              "title_tag_1": "h3",
+              "content_1": "JOSEF SEIBEL footwar is created using a combination of high quality materials and hand-crafted elements, designed with sustainability and the perfect fit in mind. Removable insoles, genuine hand stitching and lightweight soles all provide endless comfort in every pair. High aesthetic standards and modern design come together to create a comprehensive selection of beautifully versatile footwear.",
+              "image_2": "shopify:\/\/shop_images\/gerry-webber-logo.jpg",
+              "title_2": "Banner",
+              "title_tag_2": "h3",
+              "content_2": "Lorem ipsum dolor sit amet",
+              "image_3": "shopify:\/\/shop_images\/Westland_by_Josef_Seibel_Logo.jpg",
+              "title_3": "Banner",
+              "title_tag_3": "h3",
+              "content_3": "Lorem ipsum dolor sit amet"
             }
           }
         },
