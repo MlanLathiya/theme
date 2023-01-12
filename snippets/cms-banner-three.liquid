@@ -1,154 +1,46 @@
-<div class="banner threecolumn {{ block.settings.inner_spacing }}  {{ block.settings.custom_class }} {{ block.settings.add_padding_top }} {{ block.settings.add_padding_bottom }} {{ block.settings.add_margin_top }} {{ block.settings.add_margin_bottom }} {{ block.settings.add_border_top }} {{ block.settings.add_border_bottom }} {{ block.settings.border_width }}" {% if block.settings.background_color != '' %}style="background-color: {{ block.settings.background_color }}"{% endif %}>
-    <div class="wrapper {{ block.settings.max_width }}">
-        <div class="flex-grid">
-            <div class="col col-4 col-img {{ block.settings.image_1_width | escape }} {{ block.settings.text_color_1 | escape }}">
-                <div class="inner">
-                    <div class="image {{ block.settings.horizontal_align_1 }}">
-                    {% if block.settings.link_1 != blank %}<a class="img" href="{{ block.settings.link_1 }}">{% endif %}	
-                    {% if block.settings.image_1 %}
-                        <picture>
-                            <source media="(min-width: 1024px)" srcset="{{ block.settings.image_1 | img_url: '1920x' }}">
-                            <source media="(min-width: 768px)" srcset="{{ block.settings.image_1 | img_url: '1024x600', crop: 'center' }}">
-                            {% if block.settings.mobile_image_1 != blank %}
-                                <source srcset="{{ block.settings.mobile_image_1 | img_url: 'master' }}">
-                            {% else %}
-                                <source srcset="{{ block.settings.image_1 | img_url: '640x480', crop: 'center' }}">
-                            {% endif %}
-                            <img src="{{ block.settings.image_1 | img_url: '1920x' }}" alt="" />
-                        </picture>
-                    {% else %}
-                        <span class="placeholder-background">
-                            {% capture current %}{% cycle 1, 2 %}{% endcapture %}
-                            {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
-                        </span>
-                    {% endif %}
-                    {% if block.settings.link_1 != blank %}</a>{% endif %}
-                    </div>
-
-                    {% if block.settings.title_1 != blank or block.settings.content_1 != blank or block.settings.link_1_a != blank or block.settings.link_1_b != blank %}
-                        <div class="caption {{ block.settings.content_position_1 }} {{ block.settings.vertical_align_1 }} {{ block.settings.horizontal_align_1 }}">	
-                            <div class="wrapper">
-                                <div class="content">
-                                    {% if block.settings.title_1 != blank %}
-                                        <{{ block.settings.title_tag_1 }} class="title">{{ block.settings.title_1 }}</{{ block.settings.title_tag_1 }}>
-                                    {% endif %}
-                                    {% if block.settings.content_1 != blank %}
-                                        <div class="text">{{ block.settings.content_1 }}</div>
-                                    {% endif %}
-                                    {% if block.settings.link_1_a != blank or block.settings.link_1_b != blank %}
-                                    <div class="buttons {{ block.settings.button_position_1 }}">
-                                        {% if block.settings.link_1_a != blank %}
-                                            <a class="button" href="{{ block.settings.link_1_a }}">{{ block.settings.button_text_1_a }}</a>
-                                        {% endif %}	
-                                        {% if block.settings.link_1_b != blank %}
-                                            <a class="button" href="{{ block.settings.link_1_b }}">{{ block.settings.button_text_1_b }}</a>
-                                        {% endif %}	
-                                    </div>
-                                    {% endif %}	
-                                </div>
-                            </div>
-                        </div>
+<section class="brand_sec">
+	<div class="container">
+    	<h2 class="clction_title"><span>{{ block.settings.sec_title }}</span></h2>
+        <div class="row justify-content-center">
+        	<div class="col-lg-4 col-md-4">
+            	<div class="brand_block">
+                    {% if block.settings.title_1 != blank or block.settings.content_1 != blank %}
+                        <figure><img src="{{ block.settings.image_1 | img_url: '1920x' }}" alt="img"/></figure>
+                        {% if block.settings.title_1 != blank %}
+                            <{{ block.settings.title_tag_1 }}>{{ block.settings.title_1 }}</{{ block.settings.title_tag_1 }}>
+                        {% endif %}
+                        {% if block.settings.content_1 != blank %}
+                            <p>{{ block.settings.content_1 }}</p>
+                        {% endif %}
                     {% endif %}
                 </div>
             </div>
-            <div class="col col-4 col-img {{ block.settings.image_2_width | escape }} {{ block.settings.text_color_2 | escape }}">
-                <div class="inner">
-                    <div class="image {{ block.settings.horizontal_align_2 }}">
-                    {% if block.settings.link_2 != blank %}<a class="img" href="{{ block.settings.link_2 }}">{% endif %}	
-                    {% if block.settings.image_2 %}
-                        <picture>
-                            <source media="(min-width: 1024px)" srcset="{{ block.settings.image_2 | img_url: '1920x' }}">
-                            <source media="(min-width: 768px)" srcset="{{ block.settings.image_2 | img_url: '1024x600', crop: 'center' }}">
-                            {% if block.settings.mobile_image_2 != blank %}
-                                <source srcset="{{ block.settings.mobile_image_2 | img_url: 'master' }}">
-                            {% else %}
-                                <source srcset="{{ block.settings.image_2 | img_url: '640x480', crop: 'center' }}">
-                            {% endif %}
-                            <img src="{{ block.settings.image_2 | img_url: '1920x' }}" alt="" />
-                        </picture>
-                    {% else %}
-                        <span class="placeholder-background">
-                            {% capture current %}{% cycle 1, 2 %}{% endcapture %}
-                            {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
-                        </span>
-                    {% endif %}
-                    {% if block.settings.link_2 != blank %}</a>{% endif %}
-                    </div>
-                    {% if block.settings.title_2 != blank or block.settings.content_2 != blank or block.settings.link_2_a != blank or block.settings.link_2_b != blank %}
-                        <div class="caption {{ block.settings.content_position_2 }} {{ block.settings.vertical_align_2 }} {{ block.settings.horizontal_align_2 }}">	
-                            <div class="wrapper">
-                                <div class="content">
-                                    {% if block.settings.title_2 != blank %}
-                                        <{{ block.settings.title_tag_2 }} class="title">{{ block.settings.title_2 }}</{{ block.settings.title_tag_2 }}>
-                                    {% endif %}
-                                    {% if block.settings.content_2 != blank %}
-                                        <div class="text">{{ block.settings.content_2 }}</div>
-                                    {% endif %}
-                                    {% if block.settings.link_2_a != blank or block.settings.link_2_b != blank %}
-                                    <div class="buttons {{ block.settings.button_position_2 }}">
-                                        {% if block.settings.link_2_a != blank %}
-                                            <a class="button" href="{{ block.settings.link_2_a }}">{{ block.settings.button_text_2_a }}</a>
-                                        {% endif %}	
-                                        {% if block.settings.link_2_b != blank %}
-                                            <a class="button" href="{{ block.settings.link_2_b }}">{{ block.settings.button_text_2_b }}</a>
-                                        {% endif %}	
-                                    </div>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
+            <div class="col-lg-4 col-md-4">
+            	<div class="brand_block">
+                    {% if block.settings.title_2 != blank or block.settings.content_2 != blank %}
+                        <figure><img src="{{ block.settings.image_2 | img_url: '1920x' }}" alt="img"/></figure>
+                        {% if block.settings.title_2 != blank %}
+                            <{{ block.settings.title_tag_2 }}>{{ block.settings.title_2 }}</{{ block.settings.title_tag_2 }}>
+                        {% endif %}
+                        {% if block.settings.content_2 != blank %}
+                            <p>{{ block.settings.content_2 }}</p>
+                        {% endif %}
                     {% endif %}
                 </div>
             </div>
-            <div class="col col-4 col-img {{ block.settings.image_3_width | escape }} {{ block.settings.text_color_3 | escape }}">
-                <div class="inner">
-                    <div class="image {{ block.settings.horizontal_align_1 }}">
-                    {% if block.settings.link_3 != blank %}<a class="img" href="{{ block.settings.link_3 }}">{% endif %}	
-                    {% if block.settings.image_3 %}
-                        <picture>
-                            <source media="(min-width: 1024px)" srcset="{{ block.settings.image_3 | img_url: '1920x' }}">
-                            <source media="(min-width: 768px)" srcset="{{ block.settings.image_3 | img_url: '1024x600', crop: 'center' }}">
-                            {% if block.settings.mobile_image_3 != blank %}
-                                <source srcset="{{ block.settings.mobile_image_3 | img_url: 'master' }}">
-                            {% else %}
-                                <source srcset="{{ block.settings.image_3 | img_url: '640x480', crop: 'center' }}">
-                            {% endif %}
-                            <img src="{{ block.settings.image_3 | img_url: '1920x' }}" alt="" />
-                        </picture>
-                    {% else %}
-                        <span class="placeholder-background">
-                            {% capture current %}{% cycle 1, 2 %}{% endcapture %}
-                            {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
-                        </span>
-                    {% endif %}
-                    {% if block.settings.link_3 != blank %}</a>{% endif %}
-                    </div>
-                    {% if block.settings.title_3 != blank or block.settings.content_3 != blank or block.settings.link_3_a != blank or block.settings.link_3_b != blank %}
-                        <div class="caption {{ block.settings.content_position_3 }} {{ block.settings.vertical_align_3 }} {{ block.settings.horizontal_align_3 }}">	
-                            <div class="wrapper">
-                                <div class="content">
-                                    {% if block.settings.title_3 != blank %}
-                                        <{{ block.settings.title_tag_3 }} class="title">{{ block.settings.title_3 }}</{{ block.settings.title_tag_3 }}>
-                                    {% endif %}
-                                    {% if block.settings.content_3 != blank %}
-                                        <div class="text">{{ block.settings.content_3 }}</div>
-                                    {% endif %}
-                                    {% if block.settings.link_3_a != blank or block.settings.link_3_b != blank %}
-                                    <div class="buttons {{ block.settings.button_position_3 }}">
-                                        {% if block.settings.link_3_a != blank %}
-                                            <a class="button" href="{{ block.settings.link_3_a }}">{{ block.settings.button_text_3_a }}</a>
-                                        {% endif %}	
-                                        {% if block.settings.link_3_b != blank %}
-                                            <a class="button" href="{{ block.settings.link_3_b }}">{{ block.settings.button_text_3_b }}</a>
-                                        {% endif %}
-                                    </div>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
+            <div class="col-lg-4 col-md-4">
+            	<div class="brand_block">
+                    {% if block.settings.title_3 != blank or block.settings.content_3 != blank %}
+                        <figure><img src="{{ block.settings.image_3 | img_url: '1920x' }}" alt="img"/></figure>
+                        {% if block.settings.title_3 != blank %}
+                            <{{ block.settings.title_tag_3 }}>{{ block.settings.title_3 }}</{{ block.settings.title_tag_3 }}>
+                        {% endif %}
+                        {% if block.settings.content_3 != blank %}
+                            <p>{{ block.settings.content_3 }}</p>
+                        {% endif %}
                     {% endif %}
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
