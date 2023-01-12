@@ -42,20 +42,7 @@
             "video_src": "",
             "video_loop": true,
             "video_controls": false,
-            "video_link": "https:\/\/www.youtube.com\/watch?v=6y8cXO1EU9s",
-            "link": "",
-            "content_position": "located-image",
-            "text_color": "text-light",
-            "vertical_align": "middle",
-            "horizontal_align": "center",
-            "title": "",
-            "title_tag": "h2",
-            "content": "",
-            "link_1": "",
-            "button_text_1": "Shop Now",
-            "link_2": "",
-            "button_text_2": "Shop Now",
-            "button_position": "button-below-content"
+            "video_link": "https:\/\/www.youtube.com\/watch?v=6y8cXO1EU9s"
           }
         }
       },
@@ -63,27 +50,6 @@
         "978245bf-3d1d-44fb-8dbe-e18bda4fb4f2"
       ],
       "settings": {
-        "max_width": "",
-        "background_color": "",
-        "add_border_top": "",
-        "add_border_bottom": "",
-        "border_width": "",
-        "add_padding_top": "",
-        "add_padding_bottom": "",
-        "add_margin_top": "",
-        "add_margin_bottom": "",
-        "custom_class": "",
-        "content_width": "",
-        "content_align": "text-center",
-        "title": "Banner",
-        "content_positon": "",
-        "text_color": "text-dark",
-        "title_tag": "h2",
-        "content": "<p>Lorem ipsum dolor sit amet<\/p>",
-        "link_1": "",
-        "button_text_1": "Shop Now",
-        "link_2": "",
-        "button_text_2": "Shop Now"
       }
     },
     "163649261213d3c5c9": {
