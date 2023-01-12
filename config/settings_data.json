@@ -384,6 +384,7 @@
           "31f24f2a-ad5b-4072-b8b6-7ce0f3e655fa": {
             "type": "our-brands",
             "settings": {
+              "sec_title": "Orur Brands",
               "image_1": "shopify:\/\/shop_images\/js_logo.jpg",
               "title_1": "JOSEF SEIBEL",
               "title_tag_1": "h3",
@@ -397,12 +398,72 @@
               "title_tag_3": "h3",
               "content_3": "Our new brand Westland by JOSEF SEIBEL is a comprehensive collection of lightweight, flexible and superb fitting footwear. Westland by Josef Seibel is a superb collection of high-quality footwear in a wide range of styles for the autumn\/winter season. Using a combination of materials and high-tech waterproof membranes to create a perfect synergy of practicality, comfort and style."
             }
+          },
+          "9e803485-60bf-4010-85af-182081b07ebc": {
+            "type": "banner-three",
+            "settings": {
+              "max_width": "",
+              "background_color": "",
+              "add_border_top": "",
+              "add_border_bottom": "",
+              "border_width": "",
+              "add_padding_top": "",
+              "add_padding_bottom": "",
+              "add_margin_top": "",
+              "add_margin_bottom": "",
+              "custom_class": "",
+              "inner_spacing": "",
+              "image_1": "shopify:\/\/shop_images\/js_logo.jpg",
+              "image_1_width": "",
+              "link_1": "",
+              "content_position_1": "located-image",
+              "text_color_1": "text-light",
+              "vertical_align_1": "middle",
+              "horizontal_align_1": "center",
+              "title_1": "Banner",
+              "title_tag_1": "h2",
+              "content_1": "Lorem ipsum dolor sit amet",
+              "link_1_a": "",
+              "button_text_1_a": "Shop Now",
+              "link_1_b": "",
+              "button_text_1_b": "Shop Now",
+              "button_position_1": "button-below-content",
+              "image_2_width": "",
+              "link_2": "",
+              "content_position_2": "located-image",
+              "text_color_2": "text-light",
+              "vertical_align_2": "middle",
+              "horizontal_align_2": "center",
+              "title_2": "Banner",
+              "title_tag_2": "h2",
+              "content_2": "Lorem ipsum dolor sit amet",
+              "link_2_a": "",
+              "button_text_2_a": "Shop Now",
+              "link_2_b": "",
+              "button_text_2_b": "Shop Now",
+              "button_position_2": "button-below-content",
+              "image_3_width": "",
+              "link_3": "",
+              "content_position_3": "located-image",
+              "text_color_3": "text-light",
+              "vertical_align_3": "middle",
+              "horizontal_align_3": "center",
+              "title_3": "Banner",
+              "title_tag_3": "h2",
+              "content_3": "Lorem ipsum dolor sit amet",
+              "link_3_a": "",
+              "button_text_3_a": "Shop Now",
+              "link_3_b": "",
+              "button_text_3_b": "Shop Now",
+              "button_position_3": "button-below-content"
+            }
           }
         },
         "block_order": [
           "d107d3d2-56e7-4167-89ec-2950c918641e",
           "27d2defc-cfdc-4fdb-954e-a16b7bb4968d",
-          "31f24f2a-ad5b-4072-b8b6-7ce0f3e655fa"
+          "31f24f2a-ad5b-4072-b8b6-7ce0f3e655fa",
+          "9e803485-60bf-4010-85af-182081b07ebc"
         ],
         "settings": {
         }
