@@ -117,14 +117,14 @@
             "type": "collection",
             "settings": {
               "feature_collection": "womens-sale-boots",
-              "feature_collection_image": "shopify:\/\/shop_images\/WOMEN_S.jpg"
+              "feature_collection_image": "shopify:\/\/shop_images\/WELCOME1.jpg"
             }
           },
           "block_2": {
             "type": "collection",
             "settings": {
               "feature_collection": "mens-shoes",
-              "feature_collection_image": "shopify:\/\/shop_images\/MEN_S.jpg"
+              "feature_collection_image": "shopify:\/\/shop_images\/WELCOME2.jpg"
             }
           }
         },
@@ -141,13 +141,13 @@
           "collection_sec_1": {
             "type": "collection",
             "settings": {
-              "feature_collection": "casual-trainers"
+              "feature_collection": "spring-trainers"
             }
           },
           "collection_sec_2": {
             "type": "collection",
             "settings": {
-              "feature_collection": "slippers-house-shoes"
+              "feature_collection": "womens-slippers"
             }
           },
           "collection_sec_3": {
@@ -159,13 +159,13 @@
           "33fa1fff-ebfd-4126-826a-5ad60770787c": {
             "type": "collection",
             "settings": {
-              "feature_collection": "vegan-friendly"
+              "feature_collection": "vegan-range"
             }
           },
           "19342190-6295-4c31-8770-a6d0c3ed8cc3": {
             "type": "collection",
             "settings": {
-              "feature_collection": "womens-shoes"
+              "feature_collection": "womens-pumps"
             }
           }
         },
@@ -239,7 +239,7 @@
           "conny_1": {
             "type": "collection",
             "settings": {
-              "collection_name": "womens-boots",
+              "collection_name": "ladies-boots",
               "collection_text": "From earthy coppers to burnt chocolates, this time of year is full of rich hues and tones that our designers take inspiration from. Discover our Autumnal <br>range that will be launching on the store in the coming days.",
               "product_name": "josef-seibel-neele-01-multi"
             }
@@ -257,7 +257,7 @@
           "seller_1": {
             "type": "collection",
             "settings": {
-              "collection_name": "best-seller-internal-use",
+              "collection_name": "josef-seibel-womens",
               "collection_title": "Our Best Sellers"
             }
           }
