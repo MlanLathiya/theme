@@ -2,7 +2,7 @@
 	<div class="container">
     	<h2 class="clction_title"><span>Our Brands</span></h2>
         <div class="row justify-content-center">
-        	<div class="col-lg-5 col-md-6">
+        	<div class="col-lg-4 col-md-4">
             	<div class="brand_block">
                     {% if block.settings.title_1 != blank or block.settings.content_1 != blank %}
                         <figure><img src="{{ block.settings.image_1 | img_url: '1920x' }}" alt="img"/></figure>
@@ -16,7 +16,7 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="col-lg-5 col-md-6">
+            <div class="col-lg-4 col-md-4">
             	<div class="brand_block">
                     {% if block.settings.title_2 != blank or block.settings.content_2 != blank %}
                         <figure><img src="{{ block.settings.image_2 | img_url: '1920x' }}" alt="img"/></figure>
@@ -26,6 +26,20 @@
                         {% if block.settings.content_2 != blank %}
                             <p>{{ block.settings.content_2 }}</p>
                             <div class="text">{{ block.settings.content_2 }}</div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4">
+            	<div class="brand_block">
+                    {% if block.settings.title_3 != blank or block.settings.content_3 != blank %}
+                        <figure><img src="{{ block.settings.image_3 | img_url: '1920x' }}" alt="img"/></figure>
+                        {% if block.settings.title_3 != blank %}
+                            <{{ block.settings.title_tag_3 }}>{{ block.settings.title_3 }}</{{ block.settings.title_tag_3 }}>
+                        {% endif %}
+                        {% if block.settings.content_3 != blank %}
+                            <p>{{ block.settings.content_3 }}</p>
+                            <div class="text">{{ block.settings.content_3 }}</div>
                         {% endif %}
                     {% endif %}
                 </div>
