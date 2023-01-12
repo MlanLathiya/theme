@@ -292,8 +292,41 @@
       "customer-sec": {
         "type": "customer-sec",
         "blocks": {
+          "c30ac942-76c7-4ccf-a700-edc05f2b2d9d": {
+            "type": "collection",
+            "settings": {
+              "heading": "What our customers think...",
+              "comment": "Josef Seibel make excellent shoes, extremely comfortable and long lasting. I'm on my 4th pair now, having bought my first pair ten years ago.",
+              "rate": 5,
+              "star_image": "shopify:\/\/shop_images\/star_white.png",
+              "customer_logo": "shopify:\/\/shop_images\/customer_logo.png"
+            }
+          },
+          "b61fdae8-abb5-4d5c-b53a-677d15f91166": {
+            "type": "collection",
+            "settings": {
+              "heading": "What our customers think...",
+              "comment": "Love my Josef Seibel shoes. Bought them to replace my last ones which only needed replacing because I had worn down the heels.",
+              "rate": 5,
+              "star_image": "shopify:\/\/shop_images\/star_white.png",
+              "customer_logo": "shopify:\/\/shop_images\/customer_logo.png"
+            }
+          },
+          "6508a770-2b0f-44e7-8806-24856fcfe197": {
+            "type": "collection",
+            "settings": {
+              "heading": "What our customers think...",
+              "comment": "These shoes fit perfectly. They are some of the most comfortable shoes I have owned. I have received several compliments from friends and strangers about them.",
+              "rate": 5,
+              "star_image": "shopify:\/\/shop_images\/star_white.png",
+              "customer_logo": "shopify:\/\/shop_images\/customer_logo.png"
+            }
+          }
         },
         "block_order": [
+          "c30ac942-76c7-4ccf-a700-edc05f2b2d9d",
+          "b61fdae8-abb5-4d5c-b53a-677d15f91166",
+          "6508a770-2b0f-44e7-8806-24856fcfe197"
         ],
         "settings": {
         }
