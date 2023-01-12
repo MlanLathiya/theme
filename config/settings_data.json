@@ -380,11 +380,57 @@
               "video_controls": false,
               "video_link": "https:\/\/youtu.be\/AGWpfbuSccE"
             }
+          },
+          "2b7a322f-bb20-41c0-8ba8-82960983b2e8": {
+            "type": "banner-two",
+            "settings": {
+              "max_width": "",
+              "background_color": "",
+              "add_border_top": "",
+              "add_border_bottom": "",
+              "border_width": "",
+              "add_padding_top": "",
+              "add_padding_bottom": "",
+              "add_margin_top": "",
+              "add_margin_bottom": "",
+              "custom_class": "",
+              "image_1": "shopify:\/\/shop_images\/WOMEN_S.jpg",
+              "mobile_image_1": "shopify:\/\/shop_images\/season_bg.jpg",
+              "link_1": "",
+              "content_position_1": "located-image",
+              "text_color_1": "text-light",
+              "vertical_align_1": "middle",
+              "horizontal_align_1": "center",
+              "title_1": "Banner",
+              "title_tag_1": "h2",
+              "content_1": "Lorem ipsum dolor sit amet",
+              "link_1_a": "",
+              "button_text_1_a": "Shop Now",
+              "link_1_b": "",
+              "button_text_1_b": "Shop Now",
+              "button_position_1": "button-below-content",
+              "image_2": "shopify:\/\/shop_images\/season_bg.jpg",
+              "mobile_image_2": "shopify:\/\/shop_images\/1700x629_Banner.png",
+              "link_2": "",
+              "content_position_2": "located-image",
+              "text_color_2": "text-light",
+              "vertical_align_2": "middle",
+              "horizontal_align_2": "center",
+              "title_2": "Banner",
+              "title_tag_2": "h2",
+              "content_2": "Lorem ipsum dolor sit amet",
+              "link_2_a": "",
+              "button_text_2_a": "Shop Now",
+              "link_2_b": "",
+              "button_text_2_b": "Shop Now",
+              "button_position_2": "button-below-content"
+            }
           }
         },
         "block_order": [
           "d107d3d2-56e7-4167-89ec-2950c918641e",
-          "27d2defc-cfdc-4fdb-954e-a16b7bb4968d"
+          "27d2defc-cfdc-4fdb-954e-a16b7bb4968d",
+          "2b7a322f-bb20-41c0-8ba8-82960983b2e8"
         ],
         "settings": {
         }
