@@ -1,10 +1,10 @@
 <section class="abt_top">
   <div class="container">
-    {% if section.settings.title != blank %}
-      <{{ section.settings.title_tag }}>{{ section.settings.title }}</{{ section.settings.title_tag }}>
+    {% if block.settings.title != blank %}
+      <{{ block.settings.title_tag }}>{{ block.settings.title }}</{{ block.settings.title_tag }}>
     {% endif %}
-    {% if section.settings.content != blank %}
-      {{ section.settings.content }}
+    {% if block.settings.content != blank %}
+      {{ block.settings.content }}
     {% endif %}
   </div>
 </section>
