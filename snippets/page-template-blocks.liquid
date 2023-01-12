@@ -23,7 +23,7 @@
         {% include 'cms-twocolumn-content-video' %}
 
       {% when 'onecolumn-content' %}
-        {% include 'cms-onecolumn-content' %}
+        {% comment %} {% include 'cms-onecolumn-content' %} {% endcomment %}
     {% endcase %}
   {% endfor %}
 </div>
