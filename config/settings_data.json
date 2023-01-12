@@ -107,7 +107,8 @@
           "img_7",
           "56957a04-dd61-4b54-bf3a-3adc2b91164d"
         ],
-        "settings": {}
+        "settings": {
+        }
       },
       "welcome-sec": {
         "type": "welcome-sec",
@@ -129,7 +130,8 @@
           "block_1",
           "block_2"
         ],
-        "settings": {}
+        "settings": {
+        }
       },
       "collection-sec": {
         "type": "collection-sec",
@@ -172,7 +174,8 @@
           "33fa1fff-ebfd-4126-826a-5ad60770787c",
           "19342190-6295-4c31-8770-a6d0c3ed8cc3"
         ],
-        "settings": {}
+        "settings": {
+        }
       },
       "policy-sec": {
         "type": "policy-sec",
@@ -207,7 +210,8 @@
           "d6182837-ee9d-47da-8ee6-02dd69b21bff",
           "ad65c26e-4c83-467a-8631-47bb78152f7d"
         ],
-        "settings": {}
+        "settings": {
+        }
       },
       "season-sec": {
         "type": "season-sec",
@@ -224,7 +228,8 @@
         "block_order": [
           "season_1"
         ],
-        "settings": {}
+        "settings": {
+        }
       },
       "conny-sec": {
         "type": "conny-sec",
@@ -241,7 +246,8 @@
         "block_order": [
           "conny_1"
         ],
-        "settings": {}
+        "settings": {
+        }
       },
       "seller-sec": {
         "type": "seller-sec",
@@ -257,7 +263,8 @@
         "block_order": [
           "seller_1"
         ],
-        "settings": {}
+        "settings": {
+        }
       },
       "my-sec": {
         "type": "my-sec",
@@ -277,7 +284,8 @@
         "block_order": [
           "ece7e867-4624-4cec-bc41-c34c6a99b9cc"
         ],
-        "settings": {}
+        "settings": {
+        }
       },
       "customer-sec": {
         "type": "customer-sec",
@@ -318,7 +326,8 @@
           "b61fdae8-abb5-4d5c-b53a-677d15f91166",
           "6508a770-2b0f-44e7-8806-24856fcfe197"
         ],
-        "settings": {}
+        "settings": {
+        }
       },
       "stay-sec": {
         "type": "stay-sec",
@@ -334,19 +343,23 @@
         "block_order": [
           "stay_sec_1"
         ],
-        "settings": {}
+        "settings": {
+        }
       },
       "relative-header": {
         "type": "relative-header",
-        "settings": {}
+        "settings": {
+        }
       },
       "footer": {
         "type": "footer",
-        "settings": {}
+        "settings": {
+        }
       },
       "search-modal": {
         "type": "search-modal",
-        "settings": {}
+        "settings": {
+        }
       },
       "page-about-template": {
         "type": "page-about-template",
@@ -373,7 +386,8 @@
           "d107d3d2-56e7-4167-89ec-2950c918641e",
           "27d2defc-cfdc-4fdb-954e-a16b7bb4968d"
         ],
-        "settings": {}
+        "settings": {
+        }
       }
     },
     "content_for_index": [
