@@ -1,10 +1,19 @@
 <div class="cms-sections">
   {% for block in section.blocks %}
     {% case block.type %}
+        {% comment %} ABOUT JOSEF SEIBEL GROUP {% endcomment %}
+      {% when 'onecolumn-content' %}
+        {% include 'cms-onecolumn-content' %}
+
+        {% comment %} WATCH OUR CORPORATE VIDEO {% endcomment %}
       {% when 'banner-one' %}
         {% include 'cms-banner-one' %}
 
       {% when 'banner-two' %}
+        {% include 'cms-banner-two' %}
+
+        {% comment %} OUR BRANDS {% endcomment %}
+      {% when 'our-brands' %}
         {% include 'cms-banner-two' %}
 
       {% when 'banner-three' %}
@@ -21,9 +30,6 @@
 
       {% when 'twocolumn-content-video' %}
         {% include 'cms-twocolumn-content-video' %}
-
-      {% when 'onecolumn-content' %}
-        {% include 'cms-onecolumn-content' %}
     {% endcase %}
   {% endfor %}
 </div>
