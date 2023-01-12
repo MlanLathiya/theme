@@ -381,7 +381,7 @@
               "video_link": "https:\/\/youtu.be\/AGWpfbuSccE"
             }
           },
-          "2b7a322f-bb20-41c0-8ba8-82960983b2e8": {
+          "d69b99a6-e1d7-4971-942d-6d2de6861da2": {
             "type": "banner-two",
             "settings": {
               
@@ -391,7 +391,7 @@
         "block_order": [
           "d107d3d2-56e7-4167-89ec-2950c918641e",
           "27d2defc-cfdc-4fdb-954e-a16b7bb4968d",
-          "2b7a322f-bb20-41c0-8ba8-82960983b2e8"
+          "d69b99a6-e1d7-4971-942d-6d2de6861da2"
         ],
         "settings": {
         }
