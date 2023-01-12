@@ -7,7 +7,7 @@
                     {% if block.settings.title_1 != blank or block.settings.content_1 != blank %}
                         <figure><img src="{{ block.settings.image_1 | img_url: '1920x' }}" alt="img"/></figure>
                         {% if block.settings.title_1 != blank %}
-                            <{{ block.settings.title_tag_1 }} class="title">{{ block.settings.title_1 }}</{{ block.settings.title_tag_1 }}>
+                            <{{ block.settings.title_tag_1 }}>{{ block.settings.title_1 }}</{{ block.settings.title_tag_1 }}>
                         {% endif %}
                         {% if block.settings.content_1 != blank %}
                             <p>{{ block.settings.content_1 }}</p>
@@ -21,7 +21,7 @@
                     {% if block.settings.title_2 != blank or block.settings.content_2 != blank %}
                         <figure><img src="{{ block.settings.image_2 | img_url: '1920x' }}" alt="img"/></figure>
                         {% if block.settings.title_2 != blank %}
-                            <{{ block.settings.title_tag_2 }} class="title">{{ block.settings.title_2 }}</{{ block.settings.title_tag_2 }}>
+                            <{{ block.settings.title_tag_2 }}>{{ block.settings.title_2 }}</{{ block.settings.title_tag_2 }}>
                         {% endif %}
                         {% if block.settings.content_2 != blank %}
                             <p>{{ block.settings.content_2 }}</p>
