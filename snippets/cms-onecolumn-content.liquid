@@ -1,6 +1,6 @@
 <section class="abt_top">
   <div class="container">
-    {{section.settings.title}}
+    {{ section.settings.title | json }}
     {% if section.settings.title != blank %}
       <{{ section.settings.title_tag }}>{{ section.settings.title }}</{{ section.settings.title_tag }}>
     {% endif %}
