@@ -1,30 +1,42 @@
-<div class="txt-content onecolumn {{ block.settings.add_padding_top }} {{ block.settings.add_padding_bottom }} {{ block.settings.add_margin_top }} {{ block.settings.add_margin_bottom }} {{ block.settings.add_border_top }} {{ block.settings.add_border_bottom }} {{ block.settings.border_width }}" {% if block.settings.background_color != '' %}style="background-color: {{ block.settings.background_color }}"{% endif %}>
-    <div class="wrapper {{ block.settings.max_width }}">
-        <div class="row">
-            <div class="col-text {{ block.settings.text_color | escape }} {{ block.settings.content_align | escape }} {{ block.settings.content_width }} {{ block.settings.content_positon }}">
-                <div class="text-content">
-                    {% if block.settings.title != blank %}
-                        <{{ block.settings.title_tag }} class="title">{{ block.settings.title }}</{{ block.settings.title_tag }}>
-                    {% endif %}
-                    {% if block.settings.content != blank or block.settings.link_1 != blank or block.settings.link_2 != blank %}
-                    <div class="content">
-                        {% if block.settings.content != blank %}
-                            <div class="text">{{ block.settings.content }}</div>
-                        {% endif %}
-                        {% if block.settings.link_1 != blank or block.settings.link_2 != blank %}
-                            <div class="buttons {{ block.settings.button_position }}">
-                                {% if block.settings.link_1 != blank %}
-                                    <a class="button" href="{{ block.settings.link_1 }}">{{ block.settings.button_text_1 }}</a>
-                                {% endif %}	
-                                {% if block.settings.link_2 != blank %}
-                                    <a class="button" href="{{ block.settings.link_2 }}">{{ block.settings.button_text_2 }}</a>
-                                {% endif %}	
-                            </div>
-                        {% endif %}	
-                    </div>
-                    {% endif %}	
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<section class="abt_top">
+  <div class="container">
+    {% if section.settings.title != blank %}
+      <{{ section.settings.title_tag }}>{{ section.settings.title }}</{{ section.settings.title_tag }}>
+    {% endif %}
+    {% if section.settings.content != blank %}
+      {{ section.settings.content }}
+    {% endif %}
+  </div>
+</section>
+{% comment %}
+  <div class="txt-content onecolumn {{ block.settings.add_padding_top }} {{ block.settings.add_padding_bottom }} {{ block.settings.add_margin_top }} {{ block.settings.add_margin_bottom }} {{ block.settings.add_border_top }} {{ block.settings.add_border_bottom }} {{ block.settings.border_width }}" {% if block.settings.background_color != '' %}style="background-color: {{ block.settings.background_color }}"{% endif %}>
+      <div class="wrapper {{ block.settings.max_width }}">
+          <div class="row">
+              <div class="col-text {{ block.settings.text_color | escape }} {{ block.settings.content_align | escape }} {{ block.settings.content_width }} {{ block.settings.content_positon }}">
+                  <div class="text-content">
+                      {% if block.settings.title != blank %}
+                          <{{ block.settings.title_tag }} class="title">{{ block.settings.title }}</{{ block.settings.title_tag }}>
+                      {% endif %}
+                      {% if block.settings.content != blank or block.settings.link_1 != blank or block.settings.link_2 != blank %}
+                      <div class="content">
+                          {% if block.settings.content != blank %}
+                              <div class="text">{{ block.settings.content }}</div>
+                          {% endif %}
+                          {% if block.settings.link_1 != blank or block.settings.link_2 != blank %}
+                              <div class="buttons {{ block.settings.button_position }}">
+                                  {% if block.settings.link_1 != blank %}
+                                      <a class="button" href="{{ block.settings.link_1 }}">{{ block.settings.button_text_1 }}</a>
+                                  {% endif %}
+                                  {% if block.settings.link_2 != blank %}
+                                      <a class="button" href="{{ block.settings.link_2 }}">{{ block.settings.button_text_2 }}</a>
+                                  {% endif %}
+                              </div>
+                          {% endif %}
+                      </div>
+                      {% endif %}
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+{% endcomment %}
