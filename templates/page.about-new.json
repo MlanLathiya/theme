@@ -87,10 +87,23 @@
             "button_text": "More",
             "side_image": "shopify:\/\/shop_images\/stand_img1.jpg"
           }
+        },
+        "dbbebc55-9542-4a7d-8000-2bab66d810c8": {
+          "type": "banner",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/stand_ic2.png",
+            "title": "Trust in Progress.",
+            "title_tag": "h3",
+            "content": "<p>We want to constantly evolve and find even better solutions. Which is why we are always striving for progress.<\/p>",
+            "link": "",
+            "button_text": "More",
+            "side_image": "shopify:\/\/shop_images\/stand_img2.jpg"
+          }
         }
       },
       "block_order": [
-        "6bd07ff8-86d9-453f-bd40-3685a4fe7d49"
+        "6bd07ff8-86d9-453f-bd40-3685a4fe7d49",
+        "dbbebc55-9542-4a7d-8000-2bab66d810c8"
       ],
       "settings": {
         "title": "WHAT WE STAND FOR"
