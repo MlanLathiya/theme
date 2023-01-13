@@ -181,6 +181,24 @@
       ],
       "settings": {
       }
+    },
+    "ef1598b6-db2e-4954-b351-88140b6427dc": {
+      "type": "season-sec",
+      "blocks": {
+        "template--17488951771452__ef1598b6-db2e-4954-b351-88140b6427dc-167360691960ce6c71-0": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "vegan-friendly",
+            "feature_collection_text": "szdfsdfsdfsd",
+            "season_image": "shopify:\/\/shop_images\/stand_img6.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "template--17488951771452__ef1598b6-db2e-4954-b351-88140b6427dc-167360691960ce6c71-0"
+      ],
+      "settings": {
+      }
     }
   },
   "wrapper": "div.cms-sections",
@@ -190,6 +208,7 @@
     "cb210484-0e74-4dfc-b17e-011efd6daccb",
     "403d7ac9-3f41-4012-b320-ea959b2d93c5",
     "08e615a0-7313-45be-b0c2-e9014c344494",
-    "2c31111f-20c2-4c63-b648-4bf89a48520a"
+    "2c31111f-20c2-4c63-b648-4bf89a48520a",
+    "ef1598b6-db2e-4954-b351-88140b6427dc"
   ]
 }
