@@ -6,10 +6,29 @@
         "enable_title": false,
         "enable_content": true
       }
+    },
+    "1a082911-7b02-4ffb-a4b5-c2fd1b687daa": {
+      "type": "onecolumn-content",
+      "blocks": {
+        "7ccb4c87-23a1-44f6-a10f-14d123e7b041": {
+          "type": "asced",
+          "settings": {
+            "title": "Milan",
+            "title_tag": "h2",
+            "content": "<p>Lorem ipsum dolor sit amet<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "7ccb4c87-23a1-44f6-a10f-14d123e7b041"
+      ],
+      "settings": {
+      }
     }
   },
   "wrapper": "div.cms-sections",
   "order": [
-    "main"
+    "main",
+    "1a082911-7b02-4ffb-a4b5-c2fd1b687daa"
   ]
 }

@@ -363,10 +363,6 @@
       },
       "page-about-template": {
         "type": "page-about-template",
-        "blocks": {
-        },
-        "block_order": [
-        ],
         "settings": {
         }
       }
