@@ -141,7 +141,7 @@
           "collection_sec_1": {
             "type": "collection",
             "settings": {
-              "feature_collection": "spring-trainers"
+              "feature_collection": "100-waterproof-boots"
             }
           },
           "collection_sec_2": {
@@ -365,6 +365,16 @@
       },
       "page-about-template": {
         "type": "page-about-template",
+        "settings": {
+        }
+      },
+      "inner-banner-sec": {
+        "type": "inner-banner-sec",
+        "settings": {
+        }
+      },
+      "inner-sec": {
+        "type": "inner-sec",
         "settings": {
         }
       }
