@@ -147,6 +147,7 @@
         "add92e0a-92d1-4235-8076-bd4e1d754c50": {
           "type": "banner",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Tradition_at_heart_top_rollover_image.jpg",
             "image_width": "",
             "video_src": "",
             "video_loop": true,
@@ -173,6 +174,7 @@
         "d93f01d2-0f0b-437f-9fd1-d151444a92f5": {
           "type": "banner",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Trust_in_progress_top_roll_over_graphic.jpg",
             "image_width": "",
             "video_src": "",
             "video_loop": true,
@@ -199,6 +201,7 @@
         "ffa4f77c-96fc-435d-8e29-541a28309b80": {
           "type": "banner",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Form_of_Function_Top_rollover_image.jpg",
             "image_width": "",
             "video_src": "",
             "video_loop": true,
@@ -225,6 +228,7 @@
         "0fea3e41-14e1-4115-8aa8-3cc0fdbcdd9d": {
           "type": "banner",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Care_for_detail_top_roll_over_graphic.jpg",
             "image_width": "",
             "video_src": "",
             "video_loop": true,
@@ -251,6 +255,7 @@
         "aa9a8ec9-c51f-48d3-be39-16823934bec1": {
           "type": "banner",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Joy_of_walking_top_roll_over_image.jpg",
             "image_width": "",
             "video_src": "",
             "video_loop": true,
@@ -277,6 +282,7 @@
         "33be051b-7775-430a-99e5-dc61bfd9f130": {
           "type": "banner",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Spirit_of_nature_top_roll_over_graphic.jpg",
             "image_width": "",
             "video_src": "",
             "video_loop": true,
