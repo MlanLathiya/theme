@@ -189,8 +189,7 @@
           "type": "collection",
           "settings": {
             "feature_collection": "vegan-friendly",
-            "feature_collection_text": "szdfsdfsdfsd",
-            "season_image": "shopify:\/\/shop_images\/stand_img6.jpg"
+            "feature_collection_text": ""
           }
         }
       },
