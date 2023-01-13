@@ -1,7 +1,7 @@
 {% for block in section.blocks limit: section.blocks.size %}
   <div class="container">
     <figure>
-      <img src="{{ block.settings.image | img_url: '227×227' }}" alt="{{ block.settings.title }}">
+      <img src="{{ block.settings.image | img_url: '4472x4472' }}" alt="{{ block.settings.title }}">
     </figure>
     <{{ block.settings.title_tag }}>{{ block.settings.title }}</{{ block.settings.title_tag }}>
     {{ block.settings.content }}

@@ -1,63 +1,64 @@
-{% for block in section.blocks limit: 1 %}
+{% if section.settings.title != blank %}
+  {% for block in section.blocks limit: 1 %}
     <img src="{{ block.settings.season_image | img_url:'4472x4472' }}" alt="">
   {% endfor %}
-  <div class="container">
-    <div class="inner">
-      {% for block in section.blocks limit: section.blocks.size %}
-        <h2>{{ collections[block.settings.feature_collection].title }}</h2>
-        <p>{{ block.settings.feature_collection_text }}</p>
-        <figure><img src="{{ collections[block.settings.feature_collection].image | img_url: '870x' }}" alt=""></figure>
-        <a href="{{ collections[block.settings.feature_collection].url }}">
-          <button class="btns" href="{{ collections[block.settings.feature_collection].url }}">EXPLORE</button>
-        </a>
-      {% endfor %}
-  
-      <div class="curve1"><img src="{{ 'season_curve1.png' | asset_url }}" alt=""></div>
-      <div class="curve2"><img src="{{ 'season_curve2.png' | asset_url }}" alt=""></div>
-      <div class="curve3"><img src="{{ 'season_curve3.png' | asset_url }}" alt=""></div>
-    </div>
+{% endif %}
+<div class="container">
+  <div class="inner">
+    {% for block in section.blocks limit: section.blocks.size %}
+      <h2>{{ collections[block.settings.feature_collection].title }}</h2>
+      <p>{{ block.settings.feature_collection_text }}</p>
+      <figure><img src="{{ collections[block.settings.feature_collection].image | img_url: '870x' }}" alt=""></figure>
+      <a href="{{ collections[block.settings.feature_collection].url }}">
+        <button class="btns" href="{{ collections[block.settings.feature_collection].url }}">EXPLORE</button>
+      </a>
+    {% endfor %}
+
+    <div class="curve1"><img src="{{ 'season_curve1.png' | asset_url }}" alt=""></div>
+    <div class="curve2"><img src="{{ 'season_curve2.png' | asset_url }}" alt=""></div>
+    <div class="curve3"><img src="{{ 'season_curve3.png' | asset_url }}" alt=""></div>
   </div>
-  
-  {% schema %}
-  {
-    "name": "season_sec",
-    "tag": "section",
-    "class": "season_sec",
-    "max_blocks": 1,
-    "blocks": [
-      {
-        "name": "season_sec",
-        "type": "collection",
-        "settings": [
-          {
-            "type": "collection",
-            "id": "feature_collection",
-            "label": "Featured collection"
-          },
-          {
-            "type": "textarea",
-            "id": "feature_collection_text",
-            "label": "Featured Collection Text"
-          },
-          {
-              "label": "season_image",
-              "id": "season_image",
-              "type": "image_picker"
-          }
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "season_sec",
-        "category": "Image",
-        "blocks": [
-          {
-            "type": "collection"
-          }
-        ]
-      }
-    ]
-  }
-  {% endschema %}
-  
+</div>
+
+{% schema %}
+{
+  "name": "season_sec",
+  "tag": "section",
+  "class": "season_sec",
+  "max_blocks": 1,
+  "blocks": [
+    {
+      "name": "season_sec",
+      "type": "collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "feature_collection",
+          "label": "Featured collection"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_collection_text",
+          "label": "Featured Collection Text"
+        },
+        {
+          "label": "season_image",
+          "id": "season_image",
+          "type": "image_picker"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "season_sec",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
