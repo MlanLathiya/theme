@@ -16,10 +16,10 @@
       }
     },
     "1636492523c04f8d99": {
-      "type": "banner-one",
+      "type": "video-sec",
       "blocks": {
         "978245bf-3d1d-44fb-8dbe-e18bda4fb4f2": {
-          "type": "banner-one",
+          "type": "video-sec",
           "settings": {
             "video_src": "",
             "video_loop": true,

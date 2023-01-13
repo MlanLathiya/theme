@@ -373,7 +373,7 @@
             }
           },
           "27d2defc-cfdc-4fdb-954e-a16b7bb4968d": {
-            "type": "banner-one",
+            "type": "video-sec",
             "settings": {
               "video_src": "",
               "video_loop": true,
