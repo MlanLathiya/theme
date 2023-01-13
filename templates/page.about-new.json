@@ -123,13 +123,26 @@
             "button_text": "More",
             "side_image": "shopify:\/\/shop_images\/stand_img4.jpg"
           }
+        },
+        "b84f4ec2-35c0-4646-9e70-995da6786883": {
+          "type": "banner",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/stand_ic5.png",
+            "title": "Joy of Walking.",
+            "title_tag": "h3",
+            "content": "<p>We want people to live a life full of joy. Which is why we make every single step they take as comfortable as possible.<\/p>",
+            "link": "",
+            "button_text": "More",
+            "side_image": "shopify:\/\/shop_images\/stand_img5.jpg"
+          }
         }
       },
       "block_order": [
         "6bd07ff8-86d9-453f-bd40-3685a4fe7d49",
         "dbbebc55-9542-4a7d-8000-2bab66d810c8",
         "f93b2557-474f-41af-b22b-b0732b92cf6d",
-        "8b1cd7a9-63b7-4273-9f19-65131f9e3406"
+        "8b1cd7a9-63b7-4273-9f19-65131f9e3406",
+        "b84f4ec2-35c0-4646-9e70-995da6786883"
       ],
       "settings": {
         "title": "WHAT WE STAND FOR"
