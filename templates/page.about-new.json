@@ -135,6 +135,18 @@
             "button_text": "More",
             "side_image": "shopify:\/\/shop_images\/stand_img5.jpg"
           }
+        },
+        "006d8884-2e06-4d05-82df-7ea914391d67": {
+          "type": "banner",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/stand_ic6.png",
+            "title": "Spirit of Nature.",
+            "title_tag": "h3",
+            "content": "<p>We are invested in people’s well-being in the long term. This is why we pay attention to our ecological footprint at all times.<\/p>",
+            "link": "",
+            "button_text": "More",
+            "side_image": "shopify:\/\/shop_images\/stand_img6.jpg"
+          }
         }
       },
       "block_order": [
@@ -142,7 +154,8 @@
         "dbbebc55-9542-4a7d-8000-2bab66d810c8",
         "f93b2557-474f-41af-b22b-b0732b92cf6d",
         "8b1cd7a9-63b7-4273-9f19-65131f9e3406",
-        "b84f4ec2-35c0-4646-9e70-995da6786883"
+        "b84f4ec2-35c0-4646-9e70-995da6786883",
+        "006d8884-2e06-4d05-82df-7ea914391d67"
       ],
       "settings": {
         "title": "WHAT WE STAND FOR"
