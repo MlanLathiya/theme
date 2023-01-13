@@ -6,64 +6,10 @@
         "enable_title": false,
         "enable_content": true
       }
-    },
-    "1636492265f6225ff6": {
-      "type": "onecolumn-content",
-      "blocks": {
-        "cf2ee4ce-63f4-41a8-89d1-a8802348ef84": {
-          "type": "asced",
-          "settings": {
-            "title": "Banner",
-            "title_tag": "h2",
-            "content": "<p>Lorem ipsum dolor sit amet<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "cf2ee4ce-63f4-41a8-89d1-a8802348ef84"
-      ],
-      "settings": {
-      }
-    },
-    "1636492523c04f8d99": {
-      "type": "video-sec",
-      "settings": {
-      }
-    },
-    "31f24f2a-ad5b-4072-b8b6-7ce0f3e655fa1": {
-      "type": "our-brands",
-      "blocks": {
-        "8d948636-2d74-4e32-ab24-72dd88927a38": {
-          "type": "our-brands",
-          "settings": {
-            "sec_title": "Orur Brands",
-            "image_1": "shopify:\/\/shop_images\/js_logo.jpg",
-            "title_1": "JOSEF SEIBEL",
-            "title_tag_1": "h3",
-            "content_1": "JOSEF SEIBEL footwear is created using a combination of high quality materials and hand-crafted elements, designed with sustainability and the perfect fit in mind. Removable insoles, genuine hand stitching and lightweight soles all provide endless comfort in every pair. High aesthetic standards and modern design come together to create a comprehensive selection of beautifully versatile footwear.",
-            "image_2": "shopify:\/\/shop_images\/gerry-webber-logo.jpg",
-            "title_2": "Gerry Weber",
-            "title_tag_2": "h3",
-            "content_2": "JOSEF SEIBEL is proud to be the licensee for Gerry Weber Footwear worldwide. The Gerry Weber collection is elegant and extraordinary, comfortable and lightweight, offering a wide selection of shoes and boots in a variety of materials ranging from plain smooth leather and suede to textured fabrics",
-            "image_3": "shopify:\/\/shop_images\/Westland_by_Josef_Seibel_Logo.jpg",
-            "title_3": "Westland",
-            "title_tag_3": "h3",
-            "content_3": "Our new brand Westland by JOSEF SEIBEL is a comprehensive collection of lightweight, flexible and superb fitting footwear. Westland by Josef Seibel is a superb collection of high-quality footwear in a wide range of styles for the autumn\/winter season. Using a combination of materials and high-tech waterproof membranes to create a perfect synergy of practicality, comfort and style."
-          }
-        }
-      },
-      "block_order": [
-        "8d948636-2d74-4e32-ab24-72dd88927a38"
-      ],
-      "settings": {
-      }
     }
   },
   "wrapper": "div.cms-sections",
   "order": [
-    "main",
-    "1636492265f6225ff6",
-    "1636492523c04f8d99",
-    "31f24f2a-ad5b-4072-b8b6-7ce0f3e655fa1"
+    "main"
   ]
 }
