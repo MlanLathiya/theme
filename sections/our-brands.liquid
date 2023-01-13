@@ -1,0 +1,99 @@
+{% for block in section.blocks limit: section.blocks.size %}
+    <section class="brand_sec">
+        <div class="container">
+            <h2 class="clction_title"><span>{{ block.settings.sec_title }}</span></h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-4">
+                    <div class="brand_block">
+                        {% if block.settings.title_1 != blank or block.settings.content_1 != blank %}
+                            <figure><img src="{{ block.settings.image_1 | img_url: '1920x' }}" alt="img"/></figure>
+                            {% if block.settings.title_1 != blank %}
+                                <{{ block.settings.title_tag_1 }}>{{ block.settings.title_1 }}</{{ block.settings.title_tag_1 }}>
+                            {% endif %}
+                            {% if block.settings.content_1 != blank %}
+                                <p>{{ block.settings.content_1 }}</p>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="brand_block">
+                        {% if block.settings.title_2 != blank or block.settings.content_2 != blank %}
+                            <figure><img src="{{ block.settings.image_2 | img_url: '1920x' }}" alt="img"/></figure>
+                            {% if block.settings.title_2 != blank %}
+                                <{{ block.settings.title_tag_2 }}>{{ block.settings.title_2 }}</{{ block.settings.title_tag_2 }}>
+                            {% endif %}
+                            {% if block.settings.content_2 != blank %}
+                                <p>{{ block.settings.content_2 }}</p>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="brand_block">
+                        {% if block.settings.title_3 != blank or block.settings.content_3 != blank %}
+                            <figure><img src="{{ block.settings.image_3 | img_url: '1920x' }}" alt="img"/></figure>
+                            {% if block.settings.title_3 != blank %}
+                                <{{ block.settings.title_tag_3 }}>{{ block.settings.title_3 }}</{{ block.settings.title_tag_3 }}>
+                            {% endif %}
+                            {% if block.settings.content_3 != blank %}
+                                <p>{{ block.settings.content_3 }}</p>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </section>
+{% endfor %}
+
+{% schema %}
+{
+    "name": "Video Section",    
+    "max_blocks": 1,
+    "blocks": [
+        {
+            "type": "banner-one",
+            "name": "Video Section",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "video_src",
+                    "label": "Video filename",
+                    "info": "Upload a .mp4, .webm, .ogv into the Files folder (Settings > Files) all with this name. So if one of your assets is 'my-video.mp4', then just enter 'my-video' here."
+                },
+                {
+                    "type": "checkbox",
+                    "id": "video_loop",
+                    "label": "Loop video?",
+                    "info": "Use to video file",
+                    "default": true
+                },
+                {
+                    "type": "checkbox",
+                    "id": "video_controls",
+                    "label": "Controls video?",
+                    "info": "Use to video file",
+                    "default": false
+                }, 
+                {
+                    "type": "video_url",
+                    "id": "video_link",
+                    "label": "Video Link",
+                    "info": "Use a youtube video",
+                    "accept": ["youtube"]
+                }
+            ]
+        }
+    ],
+    "presets": [{
+        "name": "Juno Banner One",
+        "category": "Banner"
+    }]
+}
+{% endschema %}
