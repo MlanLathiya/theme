@@ -111,12 +111,25 @@
             "button_text": "More",
             "side_image": "shopify:\/\/shop_images\/stand_img3.jpg"
           }
+        },
+        "8b1cd7a9-63b7-4273-9f19-65131f9e3406": {
+          "type": "banner",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/stand_ic4.png",
+            "title": "Care for Detail.",
+            "title_tag": "h3",
+            "content": "<p>We support people, wherever their path may take them. This is why we value the quality of every single detail.<\/p>",
+            "link": "",
+            "button_text": "More",
+            "side_image": "shopify:\/\/shop_images\/stand_img4.jpg"
+          }
         }
       },
       "block_order": [
         "6bd07ff8-86d9-453f-bd40-3685a4fe7d49",
         "dbbebc55-9542-4a7d-8000-2bab66d810c8",
-        "f93b2557-474f-41af-b22b-b0732b92cf6d"
+        "f93b2557-474f-41af-b22b-b0732b92cf6d",
+        "8b1cd7a9-63b7-4273-9f19-65131f9e3406"
       ],
       "settings": {
         "title": "WHAT WE STAND FOR"
