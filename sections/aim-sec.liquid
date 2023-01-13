@@ -1,0 +1,74 @@
+{% for block in section.blocks limit: section.blocks.size %}
+  <div class="container">
+    <figure>
+      <img src="{{ block.settings.image | img_url: '96x102' }}" alt="{{ block.settings.title }}">
+    </figure>
+    <{{ block.settings.title_tag }}>{{ block.settings.title }}</{{ block.settings.title_tag }}>
+    {{ block.settings.content }}
+    <a href="{{ block.settings.link }}" class="btns">{{ block.settings.button_text }}</a>
+  </div>
+{% endfor %}
+
+{% schema %}
+{
+  "name": "Our Aim Banner",
+  "tag": "section",
+  "class": "aim_sec",
+  "blocks": [
+    {
+      "type": "Aim",
+      "name": "Our Aim",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Tradition at Heart."
+        },
+        {
+          "type": "select",
+          "id": "title_tag",
+          "label": "Title H Tag",
+          "options": [
+            { "value": "h1", "label": "H1" },
+            { "value": "h2", "label": "H2" },
+            { "value": "h3", "label": "H3" },
+            { "value": "h4", "label": "H4" },
+            { "value": "h5", "label": "H5" },
+            { "value": "h6", "label": "H6" }
+          ],
+          "default": "h3"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>We have been manufacturing high-quality shoes since 1886. And we continue using our knowhow to make them even better.</p>"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Button Link"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "More"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our Aim",
+      "category": "Aim"
+    }
+  ]
+}
+{% endschema %}

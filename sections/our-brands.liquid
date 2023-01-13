@@ -8,7 +8,7 @@
         <div class="col-lg-4 col-md-4">
           <div class="brand_block">
             {% if block.settings.title_1 != blank or block.settings.content_1 != blank %}
-              <figure><img src="{{ block.settings.image_1 | img_url: '1920x' }}" alt="img"></figure>
+              <figure><img src="{{ block.settings.image_1 | img_url: '1920x1920' }}" alt="img" width="300px" height="150px"></figure>
               {% if block.settings.title_1 != blank %}
                 <{{ block.settings.title_tag_1 }}>{{ block.settings.title_1 }}</{{ block.settings.title_tag_1 }}>
               {% endif %}
@@ -21,7 +21,7 @@
         <div class="col-lg-4 col-md-4">
           <div class="brand_block">
             {% if block.settings.title_2 != blank or block.settings.content_2 != blank %}
-              <figure><img src="{{ block.settings.image_2 | img_url: '1920x' }}" alt="img"></figure>
+              <figure><img src="{{ block.settings.image_2 | img_url: '1920x1920' }}" alt="img" width="300px" height="150px"></figure>
               {% if block.settings.title_2 != blank %}
                 <{{ block.settings.title_tag_2 }}>{{ block.settings.title_2 }}</{{ block.settings.title_tag_2 }}>
               {% endif %}
@@ -34,7 +34,7 @@
         <div class="col-lg-4 col-md-4">
           <div class="brand_block">
             {% if block.settings.title_3 != blank or block.settings.content_3 != blank %}
-              <figure><img src="{{ block.settings.image_3 | img_url: '1920x' }}" alt="img"></figure>
+              <figure><img src="{{ block.settings.image_3 | img_url: '1920x1920' }}" alt="img" width="300px" height="150px"></figure>
               {% if block.settings.title_3 != blank %}
                 <{{ block.settings.title_tag_3 }}>{{ block.settings.title_3 }}</{{ block.settings.title_tag_3 }}>
               {% endif %}
