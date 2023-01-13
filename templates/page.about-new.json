@@ -160,6 +160,27 @@
       "settings": {
         "title": "WHAT WE STAND FOR"
       }
+    },
+    "2c31111f-20c2-4c63-b648-4bf89a48520a": {
+      "type": "aim-sec",
+      "blocks": {
+        "0de4586f-4979-4d6d-bf6c-650ed888b5a2": {
+          "type": "Aim",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/aim_img.jpg",
+            "title": "Our Aim of being a 100% Carbon Neutral Business by 2024",
+            "title_tag": "h3",
+            "content": "<p>We are taking the lead among our fashion industry peers and striving forward with our goal to be 100% carbon neutral by 2024. With our Vegan and Recycled Ranges plus our Sustainable Forest campaign, we’re well on the way.<\/p>",
+            "link": "",
+            "button_text": "More"
+          }
+        }
+      },
+      "block_order": [
+        "0de4586f-4979-4d6d-bf6c-650ed888b5a2"
+      ],
+      "settings": {
+      }
     }
   },
   "wrapper": "div.cms-sections",
@@ -168,6 +189,7 @@
     "1a082911-7b02-4ffb-a4b5-c2fd1b687daa",
     "cb210484-0e74-4dfc-b17e-011efd6daccb",
     "403d7ac9-3f41-4012-b320-ea959b2d93c5",
-    "08e615a0-7313-45be-b0c2-e9014c344494"
+    "08e615a0-7313-45be-b0c2-e9014c344494",
+    "2c31111f-20c2-4c63-b648-4bf89a48520a"
   ]
 }
