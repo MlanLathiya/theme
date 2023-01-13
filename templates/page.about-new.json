@@ -40,7 +40,7 @@
         "1702156e-fd82-4fcd-a502-fc8f12a20b97": {
           "type": "banner",
           "settings": {
-            "image": "shopify:\/\/shop_images\/js_logo_about-01_1920x_ce63e823-091d-45db-83ec-0048e3000587.jpg",
+            "image": "shopify:\/\/shop_images\/js_logo.jpg",
             "image_width": "image-auto",
             "video_src": "",
             "video_loop": true,
@@ -67,7 +67,7 @@
         "5414652e-dcd4-4c3c-bfca-4d85a86f8266": {
           "type": "banner",
           "settings": {
-            "image": "shopify:\/\/shop_images\/gerry-webber-logo_about-01_1920x_ab3336c1-8f44-4b38-b8bb-12d744920bd1.jpg",
+            "image": "shopify:\/\/shop_images\/gerry-webber-logo.jpg",
             "image_width": "image-auto",
             "video_src": "",
             "video_loop": true,
@@ -94,7 +94,7 @@
         "3ca19196-ccba-4316-8443-0d6040cd6122": {
           "type": "banner",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Westland_by_Josef_Seibel_about-01_1920x_83528d93-4aca-48a5-831d-50009d5c658a.jpg",
+            "image": "shopify:\/\/shop_images\/Westland_by_Josef_Seibel_Logo.jpg",
             "image_width": "image-auto",
             "video_src": "",
             "video_loop": true,
@@ -147,7 +147,6 @@
         "add92e0a-92d1-4235-8076-bd4e1d754c50": {
           "type": "banner",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Tradition_at_heart_top_rollover_image.jpg",
             "image_width": "",
             "video_src": "",
             "video_loop": true,
@@ -166,7 +165,6 @@
             "link_2": "",
             "button_text_2": "Shop Now",
             "button_position": "button-below-content",
-            "image_hover": "shopify:\/\/shop_images\/Tradition_at_heart_bottom_rollover_image.jpg",
             "invert_colour_on_hover": true,
             "logo_svg": "",
             "content_hover": ""
@@ -175,7 +173,6 @@
         "d93f01d2-0f0b-437f-9fd1-d151444a92f5": {
           "type": "banner",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Trust_in_progress_top_roll_over_graphic.jpg",
             "image_width": "",
             "video_src": "",
             "video_loop": true,
@@ -194,7 +191,6 @@
             "link_2": "",
             "button_text_2": "Shop Now",
             "button_position": "button-below-content",
-            "image_hover": "shopify:\/\/shop_images\/Trust_In_progress_bottom_rollover_image.jpg",
             "invert_colour_on_hover": true,
             "logo_svg": "",
             "content_hover": ""
@@ -203,7 +199,6 @@
         "ffa4f77c-96fc-435d-8e29-541a28309b80": {
           "type": "banner",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Form_of_Function_Top_rollover_image.jpg",
             "image_width": "",
             "video_src": "",
             "video_loop": true,
@@ -222,7 +217,6 @@
             "link_2": "",
             "button_text_2": "Shop Now",
             "button_position": "button-below-content",
-            "image_hover": "shopify:\/\/shop_images\/Form_of_function_bottom_rollover.jpg",
             "invert_colour_on_hover": true,
             "logo_svg": "",
             "content_hover": ""
@@ -231,7 +225,6 @@
         "0fea3e41-14e1-4115-8aa8-3cc0fdbcdd9d": {
           "type": "banner",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Care_for_detail_top_roll_over_graphic.jpg",
             "image_width": "",
             "video_src": "",
             "video_loop": true,
@@ -250,7 +243,6 @@
             "link_2": "",
             "button_text_2": "Shop Now",
             "button_position": "button-below-content",
-            "image_hover": "shopify:\/\/shop_images\/Care_for_detail_bottom_roll_over_graphic.jpg",
             "invert_colour_on_hover": true,
             "logo_svg": "",
             "content_hover": ""
@@ -259,7 +251,6 @@
         "aa9a8ec9-c51f-48d3-be39-16823934bec1": {
           "type": "banner",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Joy_of_walking_top_roll_over_image.jpg",
             "image_width": "",
             "video_src": "",
             "video_loop": true,
@@ -278,7 +269,6 @@
             "link_2": "",
             "button_text_2": "Shop Now",
             "button_position": "button-below-content",
-            "image_hover": "shopify:\/\/shop_images\/Joy_of_walking_bottom_roll_over_image.jpg",
             "invert_colour_on_hover": true,
             "logo_svg": "",
             "content_hover": ""
@@ -287,7 +277,6 @@
         "33be051b-7775-430a-99e5-dc61bfd9f130": {
           "type": "banner",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Spirit_of_nature_top_roll_over_graphic.jpg",
             "image_width": "",
             "video_src": "",
             "video_loop": true,
@@ -306,7 +295,6 @@
             "link_2": "",
             "button_text_2": "Shop Now",
             "button_position": "button-below-content",
-            "image_hover": "shopify:\/\/shop_images\/Spirit_of_nature_bottom_roll_over_graphic.jpg",
             "invert_colour_on_hover": true,
             "logo_svg": "",
             "content_hover": ""
