@@ -117,14 +117,14 @@
             "type": "collection",
             "settings": {
               "feature_collection": "womens-sale-boots",
-              "feature_collection_image": "shopify:\/\/shop_images\/WOMEN_S.jpg"
+              "feature_collection_image": "shopify:\/\/shop_images\/WELCOME1.jpg"
             }
           },
           "block_2": {
             "type": "collection",
             "settings": {
               "feature_collection": "mens-shoes",
-              "feature_collection_image": "shopify:\/\/shop_images\/MEN_S.jpg"
+              "feature_collection_image": "shopify:\/\/shop_images\/WELCOME2.jpg"
             }
           }
         },
