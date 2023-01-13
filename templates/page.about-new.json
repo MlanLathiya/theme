@@ -24,11 +24,32 @@
       ],
       "settings": {
       }
+    },
+    "cb210484-0e74-4dfc-b17e-011efd6daccb": {
+      "type": "video-sec",
+      "blocks": {
+        "ae852343-731a-4d3d-81a7-adabcc8281e1": {
+          "type": "video_sec",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/brand_img1.png",
+            "video_src": "",
+            "video_loop": true,
+            "video_controls": false,
+            "video_link": "https:\/\/www.youtube.com\/watch?v=6y8cXO1EU9s"
+          }
+        }
+      },
+      "block_order": [
+        "ae852343-731a-4d3d-81a7-adabcc8281e1"
+      ],
+      "settings": {
+      }
     }
   },
   "wrapper": "div.cms-sections",
   "order": [
     "main",
-    "1a082911-7b02-4ffb-a4b5-c2fd1b687daa"
+    "1a082911-7b02-4ffb-a4b5-c2fd1b687daa",
+    "cb210484-0e74-4dfc-b17e-011efd6daccb"
   ]
 }
