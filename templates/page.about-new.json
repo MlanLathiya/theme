@@ -99,11 +99,24 @@
             "button_text": "More",
             "side_image": "shopify:\/\/shop_images\/stand_img2.jpg"
           }
+        },
+        "f93b2557-474f-41af-b22b-b0732b92cf6d": {
+          "type": "banner",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/stand_ic3.png",
+            "title": "Form of Function",
+            "title_tag": "h3",
+            "content": "<p>We want to be a daily companion for people. This is why function takes top priority when designing our shoes.<\/p>",
+            "link": "",
+            "button_text": "More",
+            "side_image": "shopify:\/\/shop_images\/stand_img3.jpg"
+          }
         }
       },
       "block_order": [
         "6bd07ff8-86d9-453f-bd40-3685a4fe7d49",
-        "dbbebc55-9542-4a7d-8000-2bab66d810c8"
+        "dbbebc55-9542-4a7d-8000-2bab66d810c8",
+        "f93b2557-474f-41af-b22b-b0732b92cf6d"
       ],
       "settings": {
         "title": "WHAT WE STAND FOR"
