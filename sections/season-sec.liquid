@@ -1,27 +1,27 @@
 <section class="season_sec{% if block.settings.season_image == blank %} vegan{% endif %}">
-{% for block in section.blocks limit: 1 %}
-  {% if block.settings.season_image != blank %}
-    <img src="{{ block.settings.season_image | img_url:'4472x4472' }}" alt="">
-  {% endif %}
-{% endfor %}
-<div class="container">
-  <div class="inner">
-    {% for block in section.blocks limit: section.blocks.size %}
-      <h2>{{ collections[block.settings.feature_collection].title }}</h2>
-      <p>{{ block.settings.feature_collection_text }}</p>
-      <figure><img src="{{ collections[block.settings.feature_collection].image | img_url: '870x' }}" alt=""></figure>
-      <a href="{{ collections[block.settings.feature_collection].url }}">
-        <button class="btns" href="{{ collections[block.settings.feature_collection].url }}">EXPLORE</button>
-      </a>
-    {% endfor %}
-
+  {% for block in section.blocks limit: 1 %}
     {% if block.settings.season_image != blank %}
-      <div class="curve1"><img src="{{ 'season_curve1.png' | asset_url }}" alt=""></div>
-      <div class="curve2"><img src="{{ 'season_curve2.png' | asset_url }}" alt=""></div>
-      <div class="curve3"><img src="{{ 'season_curve3.png' | asset_url }}" alt=""></div>
+      <img src="{{ block.settings.season_image | img_url:'4472x4472' }}" alt="">
     {% endif %}
+  {% endfor %}
+  <div class="container">
+    <div class="inner">
+      {% for block in section.blocks limit: section.blocks.size %}
+        <h2>{{ collections[block.settings.feature_collection].title }}</h2>
+        <p>{{ block.settings.feature_collection_text }}</p>
+        <figure><img src="{{ collections[block.settings.feature_collection].image | img_url: '870x' }}" alt=""></figure>
+        <a href="{{ collections[block.settings.feature_collection].url }}">
+          <button class="btns" href="{{ collections[block.settings.feature_collection].url }}">EXPLORE</button>
+        </a>
+      {% endfor %}
+
+      {% if block.settings.season_image != blank %}
+        <div class="curve1"><img src="{{ 'season_curve1.png' | asset_url }}" alt=""></div>
+        <div class="curve2"><img src="{{ 'season_curve2.png' | asset_url }}" alt=""></div>
+        <div class="curve3"><img src="{{ 'season_curve3.png' | asset_url }}" alt=""></div>
+      {% endif %}
+    </div>
   </div>
-</div>
 </section>
 
 {% schema %}
