@@ -49,47 +49,114 @@
 
 {% schema %}
 {
-    "name": "Video Section",    
+    "name": "Our Brands",
     "max_blocks": 1,
     "blocks": [
         {
-            "type": "banner-one",
-            "name": "Video Section",
+            "type": "our-brands",
+            "name": "Our Brands",
             "settings": [
-                {
-                    "type": "image_picker",
-                    "id": "image",
-                    "label": "Image"
-                },
-                {
-                    "type": "text",
-                    "id": "video_src",
-                    "label": "Video filename",
-                    "info": "Upload a .mp4, .webm, .ogv into the Files folder (Settings > Files) all with this name. So if one of your assets is 'my-video.mp4', then just enter 'my-video' here."
-                },
-                {
-                    "type": "checkbox",
-                    "id": "video_loop",
-                    "label": "Loop video?",
-                    "info": "Use to video file",
-                    "default": true
-                },
-                {
-                    "type": "checkbox",
-                    "id": "video_controls",
-                    "label": "Controls video?",
-                    "info": "Use to video file",
-                    "default": false
-                }, 
-                {
-                    "type": "video_url",
-                    "id": "video_link",
-                    "label": "Video Link",
-                    "info": "Use a youtube video",
-                    "accept": ["youtube"]
-                }
+              {
+                "type": "text",
+                "id": "sec_title",
+                "label": "Section Title",
+                "default": "Orur Brands"
+              },
+              {
+                "type": "image_picker",
+                "id": "image_1",
+                "label": "Image"
+              },
+              {
+                "type": "text",
+                "id": "title_1",
+                "label": "Title",
+                "default": "Banner"
+              },
+              {
+                "type": "select",
+                "id": "title_tag_1",
+                "label": "Title H Tag",
+                "options": [
+                  { "value": "h1", "label": "H1" },
+                  { "value": "h2", "label": "H2" },
+                  { "value": "h3", "label": "H3" },
+                  { "value": "h4", "label": "H4" },
+                  { "value": "h5", "label": "H5" },
+                  { "value": "h6", "label": "H6" }
+                ],
+                "default": "h3"
+              },
+              {
+                "type": "textarea",
+                "id": "content_1",
+                "label": "Content",
+                "default": "Lorem ipsum dolor sit amet"
+              },
+              {
+                "type": "image_picker",
+                "id": "image_2",
+                "label": "Image"
+              },
+              {
+                "type": "text",
+                "id": "title_2",
+                "label": "Title",
+                "default": "Banner"
+              },
+              {
+                "type": "select",
+                "id": "title_tag_2",
+                "label": "Title H Tag",
+                "options": [
+                  { "value": "h1", "label": "H1" },
+                  { "value": "h2", "label": "H2" },
+                  { "value": "h3", "label": "H3" },
+                  { "value": "h4", "label": "H4" },
+                  { "value": "h5", "label": "H5" },
+                  { "value": "h6", "label": "H6" }
+                ],
+                "default": "h3"
+              },
+              {
+                "type": "textarea",
+                "id": "content_2",
+                "label": "Content",
+                "default": "Lorem ipsum dolor sit amet"
+              },
+              {
+                "type": "image_picker",
+                "id": "image_3",
+                "label": "Image"
+              },
+              {
+                "type": "text",
+                "id": "title_3",
+                "label": "Title",
+                "default": "Banner"
+              },
+              {
+                "type": "select",
+                "id": "title_tag_3",
+                "label": "Title H Tag",
+                "options": [
+                  { "value": "h1", "label": "H1" },
+                  { "value": "h2", "label": "H2" },
+                  { "value": "h3", "label": "H3" },
+                  { "value": "h4", "label": "H4" },
+                  { "value": "h5", "label": "H5" },
+                  { "value": "h6", "label": "H6" }
+                ],
+                "default": "h3"
+              },
+              {
+                "type": "textarea",
+                "id": "content_3",
+                "label": "Content",
+                "default": "Lorem ipsum dolor sit amet"
+              }
             ]
-        }
+          }
     ],
     "presets": [{
         "name": "Juno Banner One",
