@@ -11,7 +11,7 @@
       "type": "onecolumn-content",
       "blocks": {
         "7ccb4c87-23a1-44f6-a10f-14d123e7b041": {
-          "type": "asced",
+          "type": "title_content",
           "settings": {
             "title": "About JOSEF SEIBEL Group",
             "title_tag": "h2",
