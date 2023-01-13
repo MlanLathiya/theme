@@ -9,7 +9,10 @@
 
   {% for block in section.blocks limit: section.blocks.size %}
     <div class="stand_block">
-      <div class="row g-0{% if forloop.index % 2 == 0 %} flex-row-reverse{% endif %}">
+      {% capture mod %}
+      {{forloop.index | modulo: 2 }}
+      {% endcapture %}
+      <div class="row g-0{%- if mod %} flex-row-reverse{% endif %}">
         <div class="col-md-6 align-self-center">
           <div class="detail">
             <div class="detail_in">
@@ -33,7 +36,7 @@
 
 {% schema %}
 {
-  "name": "Banner",
+  "name": "Grid Image Banner",
   "tag": "section",
   "class": "stand_sec",
   "settings": [
