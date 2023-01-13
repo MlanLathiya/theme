@@ -1,8 +1,9 @@
-{% if section.settings.title != blank %}
-  {% for block in section.blocks limit: 1 %}
+<section class="season_sec{% if block.settings.season_image == blank %} vegan{% endif %}">
+{% for block in section.blocks limit: 1 %}
+  {% if block.settings.season_image != blank %}
     <img src="{{ block.settings.season_image | img_url:'4472x4472' }}" alt="">
-  {% endfor %}
-{% endif %}
+  {% endif %}
+{% endfor %}
 <div class="container">
   <div class="inner">
     {% for block in section.blocks limit: section.blocks.size %}
@@ -14,9 +15,11 @@
       </a>
     {% endfor %}
 
-    <div class="curve1"><img src="{{ 'season_curve1.png' | asset_url }}" alt=""></div>
-    <div class="curve2"><img src="{{ 'season_curve2.png' | asset_url }}" alt=""></div>
-    <div class="curve3"><img src="{{ 'season_curve3.png' | asset_url }}" alt=""></div>
+    {% if block.settings.season_image != blank %}
+      <div class="curve1"><img src="{{ 'season_curve1.png' | asset_url }}" alt=""></div>
+      <div class="curve2"><img src="{{ 'season_curve2.png' | asset_url }}" alt=""></div>
+      <div class="curve3"><img src="{{ 'season_curve3.png' | asset_url }}" alt=""></div>
+    {% endif %}
   </div>
 </div>
 
@@ -34,12 +37,12 @@
         {
           "type": "collection",
           "id": "feature_collection",
-          "label": "Featured collection"
+          "label": "Season collection"
         },
         {
           "type": "textarea",
           "id": "feature_collection_text",
-          "label": "Featured Collection Text"
+          "label": "Description"
         },
         {
           "label": "season_image",
