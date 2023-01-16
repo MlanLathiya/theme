@@ -1,30 +1,18 @@
-<div class="container">
-  {% if section.settings.title != blank %}
-    <h2 class="clction_title">
-      <span>{{ section.settings.title }}</span>
-    </h2>
-  {% endif %}
-</div>
-
 {% for block in section.blocks limit: section.blocks.size %}
-  <div class="stand_block">
-    {% capture mod %}
+  {% capture mod %}
       {{forloop.index | modulo: 2 }}
       {% endcapture %}
-    <div class="row g-0{% if mod contains '0' %} flex-row-reverse{% endif %}">
-      <div class="col-md-6 align-self-center">
-        <div class="detail">
-          <div class="detail_in">
-            <i><img src="{{ block.settings.icon | img_url: '96x102' }}" alt="{{ block.settings.title }}"></i>
-            <{{ block.settings.title_tag }}>{{ block.settings.title }}</{{ block.settings.title_tag }}>
-            {{ block.settings.content }}
-            <a href="{{ block.settings.link }}" class="btns">{{ block.settings.button_text }}</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <figure><img src="{{ block.settings.side_image | img_url:'4472x4472' }}" alt="Image Not Found"></figure>
+  <div class="row g-0{% if mod contains '0' %} flex-row-reverse{% endif %}">
+    <div class="col-md-6">
+      <figure class="left_image"><img src="{{ block.settings.side_image | img_url:'4472x4472' }}" alt="Image Not Found"></figure>
+    </div>
+    <div class="col-md-6">
+      <figure class="user_image"><img src="{{ block.settings.center_image | img_url:'4472x4472' }}" alt=""></figure>
+      <div class="details">
+        <{{ block.settings.title_tag }}>{{ block.settings.title }}</{{ block.settings.title_tag }}>
+        <h3>The Great Vegan Footwear Giveaway</h3>
+        <p>Your chance to win a pair of WESTLAND by Josef Seibel vegan boots.</p>
+        <a href="{{ block.settings.link }}" class="btns">{{ block.settings.button_text }}</a>
       </div>
     </div>
   </div>
@@ -32,21 +20,13 @@
 
 {% schema %}
 {
-  "name": "Grid Image Banner",
+  "name": "Grid Win Banner",
   "tag": "section",
-  "class": "stand_sec",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Section Title",
-      "default": "WHAT WE STAND FOR"
-    }
-  ],
+  "class": "win_sec",
   "blocks": [
     {
-      "type": "banner",
-      "name": "Banner",
+      "type": "Grid Win Banner",
+      "name": "Win Banner",
       "settings": [
         {
           "type": "image_picker",
@@ -100,8 +80,8 @@
   ],
   "presets": [
     {
-      "name": "Grid Image",
-      "category": "Banner"
+      "name": "Grid Win Banner",
+      "category": "Win Banner"
     }
   ]
 }
