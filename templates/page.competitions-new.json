@@ -6,10 +6,32 @@
         "enable_title": false,
         "enable_content": false
       }
+    },
+    "42d354b7-3d43-4037-bbfd-56f66b11e00d": {
+      "type": "win-sec",
+      "blocks": {
+        "37c79930-ca9b-4463-9f8b-7ecbcad6e1fb": {
+          "type": "Win",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/win_mob.jpg",
+            "title": "WIN. WIN. WIN",
+            "title_tag": "h2",
+            "content": "<p>We have been manufacturing high-quality shoes since 1886. And we continue using our knowhow to make them even better.<\/p>",
+            "link": "",
+            "button_text": "More"
+          }
+        }
+      },
+      "block_order": [
+        "37c79930-ca9b-4463-9f8b-7ecbcad6e1fb"
+      ],
+      "settings": {
+      }
     }
   },
   "wrapper": "div.cms-sections",
   "order": [
-    "main"
+    "main",
+    "42d354b7-3d43-4037-bbfd-56f66b11e00d"
   ]
 }
