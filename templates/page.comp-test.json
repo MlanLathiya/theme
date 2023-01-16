@@ -4,7 +4,7 @@
       "type": "main-page",
       "settings": {
         "enable_title": false,
-        "enable_content": true
+        "enable_content": false
       }
     },
     "1a082911-7b02-4ffb-a4b5-c2fd1b687daa": {
