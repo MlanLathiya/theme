@@ -1749,7 +1749,7 @@ ul.footer_link li a:hover {
 .win_sec {
     padding: 365px 0 160px 0;
     margin: 0;
-    background: url(win_bg.jpg) center center no-repeat;
+    /* background: url(win_bg.jpg) center center no-repeat; */
     background-size: cover;
 }
 
