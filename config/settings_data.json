@@ -253,6 +253,7 @@
       },
       "seller-sec": {
         "type": "seller-sec",
+        "disabled": true,
         "blocks": {
           "seller_1": {
             "type": "collection",
