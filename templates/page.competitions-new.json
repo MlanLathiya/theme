@@ -34,6 +34,7 @@
             "center_image": "shopify:\/\/shop_images\/win_img_2.jpg",
             "title": "The Great Vegan Footwear Giveaway",
             "title_tag": "h3",
+            "content": "<p>Your chance to win a pair of WESTLAND by Josef Seibel vegan boots.<\/p>",
             "link": "",
             "button_text": "DETAILS",
             "side_image": "shopify:\/\/shop_images\/win_mob.jpg"
@@ -45,12 +46,35 @@
       ],
       "settings": {
       }
+    },
+    "f1748b8e-a354-40fe-93e3-03728bd43bff": {
+      "type": "win-sec",
+      "blocks": {
+        "f229214b-a91b-4e6c-a2c7-845930520f45": {
+          "type": "Win",
+          "settings": {
+            "center_image": "shopify:\/\/shop_images\/win_img_2.jpg",
+            "title": "The Great Vegan Footwear Giveaway",
+            "title_tag": "h3",
+            "content": "<p>Your chance to win a pair of WESTLAND by Josef Seibel vegan boots.<\/p>",
+            "link": "",
+            "button_text": "DETAILS",
+            "side_image": "shopify:\/\/shop_images\/win_mob.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "f229214b-a91b-4e6c-a2c7-845930520f45"
+      ],
+      "settings": {
+      }
     }
   },
   "wrapper": "div.cms-sections",
   "order": [
     "main",
     "93e11f4f-a848-41a1-8d6b-bd58de5f7968",
-    "42d354b7-3d43-4037-bbfd-56f66b11e00d"
+    "42d354b7-3d43-4037-bbfd-56f66b11e00d",
+    "f1748b8e-a354-40fe-93e3-03728bd43bff"
   ]
 }
