@@ -1,0 +1,113 @@
+{% for block in section.blocks limit: section.blocks.size %}
+  {% capture mod %}
+      {{forloop.index | modulo: 2 }}
+      {% endcapture %}
+  <div class="row g-0{% if mod contains '1' %} flex-row-reverse{% endif %}">
+    <div class="col-md-6">
+      <figure class="left_image">
+        <img src="{{ block.settings.side_image | img_url:'4472x4472' }}" alt="Image Not Found">
+      </figure>
+    </div>
+    <div class="col-md-6 align-self-center">
+      <div class="details">
+        <figure class="img_top">
+          <img src="{{ block.settings.icon | img_url: '96x102' }}" alt="{{ block.settings.title }}">
+        </figure>
+        <{{ block.settings.title_tag }}>{{ block.settings.title }}</{{ block.settings.title_tag }}>
+        <{{ block.settings.sub_title_tag }}>{{ block.settings.sub_title }}</{{ block.settings.sub_title_tag }}>
+        {{ block.settings.content }}
+        <a href="{{ block.settings.link }}" class="btns">{{ block.settings.button_text }}</a>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+{% schema %}
+{
+  "name": "Win Image Banner",
+  "tag": "section",
+  "class": "win_sec block2",
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "Win Banner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "YOUR CHANCE TO BECOME the 2024 SEIBEL TREKKER"
+        },
+        },
+        {
+          "type": "text",
+          "id": "sub_title",
+          "label": "Sub Title",
+          "default": "An all expenses paid world wide trek writing for our explorer blog and of course wearing the latest range of Josef Seibel’s"
+        },
+        {
+          "type": "select",
+          "id": "title_tag",
+          "label": "Title H Tag",
+          "options": [
+            { "value": "h1", "label": "H1" },
+            { "value": "h2", "label": "H2" },
+            { "value": "h3", "label": "H3" },
+            { "value": "h4", "label": "H4" },
+            { "value": "h5", "label": "H5" },
+            { "value": "h6", "label": "H6" }
+          ],
+          "default": "h3"
+        },
+        {
+          "type": "select",
+          "id": "sub_title_tag",
+          "label": "Sub Title H Tag",
+          "options": [
+            { "value": "h1", "label": "H1" },
+            { "value": "h2", "label": "H2" },
+            { "value": "h3", "label": "H3" },
+            { "value": "h4", "label": "H4" },
+            { "value": "h5", "label": "H5" },
+            { "value": "h6", "label": "H6" }
+          ],
+          "default": "h3"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>We have been manufacturing high-quality shoes since 1886. And we continue using our knowhow to make them even better.</p>"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Button Link"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "DETAILS"
+        },
+        {
+          "type": "image_picker",
+          "id": "side_image",
+          "label": "Side Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Win Image",
+      "category": "Banner"
+    }
+  ]
+}
+{% endschema %}
