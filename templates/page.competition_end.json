@@ -22,11 +22,29 @@
       ],
       "settings": {
       }
+    },
+    "f1406ef9-21a4-4170-8e3a-3919d72630ca": {
+      "type": "great-sec",
+      "blocks": {
+        "b3e7ae7c-80b3-4b58-96fd-5b14026a05c0": {
+          "type": "banner",
+          "settings": {
+            "title": "The Great Vegan Footwear Giveaway",
+            "title_tag": "h3"
+          }
+        }
+      },
+      "block_order": [
+        "b3e7ae7c-80b3-4b58-96fd-5b14026a05c0"
+      ],
+      "settings": {
+      }
     }
   },
   "wrapper": "div.cms-sections",
   "order": [
     "main",
-    "98e94118-e2f3-41e8-a887-64a3822775d9"
+    "98e94118-e2f3-41e8-a887-64a3822775d9",
+    "f1406ef9-21a4-4170-8e3a-3919d72630ca"
   ]
 }
