@@ -13,10 +13,9 @@
         "37c79930-ca9b-4463-9f8b-7ecbcad6e1fb": {
           "type": "Win",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/win_mob.jpg",
+            "center_image": "shopify:\/\/shop_images\/win_img_2.jpg",
             "title": "The Great Vegan Footwear Giveaway",
             "title_tag": "h3",
-            "content": "<p>We have been manufacturing high-quality shoes since 1886. And we continue using our knowhow to make them even better.<\/p>",
             "link": "",
             "button_text": "DETAILS",
             "side_image": "shopify:\/\/shop_images\/win_mob.jpg"
