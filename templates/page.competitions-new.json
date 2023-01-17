@@ -7,6 +7,24 @@
         "enable_content": false
       }
     },
+    "93e11f4f-a848-41a1-8d6b-bd58de5f7968": {
+      "type": "onecolumn-content",
+      "blocks": {
+        "f937a52b-b548-4ec9-b317-f17587fc038d": {
+          "type": "title_content",
+          "settings": {
+            "title": "#myjosefseibeluk Competition",
+            "title_tag": "h2",
+            "content": "<p>To enter, share a photo of you or your loved ones enjoying wearing a pair of JOSEF SEIBEL shoes.<\/p><p>Share a photo of yourself enjoying your Josef Seibel footwear via Instagram or Facebook <\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "f937a52b-b548-4ec9-b317-f17587fc038d"
+      ],
+      "settings": {
+      }
+    },
     "42d354b7-3d43-4037-bbfd-56f66b11e00d": {
       "type": "win-sec",
       "blocks": {
@@ -32,6 +50,7 @@
   "wrapper": "div.cms-sections",
   "order": [
     "main",
+    "93e11f4f-a848-41a1-8d6b-bd58de5f7968",
     "42d354b7-3d43-4037-bbfd-56f66b11e00d"
   ]
 }
