@@ -15,10 +15,11 @@
           "settings": {
             "icon": "shopify:\/\/shop_images\/win_mob.jpg",
             "title": "The Great Vegan Footwear Giveaway",
-            "title_tag": "h2",
+            "title_tag": "h3",
             "content": "<p>We have been manufacturing high-quality shoes since 1886. And we continue using our knowhow to make them even better.<\/p>",
             "link": "",
-            "button_text": "More"
+            "button_text": "DETAILS",
+            "side_image": "shopify:\/\/shop_images\/win_mob.jpg"
           }
         }
       },
