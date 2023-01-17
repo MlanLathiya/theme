@@ -1,0 +1,30 @@
+{% for block in section.blocks limit: section.blocks.size %}
+  <img src="{{ block.settings.image | img_url:'4472x4472' }}" alt="Image Not Found">
+{% endfor %}
+
+{% schema %}
+{
+  "name": "Header Image Banner",
+  "tag": "section",
+  "class": "inner_banner",
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "Header Image Banner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header Image Banner",
+      "category": "Banner"
+    }
+  ]
+}
+{% endschema %}
