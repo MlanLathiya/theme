@@ -5,7 +5,7 @@
       {% endcapture %}
   <div class="row g-0{% if mod contains '0' %} flex-row-reverse{% endif %}">
     <div class="col-md-6">
-      <figure class="left_image"><img src="{{ block.settings.side_image | img_url:'4472x4472' }}" alt="Image Not Found"></figure>
+      <figure class="left_image" style="background: #fff url({{ block.settings.side_image | img_url:'4472x4472' }}) center center no-repeat 50% 100%;"><img src="{{ block.settings.side_image | img_url:'4472x4472' }}" alt="Image Not Found"></figure>
     </div>
     <div class="col-md-6">
       <figure class="user_image"><img src="{{ block.settings.center_image | img_url:'4472x4472' }}" alt=""></figure>
