@@ -67,62 +67,8 @@
 
       {{ form.errors | default_errors }}
       <p class="success"></p>
-      {% comment %} <button class="btns">YES PLEASE!</button> {% endcomment %}
       <input type="submit" value="YES PLEASE!" class="btns">
     {% endform %}
-
-    {% comment %}
-      <div class="form_info">
-        <div class="row g-48px">
-          <div class="col-md-12">
-            <div class="input-group">
-              <label>Name</label>
-              <input type="text" class="form-control">
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="input-group">
-              <label>Email</label>
-              <input type="text" class="form-control">
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="input-group">
-              <label>Contact No.</label>
-              <input type="text" class="form-control">
-            </div>
-          </div>
-        </div>
-
-        <div class="receive_email">
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" value="" id="below">
-            <label class="form-check-label" for="below">I’ve read and accept the Term & Conditions below.</label>
-          </div>
-        </div>
-
-        <button class="btns">YES PLEASE!</button>
-        ,
-          {
-            "type": "url",
-            "id": "link",
-            "label": "Button Link"
-          },
-          {
-            "type": "text",
-            "id": "button_text",
-            "label": "Button Text",
-            "default": "More"
-          },
-          {
-            "type": "image_picker",
-            "id": "side_image",
-            "label": "Side Image"
-          }
-      </div>
-    {% endcomment %}
   </div>
 {% endfor %}
 
