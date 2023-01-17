@@ -46,12 +46,35 @@
       ],
       "settings": {
       }
+    },
+    "938b4769-d0d8-4f79-9e98-e79308f030de": {
+      "type": "win_sec_block2",
+      "blocks": {
+        "a592c940-86e5-4354-ae7b-ac3447dbb101": {
+          "type": "banner",
+          "settings": {
+            "title": "YOUR CHANCE TO BECOME the 2024 SEIBEL TREKKER",
+            "sub_title": "An all expenses paid world wide trek writing for our explorer blog and of course wearing the latest range of Josef Seibel’s",
+            "title_tag": "h2",
+            "sub_title_tag": "h3",
+            "content": "<p>We have been manufacturing high-quality shoes since 1886. And we continue using our knowhow to make them even better.<\/p>",
+            "link": "",
+            "button_text": "DETAILS"
+          }
+        }
+      },
+      "block_order": [
+        "a592c940-86e5-4354-ae7b-ac3447dbb101"
+      ],
+      "settings": {
+      }
     }
   },
   "wrapper": "div.cms-sections",
   "order": [
     "main",
     "93e11f4f-a848-41a1-8d6b-bd58de5f7968",
-    "42d354b7-3d43-4037-bbfd-56f66b11e00d"
+    "42d354b7-3d43-4037-bbfd-56f66b11e00d",
+    "938b4769-d0d8-4f79-9e98-e79308f030de"
   ]
 }
