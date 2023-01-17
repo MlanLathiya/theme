@@ -7,7 +7,7 @@
       {{ block.settings.content }}
     </div>
 
-    {% form 'contact', id: 'competitions-form' %}
+    {% form 'contact', id: 'competitions-form', class: 'form_info' %}
       {% if form.posted_successfully? %}
         <p class="form-success">
           {{ 'contact.form.post_success' | t }}
@@ -151,7 +151,7 @@
           "id": "content",
           "label": "Content",
           "default": "To enter, share a photo of you or your loved ones enjoying wearing a pair of JOSEF SEIBEL shoes.Share a photo of yourself enjoying your Josef Seibel footwear via Instagram or Facebook 
-          
+
             We would love to say in touch with you via email, just to let you know about exciting new products,
             competitions, and any other brand news we think you may want to hear about!!
       
