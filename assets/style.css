@@ -1643,7 +1643,7 @@ ul.footer_link li a:hover {
     text-transform: uppercase;
 }
 
-.great_sec .info {
+.great_sec .info p {
     margin: 0 auto 58px auto;
     padding: 0;
     max-width: 560px;
