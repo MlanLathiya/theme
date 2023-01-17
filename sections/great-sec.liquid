@@ -41,7 +41,7 @@
           <div class="input-group">
             {% assign competitions = settings.competition_list | split: ',' %}
             <label for="competition">Select Competition</label>
-            <select id="competition" name="contact[competition]">
+            <select id="competition" name="contact[competition]" class="form-control">
               {% for comp in competitions %}
                 <option
                   value="{{ comp }}"
