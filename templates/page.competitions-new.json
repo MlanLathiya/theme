@@ -46,36 +46,12 @@
       ],
       "settings": {
       }
-    },
-    "78c18224-44ee-4d7c-a003-564dffc8d94f": {
-      "type": "banner-video-img-grid",
-      "blocks": {
-        "6c9bd9d8-2ef2-4eb3-bb44-514e6d363744": {
-          "type": "banner",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/win_img_2.jpg",
-            "title": "Tradition at Heart.",
-            "title_tag": "h3",
-            "content": "<p>We have been manufacturing high-quality shoes since 1886. And we continue using our knowhow to make them even better.<\/p>",
-            "link": "",
-            "button_text": "More",
-            "side_image": "shopify:\/\/shop_images\/stand_img5.jpg"
-          }
-        }
-      },
-      "block_order": [
-        "6c9bd9d8-2ef2-4eb3-bb44-514e6d363744"
-      ],
-      "settings": {
-        "title": ""
-      }
     }
   },
   "wrapper": "div.cms-sections",
   "order": [
     "main",
     "93e11f4f-a848-41a1-8d6b-bd58de5f7968",
-    "42d354b7-3d43-4037-bbfd-56f66b11e00d",
-    "78c18224-44ee-4d7c-a003-564dffc8d94f"
+    "42d354b7-3d43-4037-bbfd-56f66b11e00d"
   ]
 }
