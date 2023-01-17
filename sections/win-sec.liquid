@@ -1,3 +1,4 @@
+<section class="win_sec">
 {% for block in section.blocks limit: section.blocks.size %}
   {% capture mod %}
       {{forloop.index | modulo: 2 }}
@@ -9,7 +10,6 @@
     <div class="col-md-6">
       <figure class="user_image"><img src="{{ block.settings.center_image | img_url:'4472x4472' }}" alt=""></figure>
       <div class="details">
-        
         <h2>WIN. WIN. WIN</h2>
         <{{ block.settings.title_tag }}>{{ block.settings.title }}</{{ block.settings.title_tag }}>
         <p>Your chance to win a pair of WESTLAND by Josef Seibel vegan boots.</p>
@@ -22,8 +22,6 @@
 {% schema %}
 {
   "name": "Grid Win Banner",
-  "tag": "section",
-  "class": "win_sec",
   "blocks": [
     {
       "type": "Win",
