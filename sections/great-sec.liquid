@@ -15,6 +15,30 @@
       {% endif %}
 
       <ul class="errors"></ul>
+
+      <div class="row g-48px">
+        <div class="col-md-12">
+          <div class="input-group">
+            <label>Name</label>
+            <input type="name" class="form-control" name="name" id="ContactFormEmail" placeholder="name" value="{{ form.email }}">
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="input-group">
+            <label>Email</label>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="input-group">
+            <label>Contact No.</label>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+      </div>
+
       <div id="contact-agree">
         <label>
           <input type="radio" name="contact[email_optin]" value="1" class="agree-to-be-contacted"
