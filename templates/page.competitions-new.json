@@ -70,6 +70,52 @@
       ],
       "settings": {
       }
+    },
+    "302a281a-7ca9-42ef-9d78-07cf2c9e5300": {
+      "type": "win-sec",
+      "blocks": {
+        "ae5a6a20-9eb5-45af-8615-79130d7598f8": {
+          "type": "Win",
+          "settings": {
+            "center_image": "shopify:\/\/shop_images\/win_img_2.jpg",
+            "title": "The Great Vegan Footwear Giveaway",
+            "title_tag": "h3",
+            "content": "<p>Your chance to win a pair of WESTLAND by Josef Seibel vegan boots.<\/p>",
+            "link": "",
+            "button_text": "DETAILS",
+            "side_image": "shopify:\/\/shop_images\/win_mob.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "ae5a6a20-9eb5-45af-8615-79130d7598f8"
+      ],
+      "settings": {
+      }
+    },
+    "29234949-4cdd-490d-bdf0-5faa0e89d4d5": {
+      "type": "win_sec_block2",
+      "blocks": {
+        "2ef1c223-0777-4888-9bf9-63106421d4a0": {
+          "type": "banner",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/win_img_3.png",
+            "title": "YOUR CHANCE TO BECOME the 2024 SEIBEL TREKKER",
+            "sub_title": "An all expenses paid world wide trek writing for our explorer blog and of course wearing the latest range of Josef Seibel’s",
+            "title_tag": "h2",
+            "sub_title_tag": "h3",
+            "content": "<p>For more details on this once in a lifetime opportunity, click the link below.<\/p>",
+            "link": "",
+            "button_text": "DETAILS",
+            "side_image": "shopify:\/\/shop_images\/win_img_1.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "2ef1c223-0777-4888-9bf9-63106421d4a0"
+      ],
+      "settings": {
+      }
     }
   },
   "wrapper": "div.cms-sections",
@@ -77,6 +123,8 @@
     "main",
     "93e11f4f-a848-41a1-8d6b-bd58de5f7968",
     "42d354b7-3d43-4037-bbfd-56f66b11e00d",
-    "938b4769-d0d8-4f79-9e98-e79308f030de"
+    "938b4769-d0d8-4f79-9e98-e79308f030de",
+    "302a281a-7ca9-42ef-9d78-07cf2c9e5300",
+    "29234949-4cdd-490d-bdf0-5faa0e89d4d5"
   ]
 }
