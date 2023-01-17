@@ -69,7 +69,13 @@
       <p class="success"></p>
       <input type="submit" value="YES PLEASE!" class="btns">
     {% endform %}
-    {{ page.content }}
+
+    <section class="terms_sec">
+      <div class="container">
+        {{ page.content }}
+        <button class="btns">back</button>
+      </div>
+    </section>
   </div>
 {% endfor %}
 
