@@ -63,24 +63,12 @@
           <label class="form-check-label" for="below">I’ve read and accept the Term & Conditions below.</label>
         </div>
       </div>
-
-      <div id="contact-agree">
-        <label>
-          <input type="radio" name="contact[email_optin]" value="1" class="agree-to-be-contacted"
-          ><span>Yes please!</span>
-        </label>
-      </div>
-      <div id="contact-decline">
-        <label>
-          <input type="radio" name="contact[email_optin]" value="0" class="agree-to-be-contacted"
-          ><span>No thanks </span>
-        </label>
-      </div>
       <p></p>
 
       {{ form.errors | default_errors }}
       <p class="success"></p>
-      <input type="submit" value="Submit" class="btn btn-primary">
+      {% comment %} <button class="btns">YES PLEASE!</button> {% endcomment %}
+      <input type="submit" value="YES PLEASE!" class="btns">
     {% endform %}
 
     {% comment %}
