@@ -7,10 +7,10 @@
         "enable_content": false
       }
     },
-    "98e94118-e2f3-41e8-a887-64a3822775d9": {
+    "c5c5deee-33ab-4acd-903b-8c110cc32d7c": {
       "type": "header-image-banner",
       "blocks": {
-        "0d8e280d-6ac4-4a79-af2d-715ca59a55f6": {
+        "61ccac7c-b2c7-4f21-a249-ecc7a9f0c3eb": {
           "type": "banner",
           "settings": {
             "image": "shopify:\/\/shop_images\/competition_banner.jpg"
@@ -18,7 +18,7 @@
         }
       },
       "block_order": [
-        "0d8e280d-6ac4-4a79-af2d-715ca59a55f6"
+        "61ccac7c-b2c7-4f21-a249-ecc7a9f0c3eb"
       ],
       "settings": {
       }
@@ -44,7 +44,7 @@
   "wrapper": "div.cms-sections",
   "order": [
     "main",
-    "98e94118-e2f3-41e8-a887-64a3822775d9",
+    "c5c5deee-33ab-4acd-903b-8c110cc32d7c",
     "f1406ef9-21a4-4170-8e3a-3919d72630ca"
   ]
 }
