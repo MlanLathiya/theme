@@ -1,5 +1,8 @@
 {% for block in section.blocks limit: section.blocks.size %}
-  <section class="win_sec" style="background: url({{ block.settings.side_image | img_url:'4472x4472' }}) no-repeat; background-size:50%">
+  <section
+    class="win_sec"
+    style="background: url({{ block.settings.side_image | img_url:'4472x4472' }}) no-repeat; background-size:50%; background-color: rgba(242,242,240,255);"
+  >
     {% capture mod %}
       {{forloop.index | modulo: 2 }}
       {% endcapture %}
