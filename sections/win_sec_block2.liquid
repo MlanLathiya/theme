@@ -11,7 +11,7 @@
     <div class="col-md-6 align-self-center">
       <div class="details">
         <figure class="img_top">
-          <img src="{{ block.settings.icon | img_url: '96x102' }}" alt="{{ block.settings.title }}">
+          <img src="{{ block.settings.icon | img_url: '4472x4472' }}" alt="{{ block.settings.title }}">
         </figure>
         <{{ block.settings.title_tag }}>{{ block.settings.title }}</{{ block.settings.title_tag }}>
         <{{ block.settings.sub_title_tag }}>{{ block.settings.sub_title }}</{{ block.settings.sub_title_tag }}>
@@ -76,7 +76,8 @@
             { "value": "h5", "label": "H5" },
             { "value": "h6", "label": "H6" }
           ],
-          "default": "h3"
+          "default": "h3",
+          "info": "h2 tag color is red."
         },
         {
           "type": "richtext",
