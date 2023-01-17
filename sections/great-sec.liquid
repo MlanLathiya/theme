@@ -68,56 +68,58 @@
       <input type="submit" value="Submit" class="btn btn-primary">
     {% endform %}
 
-    {% comment %} <div class="form_info">
-      <div class="row g-48px">
-        <div class="col-md-12">
-          <div class="input-group">
-            <label>Name</label>
-            <input type="text" class="form-control">
+    {% comment %}
+      <div class="form_info">
+        <div class="row g-48px">
+          <div class="col-md-12">
+            <div class="input-group">
+              <label>Name</label>
+              <input type="text" class="form-control">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="input-group">
+              <label>Email</label>
+              <input type="text" class="form-control">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="input-group">
+              <label>Contact No.</label>
+              <input type="text" class="form-control">
+            </div>
           </div>
         </div>
 
-        <div class="col-md-6">
-          <div class="input-group">
-            <label>Email</label>
-            <input type="text" class="form-control">
+        <div class="receive_email">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" value="" id="below">
+            <label class="form-check-label" for="below">I’ve read and accept the Term & Conditions below.</label>
           </div>
         </div>
 
-        <div class="col-md-6">
-          <div class="input-group">
-            <label>Contact No.</label>
-            <input type="text" class="form-control">
-          </div>
-        </div>
+        <button class="btns">YES PLEASE!</button>
+        ,
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Button Link"
+          },
+          {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text",
+            "default": "More"
+          },
+          {
+            "type": "image_picker",
+            "id": "side_image",
+            "label": "Side Image"
+          }
       </div>
-
-      <div class="receive_email">
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" value="" id="below">
-          <label class="form-check-label" for="below">I’ve read and accept the Term & Conditions below.</label>
-        </div>
-      </div>
-
-      <button class="btns">YES PLEASE!</button>
-      ,
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Button Link"
-        },
-        {
-          "type": "text",
-          "id": "button_text",
-          "label": "Button Text",
-          "default": "More"
-        },
-        {
-          "type": "image_picker",
-          "id": "side_image",
-          "label": "Side Image"
-        }
-    </div> {% endcomment %}
+    {% endcomment %}
   </div>
 {% endfor %}
 
@@ -156,7 +158,7 @@
           "type": "richtext",
           "id": "content",
           "label": "Content",
-          "default": "<p>To be in with the chance of winning a pair of WESTLAND by Josef Seibel vegan boots. Simply sign up to our newsletter by completing your details below and clicking 'YES PLEASE!'</p>"
+          "default": "<p>To enter, share a photo of you or your loved ones enjoying wearing a pair of JOSEF SEIBEL shoes.</p><p>Share a photo of yourself enjoying your Josef Seibel footwear via Instagram or Facebook </p>"
         }
       ]
     }
