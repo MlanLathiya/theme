@@ -378,6 +378,16 @@
         "type": "inner-sec",
         "settings": {
         }
+      },
+      "e63d8f13-f2a5-4b26-94ee-0beb5f316a10": {
+        "type": "jos-card-above-large-image",
+        "settings": {
+          "padding_top": 0,
+          "padding_bottom": 0,
+          "title": "Day 18: Exploring Marrakesh, with my sturdy pair of Josef Seibels to keep the trek going...",
+          "background_image": "shopify:\/\/shop_images\/my_image_1.jpg",
+          "profile_image": "shopify:\/\/shop_images\/my_image_3.jpg"
+        }
       }
     },
     "content_for_index": [
@@ -390,7 +400,8 @@
       "seller-sec",
       "my-sec",
       "customer-sec",
-      "stay-sec"
+      "stay-sec",
+      "e63d8f13-f2a5-4b26-94ee-0beb5f316a10"
     ]
   }
 }
