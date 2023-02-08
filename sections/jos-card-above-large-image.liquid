@@ -1,0 +1,199 @@
+{%- style -%}
+  #CardAboveImage--{{ section.id }} {
+  --PT: {{ section.settings.padding_top }}px;
+  --PB: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+{% assign animation_anchor = '#CardAboveImage--' | append: section.id %}
+
+<section id="CardAboveImage--{{ section.id }}" class=" season_sec section-padding">
+    <img data-aos="hero"
+         data-aos-anchor="{{ animation_anchor }}"
+         data-aos-order="1" src="{{ section.settings.background_image | img_url: '3000x' }}" alt="">
+    <div class="container">
+      <div class="inner">
+        <h2 data-aos="hero"
+            data-aos-anchor="{{ animation_anchor }}"
+            data-aos-order="2">{{ section.settings.title }}</h2>
+        <p data-aos="hero"
+           data-aos-anchor="{{ animation_anchor }}"
+           data-aos-order="3">{{ section.settings.description }}</p>
+        <figure data-aos="hero"
+                data-aos-anchor="{{ animation_anchor }}"
+                data-aos-order="4"><img src="{{ section.settings.secondary_image | img_url: '2000x' }}" alt=""></figure>
+        {%- if section.settings.button_text != blank -%}
+          <a href="{{ section.settings.button_url }}"
+             class="{{ section.settings.button_style }} {{ section.settings.button_color }}"
+             data-aos="hero"
+             data-aos-anchor="{{ animation_anchor }}"
+             data-aos-order="4">
+            {{ section.settings.button_text }}
+          </a>
+        {%- endif -%}
+
+        <div class="curve1" data-aos="hero"
+             data-aos-anchor="{{ animation_anchor }}"
+             data-aos-order=5><img src="{{ section.settings.top_left_petal | img_url: '400x' }}" alt=""></div>
+        <div class="curve2" data-aos="hero"
+             data-aos-anchor="{{ animation_anchor }}"
+             data-aos-order="5"><img src="{{ section.settings.top_right_petal | img_url: '400x' }}" alt=""></div>
+        <div class="curve3" data-aos="hero"
+             data-aos-anchor="{{ animation_anchor }}"
+             data-aos-order="5"><img src="{{ section.settings.bottom_right_petal | img_url: '400x' }}" alt=""></div>
+      </div>
+    </div>
+</section>
+
+<script>
+
+</script>
+
+
+{% schema %}
+{
+  "name": "JOS Card Above Image",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 0
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Heading"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "secondary_image",
+      "label": "Secondary Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "top_left_petal",
+      "label": "Top Left Patel"
+    },
+    {
+      "type": "image_picker",
+      "id": "top_right_petal",
+      "label": "Top Right Petal"
+    },
+    {
+      "type": "image_picker",
+      "id": "bottom_right_petal",
+      "label": "Bottom Right Petal"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Text",
+      "default": "Learn more"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Link"
+    },
+    {
+      "type": "select",
+      "id": "button_color",
+      "label": "Color",
+      "default": "btn--neutral",
+      "options": [
+        {
+          "value": "btn--primary",
+          "label": "Bright accent"
+        },
+        {
+          "value": "btn--secondary",
+          "label": "Secondary accent"
+        },
+        {
+          "value": "btn--link",
+          "label": "Link color"
+        },
+        {
+          "value": "btn--neutral",
+          "label": "Text color"
+        },
+        {
+          "value": "btn--black",
+          "label": "Black"
+        },
+        {
+          "value": "btn--white",
+          "label": "White"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Style",
+      "default": "hero__btn btn btn--large btn--outline caps",
+      "options": [
+        {
+          "value": "standard__cta caps--large",
+          "label": "Capitalized text"
+        },
+        {
+          "value": "hero__btn btn btn--input caps",
+          "label": "Small button"
+        },
+        {
+          "value": "hero__btn btn btn--large caps",
+          "label": "Large button"
+        },
+        {
+          "value": "hero__btn btn btn--input btn--outline caps",
+          "label": "Small outline button"
+        },
+        {
+          "value": "hero__btn btn btn--large btn--outline caps",
+          "label": "Large outline button"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Text",
+      "name": "JOS Card Above Image"
+    }
+  ]
+}
+{% endschema %}
