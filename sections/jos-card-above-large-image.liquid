@@ -10,6 +10,7 @@
 <section id="EditorialProfile--{{ section.id }}" class="section-padding">
   <section class="inner_banner">
     <img
+      data-aos="hero"
       data-aos-anchor="{{ animation_anchor }}"
       data-aos-order="1"
       src="{{ section.settings.background_image | img_url: '4472x4472' }}"
@@ -21,6 +22,7 @@
     <div class="container">
       <figure class="top_img">
         <img
+          data-aos="hero"
           data-aos-anchor="{{ animation_anchor }}"
           data-aos-order="2"
           src="{{ section.settings.profile_image | img_url: '4472x4472' }}"
@@ -28,7 +30,13 @@
         >
       </figure>
       <div class="detail">
-        <h3>{{ section.settings.title }}</h3>
+        <h3
+          data-aos="hero"
+          data-aos-anchor="{{ animation_anchor }}"
+          data-aos-order="3"
+        >
+          {{ section.settings.title }}
+        </h3>
       </div>
     </div>
   </div>
