@@ -1,0 +1,177 @@
+{%- style -%}
+  #CompetitionsForm--{{ section.id }} {
+  --PT: {{ section.settings.padding_top }}px;
+  --PB: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+{% assign animation_anchor = '#CompetitionsForm--' | append: section.id %}
+
+<section id="CompetitionsForm--{{ section.id }}" class="great_sec section-padding">
+  <div class="container">
+    <h2
+      data-aos="hero"
+      data-aos-anchor="{{ animation_anchor }}"
+      data-aos-order="1"
+    >
+      {{ section.settings.title }}
+    </h2>
+    <div
+      class="info"
+      data-aos="hero"
+      data-aos-anchor="{{ animation_anchor }}"
+      data-aos-order="2"
+    >
+      {{ section.settings.description }}
+    </div>
+    <div class="form_info">
+      <div class="row g-48px">
+        <div class="col-md-12">
+          <div class="input-group">
+            <label
+              data-aos="hero"
+              data-aos-anchor="{{ animation_anchor }}"
+              data-aos-order="2"
+              >Name</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              data-aos="hero"
+              data-aos-anchor="{{ animation_anchor }}"
+              data-aos-order="2"
+            >
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="input-group">
+            <label
+              data-aos="hero"
+              data-aos-anchor="{{ animation_anchor }}"
+              data-aos-order="2"
+              >Email</label
+            >
+            <input
+              data-aos="hero"
+              data-aos-anchor="{{ animation_anchor }}"
+              data-aos-order="2"
+              type="text"
+              class="form-control"
+            >
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="input-group">
+            <label
+              data-aos="hero"
+              data-aos-anchor="{{ animation_anchor }}"
+              data-aos-order="2"
+              >Contact No.</label
+            >
+            <input
+              data-aos="hero"
+              data-aos-anchor="{{ animation_anchor }}"
+              data-aos-order="2"
+              type="text"
+              class="form-control"
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="receive_email">
+        <div class="form-check form-check-inline">
+          <input
+            data-aos="hero"
+            data-aos-anchor="{{ animation_anchor }}"
+            data-aos-order="2"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="below"
+          >
+          <label
+            data-aos="hero"
+            data-aos-anchor="{{ animation_anchor }}"
+            data-aos-order="2"
+            class="form-check-label"
+            for="below"
+          >
+            {{- section.settings.check_box_msg -}}
+          </label>
+        </div>
+      </div>
+
+      <button
+        data-aos="hero"
+        data-aos-anchor="{{ animation_anchor }}"
+        data-aos-order="2"
+        class="btns"
+      >
+        YES PLEASE!
+      </button>
+    </div>
+  </div>
+</section>
+
+<script></script>
+
+{% schema %}
+{
+  "name": "JOS Competition Form",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Section Details"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "check_box_msg",
+      "label": "Check box message",
+      "default": "I’ve read and accept the Term & Conditions below."
+    }
+  ],
+  "presets": [
+    {
+      "category": "Text",
+      "name": "JOS Competition Form"
+    }
+  ]
+}
+{% endschema %}
