@@ -22,7 +22,7 @@
 
     {% capture imageThumbnailSliderMarkup %}
         {% for opt in product.options_with_values %}
-                {% unless opt.name == 'Colour' || opt.name == 'Color' %}
+                {% unless opt.name == 'Colour' %}
                     {% continue %}
                 {% endunless %}
                 {% assign opt_vals = opt.values | sort %}
@@ -75,7 +75,7 @@
     {% assign colour = "N/a" %}
 
     {% for opt in product.options_with_values %}
-        {% unless opt.name == 'Colour' || opt.name == 'Color' %}
+        {% unless opt.name == 'Colour' %}
             {% continue %}
         {% endunless %}
         {% assign colour = opt.values[0] %}
@@ -131,7 +131,7 @@
 {% assign price = product.price %}
 
 {% for opt in product.options_with_values %}
-  {% unless opt.name == 'Colour' || opt.name == 'Color' %}
+  {% unless opt.name == 'Colour' %}
       {% continue %}
   {% endunless %}
   {% assign colourOpt = "option" | append: forloop.index %}
@@ -248,7 +248,7 @@
                 <div class="variant-short-desc short-desc"></div>
 
 				{% for product_option in product.options_with_values %}
-                    {% if product_option.name == 'Colour' || product_option.name == 'Color' %}
+                    {% if product_option.name == 'Colour' %}
                         {% comment %}
                         <script>console.log({{ product_option.name | json }});</script>
                         {% endcomment %}
@@ -581,4 +581,22 @@
 
 {% include 'emwis-form' %}
 
-{% include 'related-products' %}
+{% include 'related-products' %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% unless opt.name == 'Colour' || opt.name == 'Color' %}"
+  to: "{% unless opt.name == 'Colour' %}"
+  position: 871..904
+- from: "{% unless opt.name == 'Colour' || opt.name == 'Color' %}"
+  to: "{% unless opt.name == 'Colour' %}"
+  position: 3557..3590
+- from: "{% unless opt.name == 'Colour' || opt.name == 'Color' %}"
+  to: "{% unless opt.name == 'Colour' %}"
+  position: 5912..5945
+- from: "{% if product_option.name == 'Colour' || product_option.name == 'Color' %}"
+  to: "{% if product_option.name == 'Colour' %}"
+  position: 11060..11100
+{%- endcomment -%}

@@ -5,7 +5,7 @@ var getProductDataByHandle = function(handle, callback) {
   if (typeof handle == "undefined") {
     return;
   }
-  /* Make an ajax request to get product data using ajax api /products/{{ product handle }}.js */
+  /* Make an ajax request to get product data using ajax api /products/{{ product }}.js */
   $.ajax({
     url: "/products/" + handle + ".js",
     method: "GET",
@@ -2377,3 +2377,13 @@ var filterProducts = function(
     }
   });
 };
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{{ product handle }}"
+  to: "{{ product }}"
+  position: 285..298
+{% endcomment %}

@@ -42,7 +42,7 @@
 {% assign price = product.price %}
 
 {% for opt in product.options_with_values %}
-  {% unless opt.name == 'Colour' || opt.name == 'Color' %}
+  {% unless opt.name == 'Colour' %}
       {% continue %}
   {% endunless %}
   {% assign colourOpt = "option" | append: forloop.index %}
@@ -77,7 +77,7 @@
                             {% assign image_src = image.src | downcase %}
                             {% assign image_alt = image.alt | downcase | strip %}
                             {% for opt in product.options_with_values %}
-                                {% unless opt.name == 'Colour' || opt.name == 'Color' %}
+                                {% unless opt.name == 'Colour' %}
                                     {% continue %}
                                 {% endunless %}
                                 {% assign variant_colours = opt.values  %}                      
@@ -105,7 +105,7 @@
                               {% assign image_src = image.src | downcase %}
                               {% assign image_alt = image.alt | downcase | strip %}
                               {% for opt in product.options_with_values %}
-                                  {% unless opt.name == 'Colour' || opt.name == 'Color' %}
+                                  {% unless opt.name == 'Colour' %}
                                       {% continue %}
                                   {% endunless %}
                                   {% assign variant_colours = opt.values  %}                      
@@ -157,7 +157,7 @@
                             {% assign image_src = image.src | downcase %}
                             {% assign image_alt = image.alt | downcase | strip %}
                             {% for opt in product.options_with_values %}
-                                {% unless opt.name == 'Colour' || opt.name == 'Color' %}
+                                {% unless opt.name == 'Colour' %}
                                     {% continue %}
                                 {% endunless %}
                                 {% assign variant_colours = opt.values  %}                      
@@ -185,7 +185,7 @@
                               {% assign image_src = image.src | downcase %}
                               {% assign image_alt = image.alt | downcase | strip %}
                               {% for opt in product.options_with_values %}
-                                  {% unless opt.name == 'Colour' || opt.name == 'Color' %}
+                                  {% unless opt.name == 'Colour' %}
                                       {% continue %}
                                   {% endunless %}
                                   {% assign variant_colours = opt.values  %}                      
@@ -261,7 +261,7 @@
                 <div class="variant-short-desc short-desc"></div>
 
 				{% for product_option in product.options_with_values %}
-                    {% if product_option.name == 'Colour' || product_option.name == 'Color' %}
+                    {% if product_option.name == 'Colour' %}
                         {% comment %}
                         <script>console.log({{ product_option.name | json }});</script>
                         {% endcomment %}
@@ -596,4 +596,28 @@
 {% include 'back-in-stock-form' %}
 
 
-{% include 'related-products' %}
+{% include 'related-products' %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% unless opt.name == 'Colour' || opt.name == 'Color' %}"
+  to: "{% unless opt.name == 'Colour' %}"
+  position: 1655..1688
+- from: "{% unless opt.name == 'Colour' || opt.name == 'Color' %}"
+  to: "{% unless opt.name == 'Colour' %}"
+  position: 3083..3116
+- from: "{% unless opt.name == 'Colour' || opt.name == 'Color' %}"
+  to: "{% unless opt.name == 'Colour' %}"
+  position: 4839..4872
+- from: "{% unless opt.name == 'Colour' || opt.name == 'Color' %}"
+  to: "{% unless opt.name == 'Colour' %}"
+  position: 7363..7396
+- from: "{% unless opt.name == 'Colour' || opt.name == 'Color' %}"
+  to: "{% unless opt.name == 'Colour' %}"
+  position: 9029..9062
+- from: "{% if product_option.name == 'Colour' || product_option.name == 'Color' %}"
+  to: "{% if product_option.name == 'Colour' %}"
+  position: 12935..12975
+{%- endcomment -%}

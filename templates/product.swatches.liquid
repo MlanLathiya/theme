@@ -3,7 +3,7 @@
     {% assign all_colours = "" %}
     {% assign available_colours = "" %}
     {% for product_option in product.options_with_values %}
-            {% if product_option.name == 'Colour' || product_option.name == 'Color' %}
+            {% if product_option.name == 'Colour' %}
                 {% assign colours =  %}
                 {% assign opt_vals = product_option.values %}
                     {% for value in opt_vals %}
@@ -78,4 +78,13 @@
         {% endfor %}
         {% endfor %}
     </div>
-    {% endif %}
+    {% endif %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% if product_option.name == 'Colour' || product_option.name == 'Color' %}"
+  to: "{% if product_option.name == 'Colour' %}"
+  position: 169..209
+{%- endcomment -%}

@@ -66,7 +66,7 @@
                     {% assign possible_sizes = possible_sizes | append: "||" %}
                 {% endunless %}
             {% endfor %}
-        {% elsif product_option.name == "Colour" orproduct_option.name == "Color" %}
+        {% elsif product_option.name == "Colour" %}
             {% comment %} Get the colours available for products in collection {% endcomment %}
             {% for value in product_option.values %}
                 {% assign value_parts = value | split: " - " %}
@@ -292,4 +292,14 @@
     {% endif %}
 </div>
 <!--[filter-menu-end]-->
-{% endpaginate %}
+{% endpaginate %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{% elsif product_option.name == "Colour" orproduct_option.name == "Color"
+    %}'
+  to: '{% elsif product_option.name == "Colour" %}'
+  position: 2701..2744
+{%- endcomment -%}

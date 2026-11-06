@@ -50,7 +50,7 @@
 {% assign wideFit = false %}
 {% assign leather = false %}
 
-{% for productTag in product.tags | downcase %}
+{% for productTag in product.tags %}
   {% capture tag %}
    {{ productTag | downcase }}
 {% endcapture %}
@@ -71,11 +71,11 @@
     {% assign vegan = true %}
   {% endif %}
 
-  {% if tag contains 'fastening-type_lace' | tag contains 'fastening-type_lace and zip' %}
+  {% if tag contains 'fastening-type_lace' %}
     {% assign lace = true %}
   {% endif %}
 
-  {% if tag contains 'fastening-type_zip' | tag contains 'fastening-type_lace and zip' %}
+  {% if tag contains 'fastening-type_zip' %}
     {% assign zip = true %}
   {% endif %}
 
@@ -89,7 +89,7 @@
 {% endfor %}
 
 {% for opt in product.options_with_values %}
-  {% unless opt.name == 'Colour' || opt.name == 'Color' %}
+  {% unless opt.name == 'Colour' %}
     {% continue %}
   {% endunless %}
   {% assign colourOpt = 'option' | append: forloop.index %}
@@ -119,7 +119,7 @@
                 {% assign image_alt = image.alt | downcase | strip %}
                 {% unless image_alt contains 'swatch_' %}
                   {% for opt in product.options_with_values %}
-                    {% unless opt.name == 'Colour' || opt.name == 'Color' %}
+                    {% unless opt.name == 'Colour' %}
                       {% continue %}
                     {% endunless %}
                     {% assign variant_colours = opt.values %}
@@ -154,7 +154,7 @@
                 {% assign image_alt = image.alt | downcase | strip %}
                 {% unless image_alt contains 'swatch_' %}
                   {% for opt in product.options_with_values %}
-                    {% unless opt.name == 'Colour' || opt.name == 'Color' %}
+                    {% unless opt.name == 'Colour' %}
                       {% continue %}
                     {% endunless %}
                     {% assign variant_colours = opt.values %}
@@ -202,7 +202,7 @@
                 {% assign image_alt = image.alt | downcase | strip %}
                 {% unless image_alt contains 'swatch_' %}
                   {% for opt in product.options_with_values %}
-                    {% unless opt.name == 'Colour' || opt.name == 'Color' %}
+                    {% unless opt.name == 'Colour' %}
                       {% continue %}
                     {% endunless %}
                     {% assign variant_colours = opt.values %}
@@ -228,7 +228,7 @@
                 {% assign image_alt = image.alt | downcase | strip %}
                 {% unless image_alt contains 'swatch_' %}
                   {% for opt in product.options_with_values %}
-                    {% unless opt.name == 'Colour' || opt.name == 'Color' %}
+                    {% unless opt.name == 'Colour' %}
                       {% continue %}
                     {% endunless %}
                     {% assign variant_colours = opt.values %}
@@ -263,7 +263,7 @@
           {% assign all_colours = '' %}
           {% assign available_colours = '' %}
           {% for product_option in product.options_with_values %}
-            {% if product_option.name == 'Colour' || product_option.name == 'Color' %}
+            {% if product_option.name == 'Colour' %}
               {% assign colours = %}
               {% assign opt_vals = product_option.values %}
               {% for value in opt_vals %}
@@ -798,4 +798,39 @@
 
 {% section 'customer-sec' %}
 
-{% section 'stay-sec' %}
+{% section 'stay-sec' %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% for productTag in product.tags | downcase %}"
+  to: "{% for productTag in product.tags %}"
+  position: 1758..1794
+- from: "{% if tag contains 'fastening-type_lace' | tag contains 'fastening-type_lace
+    and zip' %}"
+  to: "{% if tag contains 'fastening-type_lace' %}"
+  position: 2216..2259
+- from: "{% if tag contains 'fastening-type_zip' | tag contains 'fastening-type_lace
+    and zip' %}"
+  to: "{% if tag contains 'fastening-type_zip' %}"
+  position: 2306..2348
+- from: "{% unless opt.name == 'Colour' || opt.name == 'Color' %}"
+  to: "{% unless opt.name == 'Colour' %}"
+  position: 2619..2652
+- from: "{% unless opt.name == 'Colour' || opt.name == 'Color' %}"
+  to: "{% unless opt.name == 'Colour' %}"
+  position: 3884..3917
+- from: "{% unless opt.name == 'Colour' || opt.name == 'Color' %}"
+  to: "{% unless opt.name == 'Colour' %}"
+  position: 5483..5516
+- from: "{% unless opt.name == 'Colour' || opt.name == 'Color' %}"
+  to: "{% unless opt.name == 'Colour' %}"
+  position: 7703..7736
+- from: "{% unless opt.name == 'Colour' || opt.name == 'Color' %}"
+  to: "{% unless opt.name == 'Colour' %}"
+  position: 8972..9005
+- from: "{% if product_option.name == 'Colour' || product_option.name == 'Color' %}"
+  to: "{% if product_option.name == 'Colour' %}"
+  position: 10450..10490
+{%- endcomment -%}
